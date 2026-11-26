@@ -4,7 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { loadRazorpay } from "@/components/billing/useCheckout";
+import { loadRazorpay, showPaymentFailedToast } from "@/components/billing/useCheckout";
+import { failureKind, type FailureKind } from "@/lib/billing/paymentFailure";
 import { claimOrder, useReturnCheck } from "@/components/billing/useReturnCheck";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import { browserStorage, forgetPendingOrder, parentPendingKey, rememberPendingOrder } from "@/lib/billing/pendingOrder";
@@ -89,6 +90,7 @@ export default function ParentPayButton({
       }
       if (!res.ok || !order.orderId || !order.keyId) return fail(order.error || "Could not start the payment.");
 
+      let failedKind: FailureKind | null = null;
       const rzp = new Razorpay({
         key: order.keyId,
         order_id: order.orderId,
@@ -120,8 +122,14 @@ export default function ParentPayButton({
           ondismiss: () => {
             setBusy(false);
             trackFunnel("checkout_dismissed", props);
+            if (failedKind) showPaymentFailedToast(failedKind, () => void pay());
           },
         },
+      });
+      // A failed payment (2026-11-26): the same hint and Try again as a student's checkout.
+      rzp.on?.("payment.failed", (resp) => {
+        failedKind = failureKind(resp?.error?.reason);
+        trackFunnel("checkout_payment_failed", { ...props, kind: failedKind });
       });
       trackFunnel("checkout_opened", props);
       rzpRef.current = rzp;

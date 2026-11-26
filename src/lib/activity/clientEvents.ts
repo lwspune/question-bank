@@ -10,6 +10,7 @@
  */
 import { istDayKey } from "@/lib/email/dueNudge";
 import { AFTER_CHECKOUT_ONLY, isDeclineReason, type DeclineReason } from "@/lib/billing/declineReasons";
+import { isFailureKind } from "@/lib/billing/paymentFailure";
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 import { START_NEXT_FROM } from "@/lib/me/startNext";
 import { TEACH_CHAPTER_FROM } from "@/lib/chat/teachChapter";
@@ -136,6 +137,9 @@ export const PAYWALL_STEPS = [
   "parent_checkout_opened",
   /** "Not now" on an offer that stops for good once closed (the "return" bar, 2026-11-12). */
   "dismissed",
+  /** A payment that failed inside Razorpay's checkout (2026-11-26), with its kind only
+   *  (lib/billing/paymentFailure): before it, closing after a decline read as "dismissed". */
+  "payment_failed",
 ] as const;
 export type PaywallStep = (typeof PAYWALL_STEPS)[number];
 
@@ -154,7 +158,7 @@ export function checkoutBox(v: unknown): DownloadBox | undefined {
 }
 
 /** Steps a client may report. The others are written by the billing routes. */
-const CLIENT_STEPS: ReadonlySet<string> = new Set<PaywallStep>(["shown", "checkout_dismissed", "declined", "dismissed"]);
+const CLIENT_STEPS: ReadonlySet<string> = new Set<PaywallStep>(["shown", "checkout_dismissed", "declined", "dismissed", "payment_failed"]);
 const GATE_SET: ReadonlySet<string> = new Set(PAYWALL_GATES);
 const MAX_PLAN_ID = 64;
 
@@ -547,6 +551,13 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
     if (raw.reason !== undefined || raw.afterCheckout !== undefined || raw.onClose !== undefined) {
       return { ok: false, error: "A reason belongs to a declined offer only." };
     }
+    if (raw.step === "payment_failed") {
+      if (!isFailureKind(raw.failKind)) return { ok: false, error: "Unknown failure kind." };
+      const event = paywallEvent("payment_failed", raw.gate as PaywallGate, planId, undefined, box);
+      event.metadata = { ...event.metadata, failKind: raw.failKind };
+      return { ok: true, value: event };
+    }
+    if (raw.failKind !== undefined) return { ok: false, error: "A failure kind belongs to a failed payment only." };
     return {
       ok: true,
       value: paywallEvent(raw.step as PaywallStep, raw.gate as PaywallGate, planId, { userId, now }, box),

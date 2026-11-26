@@ -50,6 +50,30 @@ describe("parseClientEvent", () => {
     }
   });
 
+  // A failed payment inside Razorpay's checkout (2026-11-26, lib/billing/paymentFailure):
+  // the kind only, from a closed list, never the raw reason or the UPI ID.
+  it("accepts a failed payment with its kind, one row per failure", () => {
+    const r = parseClientEvent(
+      { kind: "paywall_event", step: "payment_failed", gate: "teacher", planId: "mock-pass-6m", box: "formula", failKind: "declined" },
+      "u1",
+      NOW
+    );
+    expect(r.ok && r.value).toEqual({
+      kind: "paywall_event",
+      refId: "mock-pass-6m",
+      refKind: "plan",
+      metadata: { step: "payment_failed", gate: "teacher", box: "formula", failKind: "declined" },
+    });
+  });
+
+  it("refuses a failed payment with no kind or an unknown one, and a kind on any other step", () => {
+    expect(parseClientEvent({ kind: "paywall_event", step: "payment_failed", gate: "pricing" }, "u1", NOW).ok).toBe(false);
+    expect(
+      parseClientEvent({ kind: "paywall_event", step: "payment_failed", gate: "pricing", failKind: "bank_account_invalid" }, "u1", NOW).ok
+    ).toBe(false);
+    expect(parseClientEvent({ kind: "paywall_event", step: "shown", gate: "pricing", failKind: "declined" }, "u1", NOW).ok).toBe(false);
+  });
+
   it("refuses an unknown surface, gate, or an oversized plan id", () => {
     expect(parseClientEvent({ kind: "surface_viewed", surface: "blog" }, "u1", NOW).ok).toBe(false);
     expect(parseClientEvent({ kind: "paywall_event", step: "shown", gate: "vip" }, "u1", NOW).ok).toBe(false);

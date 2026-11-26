@@ -12,6 +12,7 @@
 import type { Surface } from "./views";
 import type { DownloadBox, NotesDrillLink, PaywallGate, RepeatLineFrom, VIEW_BROWSERS } from "./clientEvents";
 import type { DeclineReason } from "@/lib/billing/declineReasons";
+import type { FailureKind } from "@/lib/billing/paymentFailure";
 import type { ChapterFixFrom } from "@/lib/drill/from";
 import type { StartNextFrom } from "@/lib/me/startNext";
 import type { TeachChapterFrom } from "@/lib/chat/teachChapter";
@@ -135,6 +136,15 @@ export type ClientEvent =
       kind: "paywall_event";
       step: "shown" | "checkout_dismissed" | "dismissed";
       gate: PaywallGate;
+      planId?: string;
+      box?: DownloadBox;
+    }
+  | {
+      /** A payment that failed inside Razorpay's checkout (2026-11-26): its kind, never the reason or UPI ID. */
+      kind: "paywall_event";
+      step: "payment_failed";
+      gate: PaywallGate;
+      failKind: FailureKind;
       planId?: string;
       box?: DownloadBox;
     }

@@ -6,6 +6,7 @@ import { sendActivity } from "@/lib/activity/clientBeacon";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import { checkoutContactOptions } from "@/lib/billing/checkoutOptions";
+import { failureKind, studentFailureHint, type FailureKind } from "@/lib/billing/paymentFailure";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { closePaddleCheckout, openPaddleCheckout, verifyPaddleTransaction } from "./paddleCheckout";
 import { claimOrder, useReturnCheck } from "./useReturnCheck";
@@ -30,7 +31,28 @@ type RazorpaySuccess = {
   razorpay_order_id: string;
   razorpay_signature: string;
 };
-type RazorpayInstance = { open: () => void; close?: () => void };
+/** Razorpay's payment.failed payload: only the reason is read (never shown raw). */
+export type RazorpayFailure = { error?: { reason?: string | null } };
+type RazorpayInstance = {
+  open: () => void;
+  close?: () => void;
+  on?: (event: "payment.failed", cb: (resp: RazorpayFailure) => void) => void;
+};
+
+/** How long the failure hint stays: long enough to read it and tap Try again. */
+export const FAILURE_TOAST_MS = 20_000;
+
+/**
+ * After a checkout closes on a failed payment (2026-11-26): what went wrong in
+ * plain words, with a Try again button. A FamPay decline usually clears on the
+ * next try (5 of 5 retries paid), and before this nothing told the student so.
+ */
+export function showPaymentFailedToast(kind: FailureKind, retry: () => void): void {
+  toast.error(studentFailureHint(kind), {
+    duration: FAILURE_TOAST_MS,
+    action: { label: "Try again", onClick: retry },
+  });
+}
 declare global {
   interface Window {
     Razorpay?: new (opts: RazorpayOptions) => RazorpayInstance;
@@ -138,6 +160,8 @@ export function useCheckout({
   // callback never run: the server grants the paid order and we finish here
   // (2026-11-22, lib/billing/confirmOrder.ts).
   const rzpRef = useRef<RazorpayInstance | null>(null);
+  // The failure toast's Try again starts a fresh order, through the latest `start`.
+  const startRef = useRef<(() => Promise<void>) | null>(null);
   const onDoneRef = useRef(onDone);
   useEffect(() => {
     onDoneRef.current = onDone;
@@ -250,6 +274,7 @@ export function useCheckout({
       if (!Razorpay) return fail("Payment page didn't load. Try again in a moment.");
       if (!order.orderId || !order.keyId) return fail(order.error || "Could not start checkout");
 
+      let failedKind: FailureKind | null = null;
       const rzp = new Razorpay({
         key: order.keyId,
         order_id: order.orderId,
@@ -295,8 +320,18 @@ export function useCheckout({
             trackFunnel("checkout_dismissed", funnelProps);
             // The paywall funnel is the pass's; an ebook's dismissals are the Vercel event alone.
             if (planId) sendActivity({ kind: "paywall_event", step: "checkout_dismissed", gate: GATE[surface], planId, box });
+            if (failedKind) showPaymentFailedToast(failedKind, () => void startRef.current?.());
           },
         },
+      });
+      // A payment failed inside Razorpay's checkout (2026-11-26). Razorpay keeps
+      // its own screen open with a retry; ours speaks once they close it.
+      rzp.on?.("payment.failed", (resp) => {
+        failedKind = failureKind(resp?.error?.reason);
+        trackFunnel("checkout_payment_failed", { ...funnelProps, kind: failedKind });
+        if (planId) {
+          sendActivity({ kind: "paywall_event", step: "payment_failed", gate: GATE[surface], planId, box, failKind: failedKind });
+        }
       });
       trackFunnel("checkout_opened", funnelProps);
       rzpRef.current = rzp;
@@ -306,6 +341,10 @@ export function useCheckout({
       fail(err instanceof Error ? err.message : "Checkout failed");
     }
   }, [planId, ebookSlug, surface, onDone]);
+
+  useEffect(() => {
+    startRef.current = start;
+  }, [start]);
 
   return { start, busy, dismissed };
 }
