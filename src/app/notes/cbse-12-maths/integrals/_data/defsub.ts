@@ -6,7 +6,7 @@ export const CB_MA_IN_DEFSUB_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Substitute t = g(x) in a definite integral and change the limits to values of t, so the value comes straight from t without going back to x.",
   whyItMatters:
-    "36 questions, nineteen of them from board papers from 2022 to 2026. The board sets three- and five-mark questions in which the substitution is the whole problem: t = eˣ or e²ˣ (2022, 2023, 2025, 2026), t = log x (2023), t = sin x or tan x (2022, 2023, 2025) and t = sin x − cos x (two in 2024), with one-mark MCQs that need t = sin x, t = cot θ or t = 5x² + 1 (2024, 2025). The textbook adds Examples 26 and 27, Exercise 7.9 and Miscellaneous Questions 25 to 27, 29 and 30.",
+    "34 questions, eighteen of them from board papers from 2022 to 2026. The board sets three- and five-mark questions in which the substitution is the whole problem: t = eˣ or e²ˣ (2022, 2023, 2025, 2026), t = log x (2023), t = sin x or tan x (2022, 2023, 2025) and t = sin x − cos x (two in 2024), with one-mark MCQs that need t = sin x, t = cot θ or t = 5x² + 1 (2024, 2025). The textbook adds Examples 26 and 27, Exercise 7.9 (all but Q10) and Miscellaneous Questions 25 to 27, 29 and 30.",
   concepts: [
     {
       kind: "formula" as const,

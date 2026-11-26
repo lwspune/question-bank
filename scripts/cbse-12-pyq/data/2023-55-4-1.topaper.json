@@ -287,7 +287,7 @@
    "marks": 1,
    "format": "mcq",
    "chapter": "Alternating Current",
-   "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+   "subtopic": "Series LCR Circuit and Resonance",
    "stem": "An ac voltage \\(v = v_0 \\sin \\omega t\\) is applied to a series combination of a resistor R and an element X. The instantaneous current in the circuit is \\(I = I_0 \\sin\\left(\\omega t + \\dfrac{\\pi}{4}\\right)\\). Then which of the following is correct ?",
    "options": [
     {
@@ -428,7 +428,7 @@
     }
    ],
    "answer": "A",
-   "solution": "The 'difference in mass of the nucleus and the total mass of its constituent nucleons' is the mass defect, \\(\\Delta m = 21{\\cdot}00\\) u, and the binding energy of the nucleus is the energy equivalent of that mass defect, \\(B = \\Delta m\\,c^2\\).\n\nThe nucleus \\(^{7}\\mathrm{X}\\) has mass number \\(A = 7\\), so it contains \\(7\\) nucleons. The binding energy per nucleon is therefore the energy equivalent of\n\n\\(\\dfrac{\\Delta m}{A} = \\dfrac{21{\\cdot}00}{7} = 3\\) u.\n\nSo the binding energy per nucleon equals the energy equivalent of \\(3\\) u."
+   "solution": "**Note:** As printed this cannot happen: a nucleus of 7 nucleons has a mass of only about 7 u, so its mass defect cannot be 21 u. The working below follows the question as set, which gives CBSE's key.\n\nThe 'difference in mass of the nucleus and the total mass of its constituent nucleons' is the mass defect, \\(\\Delta m = 21{\\cdot}00\\) u, and the binding energy of the nucleus is the energy equivalent of that mass defect, \\(B = \\Delta m\\,c^2\\).\n\nThe nucleus \\(^{7}\\mathrm{X}\\) has mass number \\(A = 7\\), so it contains \\(7\\) nucleons. The binding energy per nucleon is therefore the energy equivalent of\n\n\\(\\dfrac{\\Delta m}{A} = \\dfrac{21{\\cdot}00}{7} = 3\\) u.\n\nSo the binding energy per nucleon equals the energy equivalent of \\(3\\) u."
   },
   {
    "hash": "40726492de7940e640cd82e34bb5d8fc6eff2f53651fec1093a691b2df3fec9d",
@@ -689,7 +689,7 @@
    "marks": 3,
    "format": "subjective",
    "chapter": "Alternating Current",
-   "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+   "subtopic": "Series LCR Circuit and Resonance",
    "stem": "A resistor of 30 \\(\\Omega\\) and a capacitor of \\(\\dfrac{250}{\\pi}\\) \\(\\mu\\mathrm{F}\\) are connected in series to a 200 V, 50 Hz ac source. Calculate (i) the current in the circuit, and (ii) voltage drops across the resistor and the capacitor. (iii) Is the algebraic sum of these voltages more than the source voltage ? If yes, solve the paradox.",
    "solution": "First find the capacitive reactance. The angular frequency is\n\n\\(\\omega = 2\\pi\\nu = 2\\pi \\times 50 = 100\\pi\\) rad/s,\n\nand with \\(C = \\dfrac{250}{\\pi}\\,\\mu\\mathrm{F} = \\dfrac{250}{\\pi} \\times 10^{-6}\\) F,\n\n\\(X_C = \\dfrac{1}{\\omega C} = \\dfrac{1}{100\\pi \\times \\dfrac{250}{\\pi} \\times 10^{-6}} = \\dfrac{1}{100 \\times 250 \\times 10^{-6}} = 40\\,\\Omega\\)\n\n(the \\(\\pi\\) cancels, which is why the capacitance was given in that form).\n\nImpedance of the series \\(RC\\) circuit:\n\n\\(Z = \\sqrt{R^2 + X_C^2} = \\sqrt{(30)^2 + (40)^2} = \\sqrt{900 + 1600} = 50\\,\\Omega\\).\n\n(i) Current in the circuit:\n\n\\(I_{rms} = \\dfrac{V_{rms}}{Z} = \\dfrac{200}{50} = 4\\) A.\n\n(ii) Voltage drops, the same current passing through both elements:\n\nacross the resistor, \\(V_R = I_{rms}R = 4 \\times 30 = 120\\) V;\n\nacross the capacitor, \\(V_C = I_{rms}X_C = 4 \\times 40 = 160\\) V.\n\n(iii) Yes: their algebraic sum is \\(120 + 160 = 280\\) V, which is well above the \\(200\\) V of the source.\n\nThe paradox is only apparent, and it dissolves once the phases are taken into account. These two voltages do not reach their peaks at the same instant, so they may not simply be added as numbers. \\(V_R\\) is in phase with the current, while \\(V_C\\) LAGS the current by \\(90^\\circ\\); the two phasors are therefore at right angles and must be combined vectorially:\n\n\\(V = \\sqrt{V_R^2 + V_C^2} = \\sqrt{(120)^2 + (160)^2} = \\sqrt{14400 + 25600} = \\sqrt{40000} = 200\\) V,\n\nwhich is exactly the source voltage. The instantaneous voltages do always add up to the source voltage; it is only their peak (or rms) values that appear not to."
   },

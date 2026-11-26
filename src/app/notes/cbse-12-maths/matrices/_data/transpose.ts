@@ -6,7 +6,7 @@ export const CB_MA_MT_TRANSPOSE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The transpose A′ made by turning rows into columns, its four properties with the reversal law for a product, and the board's favourite: the angle that makes A + A′ a multiple of I.",
   whyItMatters:
-    "31 questions, fifteen of them from board papers, eight of those in 2026 alone. The most repeated board question gives a matrix with trigonometric elements and asks for the angle that makes A + A′ a multiple of I (2023, 2024, and four sets of 2026). The board also asks for the transpose of a 2 by 2 matrix built from a rule for its elements (three sets of 2026), which properties of the transpose are true or not true (2025, 2026), the transpose of a product of two given matrices (2023), the order of a product of transposes (2024), the product of a row matrix and its transpose (2023), and the condition for a matrix to equal its transpose (2023). The textbook adds Exercise 3.3 up to Q6, its examples and Miscellaneous Exercise Q3.",
+    "30 questions, fourteen of them from board papers, eight of those in 2026 alone. The most repeated board question gives a matrix with trigonometric elements and asks for the angle that makes A + A′ a multiple of I (2023, 2024, and four sets of 2026). The board also asks for the transpose of a 2 by 2 matrix built from a rule for its elements (three sets of 2026), which properties of the transpose are true or not true (2025, 2026), the transpose of a product of two given matrices (2023), the order of a product of transposes (2024) and the product of a row matrix and its transpose (2023). The textbook adds Exercise 3.3 up to Q6, its examples and Miscellaneous Exercise Q3.",
   concepts: [
     {
       kind: "formula" as const,

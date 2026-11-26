@@ -6,7 +6,7 @@ export const CB_PH_AC_LCR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The phasor diagram of a series LCR circuit, its impedance and phase angle, numericals on RL, RC and LCR circuits, and resonance: its condition, its frequency and the current and voltages it gives.",
   whyItMatters:
-    "31 questions, twenty-six of them from board papers, the most of any page in this chapter. The board asks you to derive the impedance and phase angle with a phasor diagram (2023, 2024, 2025, 2026), find impedance, phase angle, current or voltages in RL, RC and LCR circuits (2023, 2024, 2025, 2026), identify elements from how the current leads or lags (2023, 2024, 2025, 2026), state the condition for resonance, what the resonant frequency depends on and draw the current against frequency graph (2023, 2024, 2025, 2026), and find the current and the voltage across L or C at resonance (2023, 2024, 2026).",
+    "33 questions, twenty-eight of them from board papers, the most of any page in this chapter. The board asks you to derive the impedance and phase angle with a phasor diagram (2023, 2024, 2025, 2026), find impedance, phase angle, current or voltages in RL, RC and LCR circuits (2023, 2024, 2025, 2026), identify elements from how the current leads or lags (2023, 2024, 2025, 2026), state the condition for resonance, what the resonant frequency depends on and draw the current against frequency graph (2023, 2024, 2025, 2026), and find the current and the voltage across L or C at resonance (2023, 2024, 2026).",
   concepts: [
     {
       kind: "formula" as const,

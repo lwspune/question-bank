@@ -6,7 +6,7 @@ export const CB_MA_DT_INVERSE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The adjoint of a square matrix is the transpose of its matrix of cofactors; A(adj A) = (adj A)A = |A|I, so a matrix has an inverse exactly when |A| ≠ 0, and then A⁻¹ = (1/|A|) adj A.",
   whyItMatters:
-    "58 questions, thirty-two of them from board papers: five in 2023, ten in 2024, nine in 2025 and eight in 2026. Every year from 2023 to 2026 the board read |A| off a product such as A(adj A) = 3I and asked for |adj A|, |2A| or det(B⁻¹). It asked for the inverse of a 3 by 3 matrix inside a case study (2023, 2025, 2026), (AB)⁻¹ with B⁻¹ given (2023, 2024), (kA)⁻¹ (2025, 2026), A⁻¹ from a relation such as A² − A + I = O (2023, 2026), the values of λ that make a matrix invertible (2024) and unknown entries found from AA⁻¹ = I (2024). The textbook adds Exercise 4.4, Examples 12 to 15 and Miscellaneous Questions 3, 4 and 8.",
+    "57 questions, thirty-one of them from board papers: five in 2023, ten in 2024, eight in 2025 and eight in 2026. Every year from 2023 to 2026 the board read |A| off a product such as A(adj A) = 3I and asked for |adj A|, |2A| or det(B⁻¹). It asked for the inverse of a 3 by 3 matrix inside a case study (2023, 2025, 2026), (AB)⁻¹ with B⁻¹ given (2023, 2024), (kA)⁻¹ (2025, 2026), A⁻¹ from a relation such as A² − A + I = O (2023, 2026), the values of λ that make a matrix invertible (2024) and unknown entries found from AA⁻¹ = I (2024). The textbook adds Exercise 4.4, Examples 12 to 15 and Miscellaneous Questions 3, 4 and 8.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const CB_MA_TG_ANGLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The angle between two lines is the angle between their directions: its cosine is the dot product of the direction vectors divided by their lengths, taken without sign for the acute angle.",
   whyItMatters:
-    "31 questions, eighteen of them from board papers between 2023 and 2026. The board asked for the angle between two lines (2023, 2025 and 2026; in 2023 and 2026 the answer was the inverse cosine of 19/21), for the value of an unknown that makes two lines perpendicular (every year from 2023), and for assertion-reason items on the conditions for parallel and perpendicular lines (2023 and 2026). A 2026 MCQ asked for the formula of the acute angle, which needs a modulus, and the 2025 metro case study asked whether two tracks are parallel. The textbook adds Examples 7 and 8, Exercise 11.2 Q1 to Q3 and Q8 to Q11, and Miscellaneous Exercise Q1 and Q3.",
+    "32 questions, nineteen of them from board papers between 2023 and 2026. The board asked for the angle between two lines (2023, 2025 and 2026; in 2023 and 2026 the answer was the inverse cosine of 19/21), for the value of an unknown that makes two lines perpendicular (every year from 2023), for a vector perpendicular to a given line (2024), and for assertion-reason items on the conditions for parallel and perpendicular lines (2023 and 2026). A 2026 MCQ asked for the formula of the acute angle, which needs a modulus, and the 2025 metro case study asked whether two tracks are parallel. The textbook adds Examples 7 and 8, Exercise 11.2 Q1 to Q3 and Q8 to Q11, and Miscellaneous Exercise Q1 and Q3.",
   concepts: [
     {
       kind: "formula" as const,

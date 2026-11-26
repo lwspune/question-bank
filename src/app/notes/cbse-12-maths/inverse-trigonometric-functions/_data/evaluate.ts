@@ -6,7 +6,7 @@ export const CB_MA_IT_EVALUATE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Working out an expression built from principal values: adding them, putting one inside a trigonometric ratio, and taking an inverse function of a ratio whose angle may lie outside the branch.",
   whyItMatters:
-    "42 questions, twenty-nine of them from board papers from 2023 to 2026. Every year the board asks you to add principal values, such as sin⁻¹(−1/2) + cos⁻¹(−√3/2), or to work an expression from the inside out, such as tan⁻¹[2 cos(2 sin⁻¹ ½)]. Every year it also asks for a value such as sin⁻¹(sin 3π/5), where the angle lies outside the branch. In 2024 it asked for squares such as sec²(tan⁻¹ ½). The textbook adds the sums of Exercise 2.1 and the values of Exercise 2.2.",
+    "43 questions, twenty-nine of them from board papers from 2023 to 2026. Every year the board asks you to add principal values, such as sin⁻¹(−1/2) + cos⁻¹(−√3/2), or to work an expression from the inside out, such as tan⁻¹[2 cos(2 sin⁻¹ ½)]. Every year it also asks for a value such as sin⁻¹(sin 3π/5), where the angle lies outside the branch. In 2024 it asked for squares such as sec²(tan⁻¹ ½). The textbook adds the sums of Exercise 2.1 and the values of Exercise 2.2 and Miscellaneous Exercise Q13.",
   concepts: [
     {
       kind: "formula" as const,

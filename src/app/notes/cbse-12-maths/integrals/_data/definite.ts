@@ -6,7 +6,7 @@ export const CB_MA_IN_DEFINITE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A definite integral is a number: the value of an antiderivative at the upper limit minus its value at the lower limit.",
   whyItMatters:
-    "54 questions, twenty-five of them from board papers from 2022 to 2026. The board asks one-mark MCQs that need only the second fundamental theorem (2023, 2024 and 2026), MCQs and a three-mark question that give the value of an integral and ask for a limit or a constant (2023 to 2026), and a modulus integral that must be split where the sign changes, every year from 2022 to 2026. The textbook adds Example 25, Exercise 7.8, Miscellaneous Questions 28 and 31 and Miscellaneous Example 41.",
+    "55 questions, twenty-five of them from board papers from 2022 to 2026. The board asks one-mark MCQs that need only the second fundamental theorem (2023, 2024 and 2026), MCQs and a three-mark question that give the value of an integral and ask for a limit or a constant (2023 to 2026), and a modulus integral that must be split where the sign changes, every year from 2022 to 2026. The textbook adds Example 25, Exercise 7.8, Exercise 7.9 Q10, Miscellaneous Questions 28 and 31 and Miscellaneous Example 41.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const CB_MA_MT_ORDER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A matrix as an ordered rectangular array, its order m by n, the element in row i and column j, building a matrix from a rule for its elements, and the seven types the book names.",
   whyItMatters:
-    "31 questions, sixteen of them from board papers from 2023 to 2026. The board asks how many orders a matrix with a given number of elements can have (2024), how many 3 by 3 matrices can be filled from two given numbers (2025), the order of a matrix B when two products with it are defined (2023), and which statement about a matrix built from a rule for its elements is true or false (2024, 2025). Most of the rest are one-mark questions on types: scalar matrices (2024, 2025), the identity and diagonal matrices (2024, 2026), row and column matrices (2026), a matrix that is only square (2025), and assertion-reason items on scalar and diagonal matrices (2024, 2025). The textbook adds Exercise 3.1 and its examples.",
+    "30 questions, fifteen of them from board papers from 2023 to 2026. The board asks how many orders a matrix with a given number of elements can have (2024), how many 3 by 3 matrices can be filled from two given numbers (2025), and which statement about a matrix built from a rule for its elements is true or false (2024, 2025). Most of the rest are one-mark questions on types: scalar matrices (2024, 2025), the identity and diagonal matrices (2024, 2026), row and column matrices (2026), a matrix that is only square (2025), and assertion-reason items on scalar and diagonal matrices (2024, 2025). The textbook adds Exercise 3.1 and its examples.",
   concepts: [
     {
       kind: "formula" as const,

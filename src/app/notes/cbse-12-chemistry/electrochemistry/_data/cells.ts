@@ -6,7 +6,7 @@ export const CB_CH_EC_CELLS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The two kinds of electrochemical cell, and what happens to a Daniell cell when an outside voltage opposes its own: it keeps working, stops, or runs backwards as an electrolytic cell.",
   whyItMatters:
-    "1 question, from the 2025 board paper: when does a galvanic cell behave like an electrolytic cell? The board asks the same idea on other pages too: as a case-study part in 2022 and 2024, as an assertion-reason item in 2024, and as half of a short answer in 2022. It is one fixed rule, so learn the three cases once.",
+    "3 questions, all from board papers (2022, 2024 and 2025), and all ask one thing: when does a galvanic cell behave like an electrolytic cell? A 2024 assertion-reason item on the Galvanic Cells page tests the same idea. It is one fixed rule, so learn the three cases once.",
   concepts: [
     {
       kind: "reference" as const,

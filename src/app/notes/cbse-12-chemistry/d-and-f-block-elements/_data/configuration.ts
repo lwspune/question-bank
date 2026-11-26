@@ -6,7 +6,7 @@ export const CB_CH_DF_CONFIGURATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The general configuration (n−1)d¹⁻¹⁰ns¹⁻², the chromium and copper exceptions, how to write the configuration of an ion, and how the configuration decides whether an element is a transition element.",
   whyItMatters:
-    "14 questions. Eight were set in board papers, five of them in 2023: which ion is 3d⁶, which ion has the most unpaired d electrons, an MCQ on why zinc, cadmium and mercury do not behave like transition metals, and two assertion-reason items on copper and zinc. Then 2024 asked the general configuration of the d-block, 2025 which element is [Ar]3d¹⁰4s¹, and 2026 the configuration of chromium. The NCERT exercises add ion configurations, including lanthanoid and actinoid ions.",
+    "15 questions. Nine were set in board papers, five of them in 2023: which ion is 3d⁶, which ion has the most unpaired d electrons, an MCQ on why zinc, cadmium and mercury do not behave like transition metals, and two assertion-reason items on copper and zinc. Then 2024 asked the general configuration of the d-block and why copper is a transition element but zinc is not, 2025 which element is [Ar]3d¹⁰4s¹, and 2026 the configuration of chromium. The NCERT exercises add ion configurations, including lanthanoid and actinoid ions.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const CB_MA_IT_PROPERTIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Writing an inverse function of an expression in its simplest form by a substitution or a half-angle identity, proving that two inverse expressions are equal, and solving equations in inverse functions.",
   whyItMatters:
-    "30 questions, seven of them from board papers from 2024 to 2026. The board asks you to write an expression in its simplest form: tan⁻¹(cos x/(1 − sin x)) (2024), sin⁻¹(x/√(1 + x²)) (2025) and three half-angle forms in 2026. It also asked you to simplify cos⁻¹x + cos⁻¹[x/2 + √(3 − 3x²)/2] (2024) and to solve 2 tan⁻¹x + sin⁻¹(2x/(1 + x²)) = 4√3 (2025). The textbook adds Examples 3 to 5, the proofs and simplest forms of Exercise 2.2 and the proofs and equations of the Miscellaneous Exercise.",
+    "29 questions, seven of them from board papers from 2024 to 2026. The board asks you to write an expression in its simplest form: tan⁻¹(cos x/(1 − sin x)) (2024), sin⁻¹(x/√(1 + x²)) (2025) and three half-angle forms in 2026. It also asked you to simplify cos⁻¹x + cos⁻¹[x/2 + √(3 − 3x²)/2] (2024) and to solve 2 tan⁻¹x + sin⁻¹(2x/(1 + x²)) = 4√3 (2025). The textbook adds Examples 3 to 5, the proofs and simplest forms of Exercise 2.2 and the proofs and equations of the Miscellaneous Exercise.",
   concepts: [
     {
       kind: "formula" as const,

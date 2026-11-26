@@ -712,7 +712,7 @@
    "marks": 3,
    "format": "subjective",
    "chapter": "Integrals",
-   "subtopic": "Integration using Trigonometric Identities",
+   "subtopic": "Integration by Parts",
    "stem": "Find : \\(\\int \\frac{x + \\sin x}{1 + \\cos x}\\,dx\\)",
    "solution": "The half-angle identities turn the awkward denominator into something integrable: \\(1 + \\cos x = 2\\cos^2\\frac{x}{2}\\) and \\(\\sin x = 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}\\). So\n\\(\\int\\frac{x + \\sin x}{1 + \\cos x}\\,dx = \\int\\frac{x + 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}}{2\\cos^2\\frac{x}{2}}\\,dx = \\int x\\left(\\frac{1}{2}\\sec^2\\frac{x}{2}\\right)dx + \\int\\tan\\frac{x}{2}\\,dx\\).\nIntegrate the first piece by parts, taking \\(x\\) as the first function and \\(\\frac{1}{2}\\sec^2\\frac{x}{2}\\) as the second (whose integral is \\(\\tan\\frac{x}{2}\\)):\n\\(\\int x\\left(\\frac{1}{2}\\sec^2\\frac{x}{2}\\right)dx = x\\tan\\frac{x}{2} - \\int\\tan\\frac{x}{2}\\,dx\\).\nPutting this back, the two \\(\\int\\tan\\frac{x}{2}\\,dx\\) terms cancel exactly:\n\\(\\int\\frac{x + \\sin x}{1 + \\cos x}\\,dx = x\\tan\\frac{x}{2} - \\int\\tan\\frac{x}{2}\\,dx + \\int\\tan\\frac{x}{2}\\,dx = x\\tan\\frac{x}{2} + C\\).\nSo the integral is \\(x\\tan\\frac{x}{2} + C\\)."
   },
