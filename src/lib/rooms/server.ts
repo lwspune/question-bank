@@ -14,7 +14,7 @@ import type { RoomReportReason } from "./validate";
 
 export const ROOM_PAGE = 50;
 
-const MESSAGE_COLUMNS = "id, author_kind, user_id, display_name, body, reply_to, question_id, pinned, created_at";
+const MESSAGE_COLUMNS = "id, author_kind, user_id, display_name, body, reply_to, question_id, pinned, created_at, system_event";
 
 export class RoomAccessError extends Error {
   constructor(
@@ -283,7 +283,13 @@ export async function postMessage(
 ): Promise<{ view: RoomMessageView } | { dbError: string }> {
   const member = await requireMember(db, userId, slug);
   if (replyTo != null) {
-    const { data: parent } = await db.from("exam_room_messages").select("id").eq("id", replyTo).eq("exam_slug", slug).maybeSingle();
+    const { data: parent } = await db
+      .from("exam_room_messages")
+      .select("id")
+      .eq("id", replyTo)
+      .eq("exam_slug", slug)
+      .neq("author_kind", "system")
+      .maybeSingle();
     if (!parent) throw new RoomAccessError("That message is not in this room.", 400);
   }
   const { data, error } = await db
@@ -317,7 +323,8 @@ export async function reportMessage(
   reason: RoomReportReason
 ): Promise<{ dbError: string } | { ok: true }> {
   await requireMember(db, userId, slug);
-  await messageInRoom(db, slug, messageId);
+  const target = await messageInRoom(db, slug, messageId);
+  if (target.author_kind === "system") throw new RoomAccessError("That line can't be reported.", 400);
   const { error } = await db
     .from("exam_room_reports")
     .upsert({ message_id: messageId, user_id: userId, reason }, { onConflict: "message_id,user_id", ignoreDuplicates: true });

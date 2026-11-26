@@ -8,6 +8,7 @@ import { roomName } from "./server";
 import { checkRoomText } from "./text";
 import { postDaily } from "./dailyServer";
 import { getExamBySlug } from "@/lib/exam/examContext";
+import { tallyDailyAnswers, type DailyTally } from "./adminRoom";
 
 function one<T>(x: T | T[]): T {
   return Array.isArray(x) ? x[0] : x;
@@ -40,7 +41,13 @@ export async function loadAdminRooms(db: SupabaseClient): Promise<AdminRoom[]> {
       const slug = r.exam_slug as string;
       const [members, recent, pin] = await Promise.all([
         db.from("exam_room_members").select("user_id", { count: "exact", head: true }).eq("exam_slug", slug),
-        db.from("exam_room_messages").select("id", { count: "exact", head: true }).eq("exam_slug", slug).gte("created_at", since),
+        // System lines (0291) are not messages: a join or an answer would inflate this.
+        db
+          .from("exam_room_messages")
+          .select("id", { count: "exact", head: true })
+          .eq("exam_slug", slug)
+          .neq("author_kind", "system")
+          .gte("created_at", since),
         db.from("exam_room_messages").select("question_id").eq("exam_slug", slug).eq("pinned", true).maybeSingle(),
       ]);
       return {
@@ -159,3 +166,153 @@ async function showableInRoom(db: SupabaseClient, questionId: string): Promise<b
   return (opts ?? []).length >= 2 && (opts ?? []).every((o) => !o.image_url);
 }
 
+
+export type AdminRoomMessage = {
+  id: number;
+  kind: "student" | "team" | "v" | "system";
+  event: "joined" | "answered" | null;
+  name: string;
+  /** Students only: the account email, so a nickname can be traced (staff page). */
+  email: string | null;
+  userId: string | null;
+  body: string;
+  at: string;
+  hidden: boolean;
+  hiddenReason: string | null;
+  pinned: boolean;
+  replyTo: { name: string; body: string } | null;
+};
+
+export type AdminRoomDetail = {
+  slug: string;
+  name: string;
+  open: boolean;
+  members: number;
+  /** Newest first, hidden ones included. */
+  messages: AdminRoomMessage[];
+  /** Pass as ?before= for the next older page; null when this is the oldest. */
+  olderBefore: number | null;
+  daily: {
+    messageId: number;
+    questionId: string;
+    at: string;
+    text: string;
+    context: string | null;
+    options: { label: string; text: string }[];
+    tally: DailyTally;
+  } | null;
+};
+
+export const ADMIN_ROOM_PAGE = 100;
+
+/** One room as the owner reads it: the whole chat, hidden messages too, and how its daily question went. */
+export async function loadAdminRoom(db: SupabaseClient, slug: string, before: number | null): Promise<AdminRoomDetail | null> {
+  const name = roomName(slug);
+  if (!name) return null;
+  const { data: room, error: roomErr } = await db.from("exam_rooms").select("open").eq("exam_slug", slug).maybeSingle();
+  if (roomErr) throw new Error(`rooms admin room: ${roomErr.message}`);
+  if (!room) return null;
+
+  let q = db
+    .from("exam_room_messages")
+    .select("id, author_kind, system_event, user_id, display_name, body, created_at, hidden_at, hidden_reason, pinned, reply_to")
+    .eq("exam_slug", slug);
+  if (before) q = q.lt("id", before);
+  const [msgs, members, pin] = await Promise.all([
+    q.order("id", { ascending: false }).limit(ADMIN_ROOM_PAGE + 1),
+    db.from("exam_room_members").select("user_id", { count: "exact", head: true }).eq("exam_slug", slug),
+    db.from("exam_room_messages").select("id, question_id, created_at").eq("exam_slug", slug).eq("pinned", true).maybeSingle(),
+  ]);
+  if (msgs.error || members.error || pin.error) throw new Error(`rooms admin room: ${(msgs.error ?? members.error ?? pin.error)!.message}`);
+  type Row = {
+    id: number;
+    author_kind: AdminRoomMessage["kind"];
+    system_event: AdminRoomMessage["event"];
+    user_id: string | null;
+    display_name: string;
+    body: string;
+    created_at: string;
+    hidden_at: string | null;
+    hidden_reason: string | null;
+    pinned: boolean;
+    reply_to: number | null;
+  };
+  const all = (msgs.data ?? []) as Row[];
+  const rows = all.slice(0, ADMIN_ROOM_PAGE);
+
+  const byId = new Map<number, { name: string; body: string }>(rows.map((r) => [Number(r.id), { name: r.display_name, body: r.body }]));
+  const missing = [...new Set(rows.map((r) => r.reply_to).filter((id): id is number => id != null && !byId.has(Number(id))))];
+  if (missing.length) {
+    const { data } = await db.from("exam_room_messages").select("id, display_name, body").in("id", missing.slice(0, 200));
+    for (const p of data ?? []) byId.set(Number(p.id), { name: p.display_name as string, body: p.body as string });
+  }
+
+  const studentIds = [...new Set(rows.filter((r) => r.author_kind === "student" && r.user_id).map((r) => r.user_id as string))];
+  const emails = new Map<string, string | null>();
+  await Promise.all(
+    studentIds.map(async (id) => {
+      const { data } = await db.auth.admin.getUserById(id);
+      emails.set(id, data.user?.email ?? null);
+    })
+  );
+
+  const messages: AdminRoomMessage[] = rows.map((r) => ({
+    id: Number(r.id),
+    kind: r.author_kind,
+    event: r.system_event,
+    name: r.display_name,
+    email: r.author_kind === "student" && r.user_id ? emails.get(r.user_id) ?? null : null,
+    userId: r.author_kind === "student" ? r.user_id : null,
+    body: r.body,
+    at: r.created_at,
+    hidden: !!r.hidden_at,
+    hiddenReason: r.hidden_reason,
+    pinned: r.pinned,
+    replyTo: r.reply_to != null ? byId.get(Number(r.reply_to)) ?? null : null,
+  }));
+
+  let daily: AdminRoomDetail["daily"] = null;
+  if (pin.data?.question_id) {
+    const questionId = pin.data.question_id as string;
+    const messageId = Number(pin.data.id);
+    const [question, opts] = await Promise.all([
+      db.from("questions").select("text, context").eq("id", questionId).maybeSingle(),
+      db.from("options").select("id, label, text, is_correct").eq("question_id", questionId).order("label"),
+    ]);
+    if (question.error || opts.error) throw new Error(`rooms admin daily: ${(question.error ?? opts.error)!.message}`);
+    const options = (opts.data ?? []) as { id: string; label: string; text: string; is_correct: boolean }[];
+    // One count per option (count: exact), so a busy room never meets the 1,000-row cap.
+    const counts = new Map<string, number>();
+    await Promise.all(
+      options.map(async (o) => {
+        const { count } = await db
+          .from("exam_room_answers")
+          .select("user_id", { count: "exact", head: true })
+          .eq("message_id", messageId)
+          .eq("option_id", o.id);
+        counts.set(o.id, count ?? 0);
+      })
+    );
+    if (question.data) {
+      daily = {
+        messageId,
+        questionId,
+        at: pin.data.created_at as string,
+        text: question.data.text as string,
+        context: (question.data.context as string | null) ?? null,
+        options: options.map((o) => ({ label: o.label, text: o.text })),
+        tally: tallyDailyAnswers(options, counts),
+      };
+    }
+  }
+
+  return {
+    slug,
+    name,
+    open: Boolean(room.open),
+    members: members.count ?? 0,
+    messages,
+    olderBefore: all.length > ADMIN_ROOM_PAGE ? Number(rows[rows.length - 1].id) : null,
+    daily,
+  };
+}

@@ -83,6 +83,11 @@ describe("parseShotArgs", () => {
     expect(a.fullPage).toBe(true);
   });
 
+  it("--settle sets the wait after the last tap, 1500 ms by default (2026-11-26)", () => {
+    expect(parseShotArgs(["--pages=/"]).settleMs).toBe(1500);
+    expect(parseShotArgs(["--pages=/", "--settle=6000"]).settleMs).toBe(6000);
+  });
+
   it("--narrow adds a 360 px phone, the smallest common Android width (2026-11-16)", () => {
     expect(parseShotArgs(["--pages=/", "--narrow"]).viewports).toEqual(["narrow", "phone", "desktop"]);
     expect(parseShotArgs(["--pages=/", "--narrow", "--phone"]).viewports).toEqual(["narrow", "phone"]);

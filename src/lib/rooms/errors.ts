@@ -14,6 +14,8 @@ const LINES: Record<string, RoomError> = {
   closed: { status: 403, error: "This room is closed for now." },
   own_message: { status: 400, error: "You can't report your own message." },
   v_target: { status: 400, error: "V can't answer that message." },
+  system: { status: 400, error: "That line can't be reported." },
+  reply_target: { status: 400, error: "You can't reply to that." },
   bad_option: { status: 400, error: "That answer doesn't belong to this question." },
 };
 

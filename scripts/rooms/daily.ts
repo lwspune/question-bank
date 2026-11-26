@@ -8,7 +8,7 @@
 import { config } from "dotenv";
 config({ path: ".env.local" });
 import { createClient } from "@supabase/supabase-js";
-import { planDaily, postDaily } from "../../src/lib/rooms/dailyServer";
+import { planDaily, pinDailyIfMissing } from "../../src/lib/rooms/dailyServer";
 
 async function main() {
   const apply = process.argv.includes("--apply");
@@ -27,8 +27,8 @@ async function main() {
       continue;
     }
     try {
-      const id = await postDaily(db, p.slug, p.questionId);
-      console.log(`${p.slug}: pinned ${p.questionId} (message ${id})`);
+      const id = await pinDailyIfMissing(db, p.slug, p.questionId);
+      console.log(id == null ? `${p.slug}: skipped (pinned meanwhile)` : `${p.slug}: pinned ${p.questionId} (message ${id})`);
     } catch (e) {
       failed++;
       console.error(e instanceof Error ? e.message : e);

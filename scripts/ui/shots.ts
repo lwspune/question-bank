@@ -26,6 +26,7 @@
  * What it cannot show: a REAL student's data. A screen behind ONE tap (a dialog,
  * a sheet) can be shown with `--click="<button text>"`, and a few taps deep with
  * `--click="A >> B"` (each matched by its text or its aria-label).
+ * `--settle=<ms>` waits that long after the last tap (default 1500).
  * `--bottom` captures the page's last screen (a `--full` capture stops at 6,000 px).
  * `--scroll-x[=n]` scrolls the n-th sideways table into view and to its right end.
  * `--no-fullscreen` makes the page read full screen as unavailable, as on an
@@ -45,7 +46,7 @@ import { join, resolve } from "node:path";
 import { BEFORE_YOU_SEND, clickScript, scrollXScript, NO_FULLSCREEN_SCRIPT, parseShotArgs, planCaptures, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
 import { evaluate, launch, PHONE_UA, sleep, type Cdp } from "./edge";
 
-async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string[] | null, scrollX: number | null, bottom = false) {
+async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string[] | null, scrollX: number | null, bottom = false, settleMs = 1500) {
   const vp = VIEWPORTS[c.viewport];
   await cdp.send("Emulation.setDeviceMetricsOverride", { width: vp.width, height: vp.height, deviceScaleFactor: vp.scale, mobile: vp.mobile });
   await cdp.send("Emulation.setUserAgentOverride", { userAgent: vp.mobile ? PHONE_UA : "" });
@@ -62,9 +63,10 @@ async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, 
   // nothing on the live side.
   await evaluate(cdp, "document.querySelectorAll('nextjs-portal').forEach((n) => n.remove())");
   await sleep(400);
-  for (const tap of click ?? []) {
+  const taps = click ?? [];
+  for (const [i, tap] of taps.entries()) {
     if (!(await evaluate(cdp, clickScript(tap)))) throw new Error(`--click: no visible button or link starting "${tap}" on ${c.url}`);
-    await sleep(1500);
+    await sleep(i === taps.length - 1 ? Math.max(1500, settleMs) : 1500);
   }
   if (scrollX !== null) {
     if (!(await evaluate(cdp, scrollXScript(scrollX)))) throw new Error(`--scroll-x: no sideways table number ${scrollX} on ${c.url}`);
@@ -133,7 +135,7 @@ async function main() {
     for (const c of plan) {
       if (args.phase !== "both" && c.target !== args.phase) continue;
       process.stdout.write(`${c.target.padEnd(6)} ${c.viewport.padEnd(7)} ${c.theme.padEnd(5)} ${c.url} ... `);
-      await capture(cdp, c, args.waitMs, args.fullPage, dir, args.click, args.scrollX, args.bottom);
+      await capture(cdp, c, args.waitMs, args.fullPage, dir, args.click, args.scrollX, args.bottom, args.settleMs);
       console.log("ok");
     }
     // The sheet needs both sides; a before-only run stops here.
