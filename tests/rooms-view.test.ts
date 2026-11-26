@@ -18,6 +18,8 @@ describe("roomErrorOf", () => {
     expect(roomErrorOf("exam_room:daily_limit")?.status).toBe(429);
     expect(roomErrorOf("exam_room:v_limit")?.status).toBe(429);
     expect(roomErrorOf("exam_room:not_member")?.status).toBe(403);
+    expect(roomErrorOf("exam_room:system")?.status).toBe(400);
+    expect(roomErrorOf("exam_room:reply_target")?.status).toBe(400);
     expect(roomErrorOf("exam_room:muted")?.status).toBe(403);
     expect(roomErrorOf("exam_room:closed")?.status).toBe(403);
     expect(roomErrorOf("exam_room:own_message")?.status).toBe(400);
@@ -75,6 +77,7 @@ describe("toMessageView", () => {
     question_id: null,
     pinned: false,
     created_at: "2026-11-25T13:08:00Z",
+    system_event: null,
   };
 
   it("hides the author's id and marks own messages", () => {
@@ -89,6 +92,14 @@ describe("toMessageView", () => {
     expect(toMessageView(row, { viewerId: "u-2", repliedByV: new Set([10]), byId: new Map() }).canAskV).toBe(false);
     const v = toMessageView({ ...row, id: 11, author_kind: "v", reply_to: 10 }, { viewerId: "u-2", repliedByV: new Set(), byId: new Map() });
     expect(v.canAskV).toBe(false);
+  });
+
+  it("marks a system line (0291): its event, the viewer's own, and never askable", () => {
+    const line = { ...row, id: 12, author_kind: "system" as const, system_event: "answered" as const, body: "answered the daily question" };
+    const mine = toMessageView(line, { viewerId: "u-1", repliedByV: new Set(), byId: new Map() });
+    expect(mine).toMatchObject({ kind: "system", event: "answered", own: true, canAskV: false });
+    expect(toMessageView(line, { viewerId: "u-2", repliedByV: new Set(), byId: new Map() }).own).toBe(false);
+    expect(toMessageView(row, { viewerId: "u-2", repliedByV: new Set(), byId: new Map() }).event).toBeNull();
   });
 
   it("quotes the message it replies to, shortened", () => {

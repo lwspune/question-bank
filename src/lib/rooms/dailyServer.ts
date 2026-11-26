@@ -84,43 +84,63 @@ export async function dailyCandidates(db: SupabaseClient, examId: string): Promi
   return ordered.filter((id) => ok.has(id));
 }
 
-/** Which question each room gets this morning. Writes nothing. */
+/** Which question one room gets today, or why none. Writes nothing. */
+export async function planRoom(db: SupabaseClient, slug: string, now: Date): Promise<DailyPlan> {
+  const members = await db.from("exam_room_members").select("user_id", { count: "exact", head: true }).eq("exam_slug", slug);
+  if (!members.count) return { slug, questionId: null, skipped: "no members" };
+  const pin = await db.from("exam_room_messages").select("created_at").eq("exam_slug", slug).eq("pinned", true).maybeSingle();
+  if (pin.data && IST_DAY.format(new Date(pin.data.created_at as string)) === IST_DAY.format(now)) {
+    return { slug, questionId: null, skipped: "already pinned today" };
+  }
+  const examId = await examIdOf(db, slug);
+  if (!examId) return { slug, questionId: null, skipped: "exam not found" };
+  const candidates = await dailyCandidates(db, examId);
+  const posted = await db.from("exam_room_messages").select("question_id, created_at").eq("exam_slug", slug).not("question_id", "is", null);
+  if (posted.error) throw new Error(`rooms daily posted: ${posted.error.message}`);
+  const last = new Map<string, string>();
+  for (const p of posted.data ?? []) {
+    const id = p.question_id as string;
+    const at = p.created_at as string;
+    if ((last.get(id) ?? "") < at) last.set(id, at);
+  }
+  const questionId = pickDailyQuestion(candidates, last);
+  return { slug, questionId, skipped: questionId ? null : "no usable question" };
+}
+
+/** Which question each open room gets this morning. Writes nothing. */
 export async function planDaily(db: SupabaseClient, now: Date): Promise<DailyPlan[]> {
   const rooms = await db.from("exam_rooms").select("exam_slug").eq("open", true);
   if (rooms.error) throw new Error(`rooms daily rooms: ${rooms.error.message}`);
-  const today = IST_DAY.format(now);
   const out: DailyPlan[] = [];
-  for (const { exam_slug: slug } of (rooms.data ?? []) as { exam_slug: string }[]) {
-    const members = await db.from("exam_room_members").select("user_id", { count: "exact", head: true }).eq("exam_slug", slug);
-    if (!members.count) {
-      out.push({ slug, questionId: null, skipped: "no members" });
-      continue;
-    }
-    const pin = await db.from("exam_room_messages").select("created_at").eq("exam_slug", slug).eq("pinned", true).maybeSingle();
-    if (pin.data && IST_DAY.format(new Date(pin.data.created_at as string)) === today) {
-      out.push({ slug, questionId: null, skipped: "already pinned today" });
-      continue;
-    }
-    const examId = await examIdOf(db, slug);
-    if (!examId) {
-      out.push({ slug, questionId: null, skipped: "exam not found" });
-      continue;
-    }
-    const candidates = await dailyCandidates(db, examId);
-    const posted = await db.from("exam_room_messages").select("question_id, created_at").eq("exam_slug", slug).not("question_id", "is", null);
-    if (posted.error) throw new Error(`rooms daily posted: ${posted.error.message}`);
-    const last = new Map<string, string>();
-    for (const p of posted.data ?? []) {
-      const id = p.question_id as string;
-      const at = p.created_at as string;
-      if ((last.get(id) ?? "") < at) last.set(id, at);
-    }
-    const questionId = pickDailyQuestion(candidates, last);
-    out.push({ slug, questionId, skipped: questionId ? null : "no usable question" });
-  }
+  for (const { exam_slug: slug } of (rooms.data ?? []) as { exam_slug: string }[]) out.push(await planRoom(db, slug, now));
   return out;
 }
 
+/**
+ * Pin a question unless the room already has today's (migration 0291: checked
+ * under a lock in the database, so a join racing the morning run, or two joins
+ * at once, never pin twice). The message id, or null when one was already there.
+ */
+export async function pinDailyIfMissing(db: SupabaseClient, slug: string, questionId: string): Promise<number | null> {
+  const { data, error } = await db.rpc("post_exam_room_daily_if_missing", {
+    p_exam_slug: slug,
+    p_question_id: questionId,
+    p_body: DAILY_BODY,
+  });
+  if (error) throw new Error(`rooms daily pin ${slug}: ${error.message}`);
+  return data == null ? null : Number(data);
+}
+
+/**
+ * A room's first student joined after the morning run (owner, 2026-11-26): give
+ * the room today's question now, not tomorrow. Skips a room already pinned today.
+ */
+export async function pinTodayIfMissing(db: SupabaseClient, slug: string, now: Date): Promise<number | null> {
+  const plan = await planRoom(db, slug, now);
+  return plan.questionId ? pinDailyIfMissing(db, slug, plan.questionId) : null;
+}
+
+/** The team's swap: replaces the room's pin even when it is today's. */
 export async function postDaily(db: SupabaseClient, slug: string, questionId: string, staffUserId: string | null = null): Promise<number> {
   const { data, error } = await db.rpc("post_exam_room_daily", {
     p_exam_slug: slug,

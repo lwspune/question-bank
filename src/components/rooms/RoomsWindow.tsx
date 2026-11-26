@@ -53,6 +53,7 @@ import { ROOM_TEXT_MAX } from "@/lib/rooms/text";
 import { NICK_MAX, suggestNickname } from "@/lib/rooms/nickname";
 import { backAtLabel, hideUntilFor } from "@/lib/rooms/button";
 import type { RoomMessageView, RoomQuestionView } from "@/lib/rooms/view";
+import { groupRoomItems, systemLineText } from "@/lib/rooms/systemLines";
 import type { RoomReportReason } from "@/lib/rooms/validate";
 
 const WINDOW =
@@ -1023,26 +1024,40 @@ function RoomChat({
             </button>
           </div>
         )}
-        {messages && messages.length === 0 && (
+        {messages && messages.every((m) => m.kind === "system") && (
           <p className="py-8 text-center text-sm text-muted-foreground">
             No messages yet. Ask the first doubt.
           </p>
         )}
-        {messages?.map((m) => {
-          const day = dayLabel(m.at);
+        {messages &&
+          groupRoomItems(messages, dayLabel).map((item) => {
+          const at = item.type === "system" ? item.at : item.message.at;
+          const day = dayLabel(at);
           const showDay = day !== lastDay;
           lastDay = day;
+          const dayChip = showDay && (
+            <p className="mx-auto w-fit rounded-full bg-card px-3 py-0.5 text-xs text-muted-foreground">
+              {day}
+            </p>
+          );
+          if (item.type === "system") {
+            return (
+              <div key={`line-${item.key}`} className="space-y-2.5">
+                {dayChip}
+                <p className="mx-auto w-fit max-w-[90%] text-center text-xs text-muted-foreground">
+                  {systemLineText(item)}
+                </p>
+              </div>
+            );
+          }
+          const m = item.message;
           return (
             <div
               key={m.id}
               id={`room-msg-${m.id}`}
               className="scroll-mt-2 space-y-2.5"
             >
-              {showDay && (
-                <p className="mx-auto w-fit rounded-full bg-card px-3 py-0.5 text-xs text-muted-foreground">
-                  {day}
-                </p>
-              )}
+              {dayChip}
               <MessageBubble
                 m={m}
                 slug={slug}
