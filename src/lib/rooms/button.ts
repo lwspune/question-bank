@@ -48,5 +48,5 @@ export function backAtLabel(until: string): string {
 /** The toast after hiding: what happened and where the rooms went. */
 export function hiddenToast(until: string): string {
   const when = forever(until) ? "" : ` until ${TIME.format(new Date(until))}`;
-  return `Rooms button hidden${when}. Exam rooms are in your account menu.`;
+  return `Circles button hidden${when}. Exam circles are in your account menu.`;
 }

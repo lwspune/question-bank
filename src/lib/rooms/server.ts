@@ -46,7 +46,7 @@ async function targetExams(db: SupabaseClient, userId: string): Promise<string[]
   return (await profileOf(db, userId)).targets;
 }
 
-const TAKEN = "That name is taken in this room. Try another.";
+const TAKEN = "That name is taken in this circle. Try another.";
 
 /** Postgres unique violation on the nickname index (migration 0290). */
 function nicknameTaken(err: { code?: string; message: string } | null): boolean {
@@ -99,23 +99,23 @@ async function requireMember(db: SupabaseClient, userId: string, slug: string): 
     .eq("user_id", userId)
     .maybeSingle();
   if (error) throw new Error(`rooms member: ${error.message}`);
-  if (!data) throw new RoomAccessError("Join this room first.", 403);
+  if (!data) throw new RoomAccessError("Join this circle first.", 403);
   return { displayName: data.display_name as string, lastReadId: Number(data.last_read_id) };
 }
 
 /** Join a room of one of the student's exams. Idempotent. */
 export async function joinRoom(db: SupabaseClient, userId: string, slug: string, rawNickname: string): Promise<void> {
-  if (!roomName(slug)) throw new RoomAccessError("There is no room for that exam.", 404);
+  if (!roomName(slug)) throw new RoomAccessError("There is no circle for that exam.", 404);
   const nick = checkNickname(rawNickname);
   if (!nick.ok) throw new RoomAccessError(nick.error, 400);
   const targets = await targetExams(db, userId);
-  if (!targets.includes(slug)) throw new RoomAccessError("Add this exam to your profile to join its room.", 403);
+  if (!targets.includes(slug)) throw new RoomAccessError("Add this exam to your profile to join its circle.", 403);
 
   const room = await db.from("exam_rooms").upsert({ exam_slug: slug }, { onConflict: "exam_slug", ignoreDuplicates: true });
   if (room.error) throw new Error(`rooms create: ${room.error.message}`);
   const { data: roomRow, error: openErr } = await db.from("exam_rooms").select("open").eq("exam_slug", slug).single();
   if (openErr) throw new Error(`rooms open: ${openErr.message}`);
-  if (!roomRow.open) throw new RoomAccessError("This room is closed for now.", 403);
+  if (!roomRow.open) throw new RoomAccessError("This circle is closed for now.", 403);
 
   // Start unread at today's latest message: history is there to scroll, not a badge of 50.
   const { data: latest } = await db.from("exam_room_messages").select("id").eq("exam_slug", slug).order("id", { ascending: false }).limit(1);
@@ -290,7 +290,7 @@ export async function postMessage(
       .eq("exam_slug", slug)
       .neq("author_kind", "system")
       .maybeSingle();
-    if (!parent) throw new RoomAccessError("That message is not in this room.", 400);
+    if (!parent) throw new RoomAccessError("That message is not in this circle.", 400);
   }
   const { data, error } = await db
     .from("exam_room_messages")
@@ -311,7 +311,7 @@ async function messageInRoom(db: SupabaseClient, slug: string, messageId: number
     .is("hidden_at", null)
     .maybeSingle();
   if (error) throw new Error(`rooms message: ${error.message}`);
-  if (!data) throw new RoomAccessError("That message is not in this room.", 404);
+  if (!data) throw new RoomAccessError("That message is not in this circle.", 404);
   return normalise([data])[0];
 }
 

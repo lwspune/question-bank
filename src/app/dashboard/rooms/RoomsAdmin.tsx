@@ -57,16 +57,16 @@ export default function RoomsAdmin({ rooms, flagged }: { rooms: AdminRoom[]; fla
 
       <section aria-labelledby="rooms" className="space-y-3">
         <h2 id="rooms" className="text-lg font-semibold">
-          Rooms ({rooms.length})
+          Circles ({rooms.length})
         </h2>
         {rooms.length === 0 ? (
-          <p className="text-sm text-muted-foreground">No room has a member yet. A room is made when its first student joins.</p>
+          <p className="text-sm text-muted-foreground">No circle has a member yet. A circle is made when its first student joins.</p>
         ) : (
           <div className="overflow-x-auto rounded-xl border bg-card">
             <table className="w-full text-sm">
               <thead className="text-left text-xs text-muted-foreground">
                 <tr>
-                  <th className="px-4 py-2 font-medium">Room</th>
+                  <th className="px-4 py-2 font-medium">Circle</th>
                   <th className="px-4 py-2 font-medium">Members</th>
                   <th className="px-4 py-2 font-medium">Messages, 24 h</th>
                   <th className="px-4 py-2 font-medium">Pinned question</th>
@@ -92,9 +92,9 @@ export default function RoomsAdmin({ rooms, flagged }: { rooms: AdminRoom[]; fla
                         type="button"
                         disabled={busy}
                         className={BTN}
-                        onClick={() => act({ action: "open", slug: r.slug, open: !r.open }, r.open ? `${r.name} room closed.` : `${r.name} room opened.`)}
+                        onClick={() => act({ action: "open", slug: r.slug, open: !r.open }, r.open ? `${r.name} circle closed.` : `${r.name} circle opened.`)}
                       >
-                        {r.open ? "Close room" : "Open room"}
+                        {r.open ? "Close circle" : "Open circle"}
                       </button>
                     </td>
                   </tr>

@@ -31,7 +31,7 @@ export function buildRoomsDigest(input: RoomsDigestInput): { subject: string; te
   const parts: string[] = [];
   if (flagged.length) parts.push(`${flagged.length} to check`);
   if (unanswered.length) parts.push(`${unanswered.length} unanswered`);
-  const subject = `Exam rooms, ${input.dateLabel}${parts.length ? `: ${parts.join(", ")}` : ""}`;
+  const subject = `Exam circles, ${input.dateLabel}${parts.length ? `: ${parts.join(", ")}` : ""}`;
 
   const flagLine = (f: RoomsDigestInput["flagged"][number]) =>
     `${f.room} · ${f.name} · ${f.hidden ? `Hidden after ${f.reports} reports` : `${f.reports} report${f.reports === 1 ? "" : "s"}`} (${f.reasons
@@ -42,7 +42,7 @@ export function buildRoomsDigest(input: RoomsDigestInput): { subject: string; te
     `${r.room}: ${r.messages} messages from ${r.students} students, ${r.joined} joined`;
 
   const text: string[] = [];
-  const html: string[] = [`<p>Exam rooms, ${esc(input.dateLabel)}.</p>`];
+  const html: string[] = [`<p>Exam circles, ${esc(input.dateLabel)}.</p>`];
   if (flagged.length) {
     text.push("TO CHECK (keep, hide or mute on the dashboard)", ...flagged.flatMap((f) => [flagLine(f), `  ${short(f.body)}`]), "");
     html.push(
@@ -63,7 +63,7 @@ export function buildRoomsDigest(input: RoomsDigestInput): { subject: string; te
     text.push("LAST 24 HOURS", ...rooms.map(roomLine), "");
     html.push("<h3>Last 24 hours</h3><ul>", ...rooms.map((r) => `<li>${esc(roomLine(r))}</li>`), "</ul>");
   }
-  text.push(`Open the rooms dashboard: ${input.dashboardUrl}`);
-  html.push(`<p><a href="${esc(input.dashboardUrl)}">Open the rooms dashboard</a></p>`);
+  text.push(`Open the circles dashboard: ${input.dashboardUrl}`);
+  html.push(`<p><a href="${esc(input.dashboardUrl)}">Open the circles dashboard</a></p>`);
   return { subject, text: text.join("\n"), html: html.join("\n") };
 }

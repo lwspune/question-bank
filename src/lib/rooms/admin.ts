@@ -150,7 +150,7 @@ export async function swapDaily(db: SupabaseClient, slug: string, questionId: st
   const { data: q } = await db.from("questions").select("exam_id").eq("id", questionId).maybeSingle();
   if (!q || q.exam_id !== exam.id) return { error: "That question is not from this exam." };
   const usable = await showableInRoom(db, questionId);
-  if (!usable) return { error: "That question can't be shown in a room (needs a PUBLIC MCQ without a figure)." };
+  if (!usable) return { error: "That question can't be shown in a circle (needs a PUBLIC MCQ without a figure)." };
   await postDaily(db, slug, questionId, staffUserId);
   return { ok: true };
 }
