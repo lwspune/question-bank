@@ -1,7 +1,7 @@
 /**
  * The owner's checkout follow-up (2026-11-19, owner): at 6 pm IST, one email
- * listing the students who opened a pass checkout in the last 24 hours and did
- * not pay, each with a WhatsApp link that opens with a message typed. The
+ * listing the students who opened a pass checkout (and, since 2026-11-26, an
+ * ebook checkout) in the last 24 hours and did not pay, each with a WhatsApp link that opens with a message typed. The
  * owner reads it and presses send, one student at a time; nothing is sent to a
  * student from here.
  *
@@ -12,15 +12,21 @@
  * Listed ONCE: a student who opened a checkout in the 14 days before the
  * window is left out, so a student who keeps looking is not chased daily.
  *
+ * A FAILED payment (2026-11-26) is named beside the student, read from
+ * Razorpay itself (./paymentFailure): 6 of 13 FamPay payments were declined
+ * on a first try that a second try fixed, so a decline gets a "try again" line.
+ *
  * Pure. Reads: ./checkoutFollowupService. Runner: scripts/billing/checkout-followup.ts.
  */
 import { SITE_URL } from "@/lib/brand";
 import { ACCENT, BRAND, INK, MUTED, REPLY_TO, escapeHtml, type BuiltEmail } from "@/lib/email/templates";
 import { checkInFirstName } from "@/lib/students/checkIn";
 import { whatsappHref } from "@/lib/profile/mobile";
-import type { Entitlement } from "@/lib/entitlements/access";
+import { SCOPE_MOCKS, hasActiveScope, type Entitlement } from "@/lib/entitlements/access";
+import { ebookPricePaise } from "@/lib/ebooks/pricing";
 import { DECLINE_REASON_LABELS, isDeclineReason, type DeclineReason } from "./declineReasons";
 import { stillUnpaid } from "./leftCheckout";
+import { ownerFailureLabel, type FailureKind } from "./paymentFailure";
 import { resolveOrderPlan, type Plan } from "./plans";
 
 const HOUR_MS = 3_600_000;
@@ -107,6 +113,72 @@ export function followupCandidates(
   return out.sort((a, b) => a.lastOpenedAt.getTime() - b.lastOpenedAt.getTime());
 }
 
+/** A student who opened an ebook checkout in the window. */
+export type BookFollowupCandidate = {
+  userId: string;
+  /** The book of their latest open in the window. */
+  slug: string;
+  openedAt: Date;
+  lastOpenedAt: Date;
+  country: string | null;
+};
+
+/**
+ * Ebook checkouts (2026-11-26, owner): the order route writes
+ * book_checkout_opened with the book's slug (read here as `planId`). Listed
+ * once per 14 days like a pass, counted apart from pass opens; a student who
+ * also left a pass in the window is listed for the pass alone (`passUserIds`),
+ * so one person gets one message.
+ */
+export function bookFollowupCandidates(
+  events: readonly FollowupEvent[],
+  window: { from: Date; to: Date },
+  staff: ReadonlySet<string>,
+  passUserIds: ReadonlySet<string>
+): BookFollowupCandidate[] {
+  const from = window.from.getTime();
+  const to = window.to.getTime();
+  const quietFrom = from - FOLLOWUP_QUIET_DAYS * DAY_MS;
+  const byUser = new Map<string, FollowupEvent[]>();
+  for (const e of events) {
+    if (e.step !== "book_checkout_opened" || !e.planId) continue;
+    if (staff.has(e.userId) || passUserIds.has(e.userId)) continue;
+    byUser.set(e.userId, [...(byUser.get(e.userId) ?? []), e]);
+  }
+  const out: BookFollowupCandidate[] = [];
+  for (const [userId, list] of byUser) {
+    const opens = [...list].sort((a, b) => a.at.getTime() - b.at.getTime());
+    const inWindow = opens.filter((e) => e.at.getTime() >= from && e.at.getTime() <= to);
+    if (inWindow.length === 0) continue;
+    if (opens.some((e) => e.at.getTime() >= quietFrom && e.at.getTime() < from)) continue;
+    const last = inWindow[inWindow.length - 1];
+    out.push({ userId, slug: last.planId as string, openedAt: inWindow[0].at, lastOpenedAt: last.at, country: last.country });
+  }
+  return out.sort((a, b) => a.lastOpenedAt.getTime() - b.lastOpenedAt.getTime());
+}
+
+/**
+ * Books still worth a message: on sale, not owned, priced as checkout would
+ * price them (a Premium holder's 20% off, lib/ebooks/pricing).
+ */
+export function keepUnpaidBooks(
+  candidates: readonly BookFollowupCandidate[],
+  ownedByUser: ReadonlyMap<string, ReadonlySet<string>>,
+  books: ReadonlyMap<string, { title: string; pricePaise: number }>,
+  grantsByUser: ReadonlyMap<string, readonly Entitlement[]>,
+  now: Date
+): (BookFollowupCandidate & { title: string; amountPaise: number })[] {
+  const out: (BookFollowupCandidate & { title: string; amountPaise: number })[] = [];
+  for (const c of candidates) {
+    const book = books.get(c.slug);
+    if (!book) continue;
+    if (ownedByUser.get(c.userId)?.has(c.slug)) continue;
+    const passHolder = hasActiveScope([...(grantsByUser.get(c.userId) ?? [])], SCOPE_MOCKS, now.getTime());
+    out.push({ ...c, title: book.title, amountPaise: ebookPricePaise(book.pricePaise, passHolder) });
+  }
+  return out;
+}
+
 /**
  * Students still worth a message, each with the pass at their own country's
  * price (as checkout would charge them). www passes only: an intl pass is sold
@@ -134,18 +206,34 @@ export function followupFirstName(preferredName: string | null | undefined, name
   return checkInFirstName(preferredName ?? "") ?? checkInFirstName(name ?? "");
 }
 
-/** The owner's message (wording approved 2026-11-19). */
+/** A failed payment, as the 6 pm list carries it. */
+export type FollowupFailure = { kind: FailureKind; app: string | null };
+
+/**
+ * The owner's message (wording approved 2026-11-19). A payment their UPI app
+ * declined (2026-11-26) gets the "try again" line instead of "didn't finish";
+ * a timeout or a low balance keeps the usual wording.
+ */
 export function followupMessage(input: {
   firstName: string | null;
   examName: string | null;
   planLabel: string;
   price: string;
   parentUrl: string | null;
+  failure?: FollowupFailure | null;
 }): string {
   const greeting = input.firstName ? `Hi ${input.firstName},` : "Hi,";
   const exam = input.examName ? ` for ${input.examName}` : "";
   const parent = input.parentUrl ? ` If it's easier for a parent to pay, they can use this link: ${input.parentUrl}` : "";
-  return `${greeting} this is Vilas. I built PYQ Vault. I saw you were looking at the ${input.planLabel} (${input.price})${exam}, but the payment didn't finish. Any questions I can help with?${parent}`;
+  const item = `the ${input.planLabel} (${input.price})${exam}`;
+  if (input.failure?.kind === "declined") {
+    const retry =
+      input.failure.app === "FamPay"
+        ? "FamPay often declines the first try, and trying again usually works. Paying with another UPI app works too."
+        : "This often works on a second try, or with another UPI app.";
+    return `${greeting} this is Vilas. I built PYQ Vault. I saw your payment for ${item} didn't go through. ${retry} Any questions I can help with?${parent}`;
+  }
+  return `${greeting} this is Vilas. I built PYQ Vault. I saw you were looking at ${item}, but the payment didn't finish. Any questions I can help with?${parent}`;
 }
 
 /** Where the student met the offer, as the owner would say it. */
@@ -179,6 +267,8 @@ export type FollowupRow = {
   leftAt: Date;
   gate: string;
   reason: DeclineReason | string | null;
+  /** Their latest failed payment in the window, read from Razorpay (2026-11-26). */
+  failure?: FollowupFailure | null;
   message: string;
 };
 
@@ -198,6 +288,7 @@ function details(r: FollowupRow): string {
     `left ${TIME_IST.format(r.leftAt)}`,
     `from ${gateLabel(r.gate)}`,
   ].filter((p): p is string => Boolean(p));
+  if (r.failure) parts.push(ownerFailureLabel(r.failure));
   if (r.reason) parts.push(`said: ${isDeclineReason(r.reason) ? DECLINE_REASON_LABELS[r.reason] : r.reason}`);
   return parts.join(" · ");
 }
@@ -229,7 +320,7 @@ export function buildFollowupEmail(allRows: readonly FollowupRow[], now: Date): 
   const withoutMobile = rows.filter((r) => !whatsappHref(r.mobile, r.message));
   const n = rows.length;
   const subject = `${BRAND}: ${n} ${n === 1 ? "student" : "students"} left checkout without paying`;
-  const intro = `Students who opened a pass checkout in the 24 hours to ${TIME_IST.format(followupWindow(now).to)} and have not paid. Each is listed once; the message is typed for you to read and send.`;
+  const intro = `Students who opened a pass or ebook checkout in the 24 hours to ${TIME_IST.format(followupWindow(now).to)} and have not paid. Each is listed once; the message is typed for you to read and send.`;
   const outro = `Sales and parent links: ${SITE_URL}/dashboard/sales`;
 
   const textSections: string[] = [intro, ""];

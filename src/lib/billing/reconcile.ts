@@ -25,6 +25,10 @@ export type RazorpayPayment = {
   currency: string;
   created_at: number;
   method?: string;
+  /** A failed payment's reason, its UPI ID and the order's notes (read by ./paymentFailure, 2026-11-26). */
+  error_reason?: string | null;
+  vpa?: string | null;
+  notes?: Record<string, unknown> | unknown[] | null;
 };
 
 /**
