@@ -6,7 +6,7 @@ export const CB_PH_MC_GALVANOMETER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How a moving coil galvanometer works, why its field is radial, its current and voltage sensitivity, and how it is turned into an ammeter with a shunt or into a voltmeter with a large series resistance.",
   whyItMatters:
-    "30 questions, twenty-eight of them from board papers. The board asks you to explain the principle and working of a moving coil galvanometer and the purpose of its radial field and soft iron core (2023, 2025, 2026), define current sensitivity and explain why raising it need not raise the voltage sensitivity (2024, 2025), and convert a galvanometer into an ammeter or a voltmeter of a given range (every year from 2023 to 2026). The textbook adds a circuit read with a galvanometer and with an ammeter, and a comparison of two meters.",
+    "31 questions, twenty-nine of them from board papers. The board asks you to explain the principle and working of a moving coil galvanometer and the purpose of its radial field and soft iron core (2023, 2025, 2026), define current sensitivity and explain why raising it need not raise the voltage sensitivity (2024, 2025), and convert a galvanometer into an ammeter or a voltmeter of a given range (every year from 2023 to 2026), and find the torque on a galvanometer coil from its current, turns, area and field (2025). The textbook adds a circuit read with a galvanometer and with an ammeter, and a comparison of two meters.",
   concepts: [
     {
       kind: "formula" as const,

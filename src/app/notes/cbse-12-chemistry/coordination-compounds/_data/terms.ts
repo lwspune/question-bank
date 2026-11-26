@@ -6,7 +6,7 @@ export const CB_CH_CC_TERMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The words the whole chapter uses: ligands by denticity (unidentate, didentate, polydentate, ambidentate, chelating), coordination number and the oxidation state of the metal, coordination entity, sphere and polyhedron, homoleptic and heteroleptic complexes, and the chelate effect.",
   whyItMatters:
-    "41 questions, thirty-four of them from board papers, in every year from 2022 to 2026. The board asks you to define or pick an ambidentate ligand (every year from 2022 to 2026), the polydentate ligand EDTA (2023, 2024), which ligand or complex is a chelate (2023, 2024, 2026) and why NH₄⁺ cannot be a ligand (2023). It sets the oxidation state of the metal (2023, 2024, 2026), the coordination number with a didentate ligand (2024, 2025, 2026), homoleptic and heteroleptic complexes (2023, 2025, 2026), the chelate effect (2024) and the difference between a double salt and a complex (2025, 2026).",
+    "41 questions, thirty-four of them from board papers, in every year from 2022 to 2026. The board asks you to define or pick an ambidentate ligand (every year from 2022 to 2026), the polydentate ligand EDTA (2023, 2024), which ligand or complex is a chelate (2023, 2024, 2026) and why NH₄⁺ cannot be a ligand (2023). It sets the oxidation state of the metal (2023, 2024, 2026), the coordination number with a didentate ligand (2024, 2025, 2026), homoleptic and heteroleptic complexes (2023, 2025, 2026), the chelate effect (2023, 2024) and the difference between a double salt and a complex (2025, 2026).",
   concepts: [
     {
       kind: "reference" as const,

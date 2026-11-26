@@ -6,7 +6,7 @@ export const CB_PH_AC_REACTANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The current through a pure inductor and through a pure capacitor, the phase of each current, inductive and capacitive reactance, and how each reactance changes with frequency.",
   whyItMatters:
-    "26 questions, nineteen of them from board papers. The board asks you to derive the current through a capacitor and its reactance (2023), identify an element or state its phase from how the current leads or lags (2023, 2024, 2025, 2026), find a reactance or a current (2023, 2024), say how a reactance changes with frequency or capacitance (2023, 2024, 2025), draw graphs of resistance and reactance against frequency (2024, 2025), read an inductance or capacitance ratio from a reactance graph (2024, 2026), sketch the voltage across an inductor from its current graph (2025), and explain how an inductor or a capacitor behaves on dc and on ac (2024, 2026).",
+    "24 questions, seventeen of them from board papers. The board asks you to derive the current through a capacitor and its reactance (2023), identify an element or state its phase from how the current leads or lags (2023, 2024, 2025, 2026), find a reactance or a current (2023, 2024), say how a reactance changes with frequency or capacitance (2023, 2024, 2025), draw graphs of resistance and reactance against frequency (2024, 2025), read an inductance or capacitance ratio from a reactance graph (2024, 2026), sketch the voltage across an inductor from its current graph (2025), and explain how an inductor or a capacitor behaves on dc and on ac (2024, 2026).",
   concepts: [
     {
       kind: "formula" as const,

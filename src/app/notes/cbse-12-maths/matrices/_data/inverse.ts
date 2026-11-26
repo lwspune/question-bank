@@ -6,7 +6,7 @@ export const CB_MA_MT_INVERSE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "What it means for B to be the inverse of A, why the inverse is unique, the inverse of a product, finding the inverse from a relation such as A squared minus 3A plus I equal to O, and a power of a matrix proved by induction.",
   whyItMatters:
-    "4 questions, one of them from a board paper: the inverse of A written in terms of A from a relation between its powers (2023). The textbook rows are Exercise 3.4 (the one question the present book keeps there), the matrix X whose product with a 2 by 3 matrix is given (Miscellaneous Exercise Q8) and a power of a rotation matrix proved by induction (Miscellaneous Example 23). The present NCERT book no longer teaches elementary row and column operations, and no board paper from 2023 to 2026 in this bank asked them.",
+    "3 questions, one of them from a board paper: the inverse of A written in terms of A from a relation between its powers (2023). The textbook rows are Exercise 3.4 (the one question the present book keeps there) and a power of a rotation matrix proved by induction (Miscellaneous Example 23). The present NCERT book no longer teaches elementary row and column operations, and no board paper from 2023 to 2026 in this bank asked them.",
   concepts: [
     {
       kind: "formula" as const,

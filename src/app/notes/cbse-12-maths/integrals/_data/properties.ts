@@ -6,7 +6,7 @@ export const CB_MA_IN_PROPERTIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Rules P0 to P7 that change the limits or the integrand of a definite integral without changing its value, used when no antiderivative is easy to find.",
   whyItMatters:
-    "89 questions, fifty-eight of them from board papers from 2022 to 2026, more than any other part of Integrals. Every year the board sets a three- or five-mark question solved by replacing x with a − x or a + b − x and adding (2022 to 2026). It also asks for integrals with a lone x in front of a trigonometric fraction (2022 to 2025), log integrals such as log(1 + tan x) from 0 to π/4 (2022 and 2023), and one-mark MCQs on even and odd functions and on which property is true (2024 to 2026). The textbook adds Examples 28 to 34, Exercise 7.10, Miscellaneous Example 42 and Miscellaneous Questions 34 and 40.",
+    "90 questions, fifty-nine of them from board papers from 2022 to 2026, more than any other part of Integrals. Every year the board sets a three- or five-mark question solved by replacing x with a − x or a + b − x and adding (2022 to 2026). It also asks for integrals with a lone x in front of a trigonometric fraction (2022 to 2025), log integrals such as log(1 + tan x) from 0 to π/4 (2022 and 2023), and one-mark MCQs on even and odd functions and on which property is true (2024 to 2026), with a three-mark integral over [−2, 2] that the even-odd split settles (2024). The textbook adds Examples 28 to 34, Exercise 7.10, Miscellaneous Example 42 and Miscellaneous Questions 34 and 40.",
   concepts: [
     {
       kind: "formula" as const,

@@ -6,7 +6,7 @@ export const CB_CH_CC_WERNER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Werner's postulates of primary and secondary valence, finding the formula of a complex from the moles of AgCl it precipitates, the number of ions it gives in water, and how a double salt differs from a complex.",
   whyItMatters:
-    "29 questions, and twenty-five of them come from board papers, in every year from 2022 to 2026. The board asks the formula of a complex from the moles of AgCl precipitated (2022 to 2025), the moles of AgCl a given formula gives (2025), the number of ions in solution (2023), the order of conductivity (2025), the non-ionisable complex (2024), the secondary valency of the metal (2023 to 2026) and the statements of Werner's theory (2025, 2026). Most are one-mark MCQs that need one idea: only what is outside the square bracket ionises.",
+    "30 questions, and twenty-six of them come from board papers, in every year from 2022 to 2026. The board asks the formula of a complex from the moles of AgCl precipitated (2022 to 2025), the moles of AgCl a given formula gives (2025), the number of ions in solution (2023), the order of conductivity (2025), the non-ionisable complex (2024), the secondary valency of the metal (2023 to 2026) the statements of Werner's theory (2025, 2026) and the difference between a complex and a double salt (2025). Most are one-mark MCQs that need one idea: only what is outside the square bracket ionises.",
   concepts: [
     {
       kind: "reference" as const,

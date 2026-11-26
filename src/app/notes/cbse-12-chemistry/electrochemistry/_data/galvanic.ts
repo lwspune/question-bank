@@ -6,7 +6,7 @@ export const CB_CH_EC_GALVANIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How a galvanic cell is built and written, what the salt bridge does, the standard cell potential from two standard electrode potentials, and how E° values predict whether a reaction will go.",
   whyItMatters:
-    "20 questions, thirteen of them from board papers from 2022 to 2025. The board asks you to pick the right cell notation (2023), find E°cell from two electrode potentials (four MCQs in 2023, one in 2025), say which plate is the cathode and what happens without the salt bridge (2022), give the function of the salt bridge (2024), decide whether copper sulphate can be kept in a zinc pot (2024), and give the signs of E°cell and ΔG° for a spontaneous reaction (2023). The textbook adds measuring E° against the hydrogen electrode, depicting a cell, the order in which metals displace each other, and which pairs react.",
+    "19 questions, twelve of them from board papers from 2022 to 2025. The board asks you to pick the right cell notation (2023), find E°cell from two electrode potentials (four MCQs in 2023, one in 2025), say which plate is the cathode and what happens without the salt bridge (2022), give the function of the salt bridge (2024), decide whether copper sulphate can be kept in a zinc pot (2024), and give the signs of E°cell and ΔG° for a spontaneous reaction (2023). The textbook adds measuring E° against the hydrogen electrode, depicting a cell, the order in which metals displace each other, and which pairs react.",
   concepts: [
     {
       kind: "reference" as const,

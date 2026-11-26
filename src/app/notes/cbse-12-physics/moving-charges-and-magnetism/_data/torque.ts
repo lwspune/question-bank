@@ -6,7 +6,7 @@ export const CB_PH_MC_TORQUE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The torque on a current loop in a uniform magnetic field, the magnetic moment of a loop and a loop as a magnetic dipole, and the magnetic moment of an electron going round a nucleus.",
   whyItMatters:
-    "30 questions, twenty-five of them from board papers. The board asks you to derive the torque on a rectangular loop in vector form (2024, 2025, 2026), find the torque on a coil set at an angle to the field (2025, 2026), compare the magnetic moments of loops bent from the same wire (2023, 2026), explain why a current loop is a magnetic dipole and find its stable position (2025) and find the magnetic moment of a revolving electron (2023, 2024, 2025). The textbook adds torque numericals on coils.",
+    "29 questions, twenty-four of them from board papers. The board asks you to derive the torque on a rectangular loop in vector form (2024, 2025, 2026), find the torque on a coil set at an angle to the field (2025, 2026), compare the magnetic moments of loops bent from the same wire (2023, 2026), explain why a current loop is a magnetic dipole and find its stable position (2025) and find the magnetic moment of a revolving electron (2023, 2024, 2025). The textbook adds torque numericals on coils.",
   concepts: [
     {
       kind: "formula" as const,

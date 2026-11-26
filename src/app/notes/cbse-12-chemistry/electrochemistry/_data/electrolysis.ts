@@ -6,7 +6,7 @@ export const CB_CH_EC_ELECTROLYSIS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Faraday's two laws, the charge in faradays needed for a change, the mass of a substance deposited by a current, and how to predict the products of electrolysis at each electrode.",
   whyItMatters:
-    "35 questions. Twenty-five were set in board papers from 2022 to 2026. The board asks how many faradays a change needs (MnO₄⁻ to Mn²⁺ in 2023, 2024 and 2025; MnO₄⁻ to MnO₂, H₂O to O₂ and FeO to Fe₂O₃ in 2024 or 2025; Cr₂O₇²⁻ to Cr³⁺ and Ag⁺ to Ag in 2026), the products of electrolysis of aqueous NaCl (every year from 2023 to 2026), of CuCl₂ (2024, 2026) and of H₂SO₄ (2025, 2026), Faraday's second law (2024, 2026), and when a cell behaves like an electrolytic cell (2022). The textbook adds NCERT's Example 2.10, the mass deposited by a current, and cells joined in series.",
+    "34 questions. Twenty-four were set in board papers from 2022 to 2026. The board asks how many faradays a change needs (MnO₄⁻ to Mn²⁺ in 2023, 2024 and 2025; MnO₄⁻ to MnO₂, H₂O to O₂ and FeO to Fe₂O₃ in 2024 or 2025; Cr₂O₇²⁻ to Cr³⁺ and Ag⁺ to Ag in 2026), the products of electrolysis of aqueous NaCl (every year from 2023 to 2026), of CuCl₂ (2024, 2026) and of H₂SO₄ (2025, 2026), and Faraday's second law (2024, 2026). The textbook adds NCERT's Example 2.10, the mass deposited by a current, and cells joined in series.",
   concepts: [
     {
       kind: "formula" as const,

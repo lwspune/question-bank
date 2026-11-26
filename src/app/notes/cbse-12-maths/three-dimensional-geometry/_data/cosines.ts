@@ -6,7 +6,7 @@ export const CB_MA_TG_COSINES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The direction cosines of a line are the cosines of the angles it makes with the positive x, y and z axes; any three numbers proportional to them are its direction ratios.",
   whyItMatters:
-    "41 questions, thirty-one of them from board papers, set in every year from 2022 to 2026. Most are one-mark MCQs and assertion-reason items: direction cosines from the angles a line makes with the axes and the rule l² + m² + n² = 1 (every year), the direction cosines of a line whose equation is not in standard form (2022, 2023, 2024 and 2026), the foot of a perpendicular on an axis and the distance of a point from an axis (2023 to 2025), and the unknowns that make two lines parallel (2026). The written ones asked for the third angle when two are given (2022) and for the direction cosines and a point of a line given as three equal expressions (2023). The textbook adds Examples 1 to 5 and Exercise 11.1.",
+    "40 questions, thirty of them from board papers, set in every year from 2022 to 2026. Most are one-mark MCQs and assertion-reason items: direction cosines from the angles a line makes with the axes and the rule l² + m² + n² = 1 (every year), the direction cosines of a line whose equation is not in standard form (2022, 2023, 2024 and 2026), the foot of a perpendicular on an axis and the distance of a point from an axis (2023 to 2025), and the unknowns that make two lines parallel (2026). The written ones asked for the third angle when two are given (2022) and for the direction cosines and a point of a line given as three equal expressions (2023). The textbook adds Examples 1 to 5 and Exercise 11.1.",
   concepts: [
     {
       kind: "formula" as const,

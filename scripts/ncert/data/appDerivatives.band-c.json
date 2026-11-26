@@ -73,7 +73,7 @@
     "difficulty": "MODERATE",
     "stem": "Find all the points of local maxima and local minima of the function \\(f\\) given by \\(f(x) = 2x^3 - 6x^2 + 6x + 5\\).",
     "solution": "We have\n\\(f(x) = 2x^3 - 6x^2 + 6x + 5\\)\n\nor \\(f'(x) = 6x^2 - 12x + 6 = 6(x - 1)^2\\), \\(f''(x) = 12(x - 1)\\)\n\nNow \\(f'(x) = 0\\) gives \\(x = 1\\). Also \\(f''(1) = 0\\). Therefore, the second derivative test fails in this case. So, we shall go back to the first derivative test.\n\nWe have already seen (Example 18) that, using first derivative test, \\(x = 1\\) is neither a point of local maxima nor a point of local minima and so it is a point of inflexion.",
-    "context": "[NCERT poses this same function as Example 18 and again as Example 21. Example 18 settles it with the FIRST derivative test; this one is worked to show that the SECOND derivative test FAILS here (f''(1) = 0) and one must fall back to the first. Both are kept because the two teach different things.]",
+    "context": "Use the second derivative test.",
     "_note": "[Reviewer: stem is verbatim identical to Example 18, so the content_hash deduped it away on first commit and the second-derivative-test lesson was silently lost. A `context` is added — subjectiveContentHash is context-aware — rather than dropping the row or editing the stem, which must stay faithful to the page.]"
   },
   {
