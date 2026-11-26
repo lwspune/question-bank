@@ -62,6 +62,9 @@ export type ShotArgs = {
    *  aria-label) starts with this before the shot, so a dialog or sheet can be
    *  captured. `A >> B` taps A, waits, then taps B. */
   click: string[] | null;
+  /** `--settle=<ms>`: wait after the LAST tap (default 1500), for a screen that
+   *  loads after a tap, e.g. a chat against the slower test project. */
+  settleMs: number;
   /** `--scroll-x[=n]`: before the shot, bring the n-th sideways-scrolling table
    *  (1 = the first) into view and scroll it to its right end, the state where
    *  a pinned or clipped column shows (2026-11-11). Null = leave tables alone. */
@@ -173,6 +176,7 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     withPass: flag("with-pass"),
     noFullscreen: flag("no-fullscreen"),
     click: clickArg(value("click")),
+    settleMs: Number(value("settle") ?? 1500),
     scrollX: scrollXArg(flag("scroll-x"), value("scroll-x")),
     storage: value("storage") ?? null,
     cookies: cookieArg(value("cookie")),
