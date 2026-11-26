@@ -1666,6 +1666,7 @@ export type Database = {
           question_id: string | null
           reply_to: number | null
           reviewed_at: string | null
+          system_event: string | null
           user_id: string | null
         }
         Insert: {
@@ -1681,6 +1682,7 @@ export type Database = {
           question_id?: string | null
           reply_to?: number | null
           reviewed_at?: string | null
+          system_event?: string | null
           user_id?: string | null
         }
         Update: {
@@ -1696,6 +1698,7 @@ export type Database = {
           question_id?: string | null
           reply_to?: number | null
           reviewed_at?: string | null
+          system_event?: string | null
           user_id?: string | null
         }
         Relationships: [
@@ -6638,6 +6641,10 @@ export type Database = {
           p_question_id: string
           p_user_id?: string
         }
+        Returns: number
+      }
+      post_exam_room_daily_if_missing: {
+        Args: { p_body: string; p_exam_slug: string; p_question_id: string }
         Returns: number
       }
       public_pyq_year_counts: {
