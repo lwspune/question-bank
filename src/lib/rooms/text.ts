@@ -44,9 +44,9 @@ export function checkRoomText(raw: string): RoomTextResult {
     .trim();
   if (body.length === 0) return { ok: false, error: "Write a message first." };
   if (body.length > ROOM_TEXT_MAX) return { ok: false, error: `Keep it under ${ROOM_TEXT_MAX} characters.` };
-  if (hasPersonal(body)) return { ok: false, error: "Phone numbers and email addresses can't be shared in rooms." };
-  if (LINK.test(body)) return { ok: false, error: "Links can't be shared in rooms." };
-  if (hasSocialHandle(body)) return { ok: false, error: "Social media handles can't be shared in rooms." };
+  if (hasPersonal(body)) return { ok: false, error: "Phone numbers and email addresses can't be shared in circles." };
+  if (LINK.test(body)) return { ok: false, error: "Links can't be shared in circles." };
+  if (hasSocialHandle(body)) return { ok: false, error: "Social media handles can't be shared in circles." };
   if (isAbusive(body)) return { ok: false, error: "Please keep it kind. That message can't be posted." };
   return { ok: true, body };
 }

@@ -42,13 +42,13 @@ export default async function AdminRoomPage({
       <main className="mx-auto max-w-3xl space-y-6 px-4 py-8 sm:px-6">
         {/* prefetch off on every link here: each one is a full staff render. */}
         <Link href="/dashboard/rooms" prefetch={false} className={LINK}>
-          All rooms
+          All circles
         </Link>
         <header>
-          <h1 className="text-2xl font-semibold tracking-tight">{room.name} room</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">{room.name} circle</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {room.members} member{room.members === 1 ? "" : "s"} · {room.open ? "Open" : "Closed"}. You read it here without joining; nobody in the
-            room sees you.
+            circle sees you.
           </p>
         </header>
 

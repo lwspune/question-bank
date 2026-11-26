@@ -62,7 +62,7 @@ export default function RoomChatAdmin({ slug, roomName, messages }: { slug: stri
                         type="button"
                         disabled={busy}
                         className={BTN}
-                        aria-label={`Mute ${m.name} in this room for 7 days`}
+                        aria-label={`Mute ${m.name} in this circle for 7 days`}
                         onClick={() => act({ action: "mute", slug, userId: m.userId, days: 7 }, `${m.name} muted in ${roomName} for 7 days.`)}
                       >
                         Mute 7 days

@@ -172,7 +172,7 @@ export default function RoomsWindow({
   }, [onClose]);
 
   return (
-    <section role="dialog" aria-label="Exam rooms" className={WINDOW}>
+    <section role="dialog" aria-label="Exam circles" className={WINDOW}>
       {view.kind === "list" && (
         <RoomList
           rooms={rooms}
@@ -240,21 +240,21 @@ function RoomList({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close exam rooms"
+          aria-label="Close exam circles"
           className={ICON_BUTTON}
         >
           <X className="h-5 w-5" aria-hidden />
         </button>
         <div className="min-w-0 flex-1">
-          <h2 className="text-base font-bold leading-tight">Exam rooms</h2>
+          <h2 className="text-base font-bold leading-tight">Exam circles</h2>
           <p className="text-xs text-muted-foreground">
-            Rooms for the exams you study
+            Circles for the exams you study
           </p>
         </div>
         <button
           type="button"
           onClick={() => setSheetOpen(true)}
-          aria-label="Rooms options"
+          aria-label="Circles options"
           aria-haspopup="dialog"
           className={ICON_BUTTON}
         >
@@ -268,12 +268,12 @@ function RoomList({
         {!rooms && !error && (
           <p className="flex items-center gap-2 px-4 py-6 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> Loading
-            rooms
+            circles
           </p>
         )}
         {rooms && rooms.joined.length === 0 && rooms.others.length === 0 && (
           <div className="px-4 py-8 text-sm text-muted-foreground">
-            <p>Choose your exams to see their rooms.</p>
+            <p>Choose your exams to see their circles.</p>
             <a
               href="/account"
               className="mt-2 inline-block font-semibold text-brand-accent underline-offset-4 hover:underline"
@@ -293,7 +293,7 @@ function RoomList({
                   <button
                     type="button"
                     onClick={() => onOpen(r.slug, r.name)}
-                    aria-label={`Open the ${r.name} room${r.unread > 0 ? `, ${r.unread} unread` : ""}`}
+                    aria-label={`Open the ${r.name} circle${r.unread > 0 ? `, ${r.unread} unread` : ""}`}
                     className="flex w-full items-center gap-3 px-4 py-2.5 text-left hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
                   >
                     <RoomAvatar name={r.name} />
@@ -347,7 +347,7 @@ function RoomList({
                   <button
                     type="button"
                     onClick={() => onJoin(r.slug, r.name)}
-                    aria-label={`Join the ${r.name} room`}
+                    aria-label={`Join the ${r.name} circle`}
                     className="inline-flex h-9 shrink-0 items-center rounded-full border-[1.5px] border-brand px-4 text-sm font-semibold text-brand-accent hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     Join
@@ -359,14 +359,14 @@ function RoomList({
         )}
         {rooms && (rooms.joined.length > 0 || rooms.others.length > 0) && (
           <p className="mx-4 mt-6 rounded-xl bg-muted p-3 text-xs leading-relaxed text-muted-foreground">
-            You see rooms only for the exams on your profile.{" "}
+            You see circles only for the exams on your profile.{" "}
             <a
               href="/account"
               className="font-semibold text-brand-accent underline-offset-4 hover:underline"
             >
               Change your exams
             </a>{" "}
-            to see other rooms.
+            to see other circles.
           </p>
         )}
       </div>
@@ -391,13 +391,13 @@ function HideSheet({
     >
       <section
         role="dialog"
-        aria-label="Hide the rooms button"
+        aria-label="Hide the circles button"
         onClick={(e) => e.stopPropagation()}
         className="w-full space-y-2 rounded-t-2xl bg-card p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-[0_-12px_32px_-12px_rgb(15_29_74/0.35)]"
       >
-        <h3 className="text-lg font-bold">Hide the rooms button</h3>
+        <h3 className="text-lg font-bold">Hide the circles button</h3>
         <p className="pb-2 text-sm text-muted-foreground">
-          For focused study. You can still open Exam rooms from your account
+          For focused study. You can still open Exam circles from your account
           menu.
         </p>
         <button type="button" onClick={() => onPick("2h")} className={OPTION}>
@@ -483,7 +483,7 @@ function JoinRoom({
     setBusy(true);
     try {
       await joinRoom(slug, nickname);
-      toast.success(`You joined the ${name} room as ${nickname.trim()}.`);
+      toast.success(`You joined the ${name} circle as ${nickname.trim()}.`);
       onJoined();
     } catch (e) {
       toast.error(errorText(e));
@@ -496,17 +496,17 @@ function JoinRoom({
         <button
           type="button"
           onClick={onBack}
-          aria-label="Back to rooms"
+          aria-label="Back to circles"
           className={ICON_BUTTON}
         >
           <ArrowLeft className="h-5 w-5" aria-hidden />
         </button>
-        <h2 className="text-base font-bold">{name} room</h2>
+        <h2 className="text-base font-bold">{name} circle</h2>
       </header>
       <div className="flex-1 space-y-5 overflow-y-auto px-5 py-6">
         <div className="flex flex-col items-center gap-2 text-center">
           <RoomAvatar name={name} size="lg" />
-          <p className="text-lg font-bold">{name} room</p>
+          <p className="text-lg font-bold">{name} circle</p>
           <p className="max-w-xs text-sm text-muted-foreground">
             For students preparing for {name}. Ask doubts on past questions and
             solve the daily question together.
@@ -533,7 +533,7 @@ function JoinRoom({
               <strong className="font-semibold">V answers doubts too</strong>
               <br />
               <span className="text-muted-foreground">
-                Tap Ask V on a doubt and V replies in the room.
+                Tap Ask V on a doubt and V replies in the circle.
               </span>
             </span>
           </li>
@@ -543,7 +543,7 @@ function JoinRoom({
             htmlFor={`join-nick-${slug}`}
             className="block text-sm font-semibold"
           >
-            Your name in this room
+            Your name in this circle
           </label>
           <NicknameField
             id={`join-nick-${slug}`}
@@ -557,7 +557,7 @@ function JoinRoom({
         </div>
         <div className="rounded-xl border border-border bg-muted p-4 text-sm">
           <p className="flex items-center gap-2 font-semibold">
-            <ShieldCheck className="h-4 w-4" aria-hidden /> Room rules
+            <ShieldCheck className="h-4 w-4" aria-hidden /> Circle rules
           </p>
           <ul className="mt-2 list-disc space-y-1 pl-5 text-muted-foreground">
             <li>Be kind. Every question is a fair question.</li>
@@ -576,7 +576,7 @@ function JoinRoom({
           className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand text-base font-semibold text-brand-foreground hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-70"
         >
           {busy && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
-          Join {name} room
+          Join {name} circle
         </button>
         <button
           type="button"
@@ -625,7 +625,7 @@ function RoomChat({
   const [replyTo, setReplyTo] = useState<RoomMessageView | null>(null);
   const [text, setText] = useState("");
   const [sending, setSending] = useState(false);
-  // The room menu (0290): Change my name, Leave room.
+  // The room menu (0290): Change my name, Leave circle.
   const [panel, setPanel] = useState<null | "menu" | "rename" | "leave">(null);
   const [nickname, setNickname] = useState("");
   const [draft, setDraft] = useState("");
@@ -752,7 +752,7 @@ function RoomChat({
   async function report(m: RoomMessageView, reason: RoomReportReason) {
     try {
       await reportMessage(slug, m.id, reason);
-      toast.success("Reported. Thanks for keeping the room useful.");
+      toast.success("Reported. Thanks for keeping the circle useful.");
     } catch (err) {
       toast.error(errorText(err));
     } finally {
@@ -764,7 +764,7 @@ function RoomChat({
   async function leave() {
     try {
       await leaveRoom(slug);
-      toast.success(`You left the ${name} room.`);
+      toast.success(`You left the ${name} circle.`);
       onBack();
     } catch (err) {
       toast.error(errorText(err));
@@ -780,7 +780,7 @@ function RoomChat({
       setNickname(r.nickname);
       setPanel(null);
       toast.success(
-        `Your name in this room is now ${r.nickname}. Earlier messages keep the old name.`,
+        `Your name in this circle is now ${r.nickname}. Earlier messages keep the old name.`,
       );
     } catch (err) {
       toast.error(errorText(err));
@@ -819,7 +819,7 @@ function RoomChat({
         <button
           type="button"
           onClick={onBack}
-          aria-label="Back to rooms"
+          aria-label="Back to circles"
           className={ICON_BUTTON}
         >
           <ArrowLeft className="h-5 w-5" aria-hidden />
@@ -827,7 +827,7 @@ function RoomChat({
         <RoomAvatar name={name} size="sm" />
         <div className="min-w-0 flex-1 pl-1">
           <h2 className="truncate text-base font-bold leading-tight">
-            {name} room
+            {name} circle
           </h2>
           <p className="truncate text-xs text-muted-foreground">
             Doubts, PYQs and the daily question
@@ -836,7 +836,7 @@ function RoomChat({
         <button
           type="button"
           onClick={() => setPanel((p) => (p ? null : "menu"))}
-          aria-label="Room options"
+          aria-label="Circle options"
           aria-expanded={panel !== null}
           className={ICON_BUTTON}
         >
@@ -845,7 +845,7 @@ function RoomChat({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close exam rooms"
+          aria-label="Close exam circles"
           className={`${ICON_BUTTON} hidden sm:inline-flex`}
         >
           <X className="h-5 w-5" aria-hidden />
@@ -872,7 +872,7 @@ function RoomChat({
             onClick={() => setPanel("leave")}
             className={CHIP}
           >
-            Leave room
+            Leave circle
           </button>
         </div>
       )}
@@ -882,7 +882,7 @@ function RoomChat({
           className="shrink-0 space-y-2 border-b border-border bg-muted px-4 py-3 text-sm"
         >
           <label htmlFor={`rename-${slug}`} className="block font-semibold">
-            Your name in this room
+            Your name in this circle
           </label>
           <NicknameField
             id={`rename-${slug}`}
@@ -915,7 +915,7 @@ function RoomChat({
       )}
       {panel === "leave" && (
         <div className="flex shrink-0 items-center justify-between gap-2 border-b border-border bg-muted px-4 py-2 text-sm">
-          <span>Leave the {name} room?</span>
+          <span>Leave the {name} circle?</span>
           <span className="flex gap-2">
             <button type="button" onClick={leave} className={CHIP}>
               Leave
@@ -934,7 +934,7 @@ function RoomChat({
       {joined.length > 1 && (
         <div
           role="tablist"
-          aria-label="Your rooms"
+          aria-label="Your circles"
           className="hidden shrink-0 gap-2 overflow-x-auto border-b border-border px-4 py-2 sm:flex"
         >
           {joined.map((r) => (
@@ -1104,7 +1104,7 @@ function RoomChat({
         )}
         <div className="flex items-end gap-2">
           <label htmlFor={`room-input-${slug}`} className="sr-only">
-            Message the {name} room
+            Message the {name} circle
           </label>
           <textarea
             id={`room-input-${slug}`}
@@ -1118,7 +1118,7 @@ function RoomChat({
                 e.currentTarget.form?.requestSubmit();
               }
             }}
-            placeholder={`Message ${name} room`}
+            placeholder={`Message ${name} circle`}
             className="max-h-32 min-h-11 flex-1 resize-none rounded-3xl border border-input bg-background px-4 py-2.5 text-[15px] leading-snug focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
           <button

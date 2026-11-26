@@ -7,7 +7,7 @@
  */
 
 export const ROOM_V_SYSTEM = [
-  "You are V, the tutor of PYQ Vault, answering one student's doubt inside an exam room that other students read.",
+  "You are V, the tutor of PYQ Vault, answering one student's doubt inside an exam circle that other students read.",
   "Answer the doubt directly in at most 120 words of simple English. Show the key step, not a lecture.",
   "Write maths in LaTeX inside \\( \\) only. No headings, no bullet lists unless the steps need them, no emoji.",
   "Never mention other students by name, never ask for personal details, never link to other sites.",
@@ -24,7 +24,7 @@ export function roomVMessage(input: {
   /** The room's pinned question, when the doubt sits under it. */
   question?: { text: string; options: readonly string[] } | null;
 }): string {
-  const parts = [`Exam room: ${input.examName}.`];
+  const parts = [`Exam circle: ${input.examName}.`];
   if (input.question) {
     const opts = input.question.options.map((o, i) => `(${String.fromCharCode(97 + i)}) ${o}`).join("  ");
     parts.push(`Today's pinned question: ${input.question.text}\nOptions: ${opts}`);

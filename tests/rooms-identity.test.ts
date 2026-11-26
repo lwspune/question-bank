@@ -104,7 +104,7 @@ describe("rooms button hiding", () => {
   });
 
   it("tells the student where the rooms went", () => {
-    expect(hiddenToast("2026-11-25T16:10:00Z")).toBe("Rooms button hidden until 9:40 pm. Exam rooms are in your account menu.");
-    expect(hiddenToast(HIDE_FOREVER)).toBe("Rooms button hidden. Exam rooms are in your account menu.");
+    expect(hiddenToast("2026-11-25T16:10:00Z")).toBe("Circles button hidden until 9:40 pm. Exam circles are in your account menu.");
+    expect(hiddenToast(HIDE_FOREVER)).toBe("Circles button hidden. Exam circles are in your account menu.");
   });
 });

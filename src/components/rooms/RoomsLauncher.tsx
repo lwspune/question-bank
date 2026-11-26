@@ -99,7 +99,7 @@ export default function RoomsLauncher() {
   const hidden = buttonHidden(hiddenUntil, Date.now());
   const unread = state?.unread ?? 0;
   const badge = badgeText(unread);
-  const label = unread > 0 ? `Exam rooms, ${unread} unread` : "Exam rooms";
+  const label = unread > 0 ? `Exam circles, ${unread} unread` : "Exam circles";
 
   if (hidden && !open) return null;
 
@@ -119,7 +119,7 @@ export default function RoomsLauncher() {
           onFocus={() => void loadWindow()}
           aria-label={label}
           aria-expanded={open}
-          title="Exam rooms"
+          title="Exam circles"
           tabIndex={tucked ? -1 : undefined}
           className={`relative ${open ? "hidden" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background text-foreground shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
             tucked ? "pointer-events-none translate-y-[160%] opacity-0" : ""

@@ -24,7 +24,7 @@ export async function roomRoute(
     const user = await getSessionUser();
     if (!user) return NextResponse.json({ error: "Please sign in." }, { status: 401 });
     const { slug } = await params;
-    if (!roomName(slug)) return NextResponse.json({ error: "There is no room for that exam." }, { status: 404 });
+    if (!roomName(slug)) return NextResponse.json({ error: "There is no circle for that exam." }, { status: 404 });
     const db = createSupabaseAdminClient();
     const rl = await checkAndIncrement(db, `${opts.limitKey}:${user.id}`, { limit: opts.perHour, windowMs: HOUR_MS });
     if (!rl.ok) {

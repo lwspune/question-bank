@@ -23,6 +23,6 @@ export async function GET() {
     );
   } catch (err) {
     console.error("rooms list failed:", err instanceof Error ? err.message : err);
-    return NextResponse.json({ error: "Could not load rooms." }, { status: 500 });
+    return NextResponse.json({ error: "Could not load circles." }, { status: 500 });
   }
 }
