@@ -232,7 +232,7 @@ export const NAV_FACTS: readonly string[] = [
   "/formula: an index of formula sheets, one per notes chapter (formulas, reference tables and common traps), free to read. It is an index only: when a student asks for one chapter's formulas, answer as you would any question about that chapter and link the chapter, with /formula as an extra.",
   "/visuals: every picture and interactive diagram from the notes, by exam, subject and chapter, free.",
   "/play: free learning games: quick sums, vocabulary, projectiles, the periodic table, history dates and the map of India.",
-  "/store: PYQ ebooks to buy once and keep (the questions asked again and again, and every question chapter by chapter, with full solutions, as PDFs), plus online courses from a partner. The Store button in the header.",
+  "/store: PYQ ebooks to buy once and keep (the questions asked again and again, and every question chapter by chapter, with full solutions, as PDFs), plus online courses from a partner (viewing one needs a free account: a signed-out tap asks the student to sign up first, then opens the course). The Store button in the header.",
   "/score-calculator: free answer-key score calculators for JEE Main and SSC exams: the student brings their response sheet and gets their marks on the official key, part by part.",
   "/classes: offline classroom coaching in Pune (NDA, CDS, AFCAT, SPI, MHT-CET, JEE, 10th and 12th boards, SSC CGL). A signed-in student leaves their number and the team calls. In the account menu.",
   "/start: how PYQ Vault works: sit a real past paper, fix what you missed five questions at a time, and watch your chapter map fill.",
