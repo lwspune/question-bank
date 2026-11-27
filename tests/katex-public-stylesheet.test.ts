@@ -10,7 +10,7 @@
  * KaTeX; after a KaTeX upgrade run `npm run katex:assets`.
  */
 import { describe, it, expect } from "vitest";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { KATEX_CSS_HREF } from "@/lib/chat/katexStylesheet";
 
@@ -40,10 +40,30 @@ describe("the public copy of KaTeX's stylesheet", () => {
   });
 });
 
+/** Every source file under src/, for the scan below. */
+function sourceFiles(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const p = join(dir, e.name);
+    return e.isDirectory() ? sourceFiles(p) : /\.(ts|tsx)$/.test(e.name) ? [p] : [];
+  });
+}
+
 describe("V adds the stylesheet wherever it draws maths after loading the renderer itself", () => {
   it("both of V's lazy maths components ask for it", () => {
     for (const file of ["MathText.tsx", "MathBlockText.tsx"]) {
       expect(read("src", "components", "chat", file), file).toMatch(/useKatexStylesheet\(/);
     }
+  });
+
+  // The class, not just today's two files: a plain import() of a maths component gets no CSS in the
+  // production build, and local dev hides it. Any file that loads one that way must add the stylesheet.
+  it("any file loading a maths component with a plain import() adds the stylesheet too", () => {
+    const offenders = sourceFiles(join(root, "src"))
+      .filter((f) => {
+        const src = readFileSync(f, "utf8");
+        return src.includes("@/components/math/") && /(?<![\w.])import\(\s*["']@\/components\/math\//.test(src) && !/useKatexStylesheet\(/.test(src);
+      })
+      .map((f) => f.slice(root.length + 1));
+    expect(offenders).toEqual([]);
   });
 });
