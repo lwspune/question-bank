@@ -29,7 +29,7 @@ export default function RoomsButtonCard() {
     const s = readRoomsState();
     if (s && badgeCacheFresh(s.at, Date.now())) return;
     fetchRooms()
-      .then((r) => saveRoomsState({ unread: r.unread, hiddenUntil: r.hiddenUntil }))
+      .then((r) => saveRoomsState({ unread: r.unread, waiting: r.waiting, hiddenUntil: r.hiddenUntil }))
       .catch(() => {
         // The card still works: choosing an option saves it.
       });

@@ -1,6 +1,7 @@
 /**
  * POST /api/rooms/[slug]/membership (migrations 0289, 0290).
- *   { action: "join", nickname }    join a room of an exam on the student's profile, under a room nickname
+ *   { action: "join", nickname }    join a room of an exam on the student's profile (or, with none chosen,
+ *                                   their guessed exam, which then becomes chosen: `promoted`), under a room nickname
  *   { action: "rename", nickname }  a new nickname for new messages (old ones keep theirs)
  *   { action: "leave" }
  * A nickname is checked by lib/rooms/nickname and is unique per room (409 when taken).
@@ -26,12 +27,13 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     if (!parsed.success) return NextResponse.json({ error: "Invalid request." }, { status: 400 });
     const a = parsed.data;
     if (a.action === "join") {
-      await joinRoom(db, user.id, slug, a.nickname);
+      const { promoted } = await joinRoom(db, user.id, slug, a.nickname);
       try {
         await pinTodayIfMissing(db, slug, new Date());
       } catch (err) {
         console.error("rooms pin on join failed:", err instanceof Error ? err.message : err);
       }
+      return NextResponse.json({ ok: true, promoted });
     } else if (a.action === "rename") return NextResponse.json({ ok: true, nickname: await renameInRoom(db, user.id, slug, a.nickname) });
     else await leaveRoom(db, user.id, slug);
     return NextResponse.json({ ok: true });

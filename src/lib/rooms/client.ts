@@ -7,7 +7,16 @@ import type { RoomMessageView, RoomQuestionView } from "./view";
 import type { RoomReportReason } from "./validate";
 
 export type RoomSummaryView = RoomListItem & { last: { name: string; body: string; at: string } | null };
-export type RoomsListResponse = { joined: RoomSummaryView[]; others: RoomListItem[]; unread: number; hiddenUntil: string | null };
+export type RoomsListResponse = {
+  joined: RoomSummaryView[];
+  others: RoomListItem[];
+  /** The guessed exam's circle, while the student has chosen none (2026-11-27). */
+  guessed: RoomListItem[];
+  unread: number;
+  /** Not-joined circles whose question is up today (lib/rooms/alert). */
+  waiting: number;
+  hiddenUntil: string | null;
+};
 export type RoomPage = { messages: RoomMessageView[]; pinned: RoomMessageView | null; hasMore: boolean; nickname: string };
 
 async function call<T>(url: string, init?: RequestInit): Promise<T> {
@@ -26,7 +35,7 @@ const base = (slug: string) => `/api/rooms/${encodeURIComponent(slug)}`;
 export const fetchRooms = () => call<RoomsListResponse>("/api/rooms");
 
 export const joinRoom = (slug: string, nickname: string) =>
-  call<{ ok: true }>(`${base(slug)}/membership`, { method: "POST", body: JSON.stringify({ action: "join", nickname }) });
+  call<{ ok: true; promoted: boolean }>(`${base(slug)}/membership`, { method: "POST", body: JSON.stringify({ action: "join", nickname }) });
 
 export const renameInRoom = (slug: string, nickname: string) =>
   call<{ ok: true; nickname: string }>(`${base(slug)}/membership`, { method: "POST", body: JSON.stringify({ action: "rename", nickname }) });
