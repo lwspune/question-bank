@@ -31,8 +31,11 @@ async function rpc<T>(fn: string, args: Record<string, unknown> = {}): Promise<T
 // 1.7 MB a render, so each is kept for a day (the pages' own revalidate), one load per process at a
 // time. Per course, not one entry for all: the data cache refuses an entry over 2 MB (largest
 // outline 119 KB).
-const cachedCourseList = unstable_cache(() => rpc<CourseRow[]>("learn_course_list"), ["learn-course-list-v1"], { revalidate: 86400 });
-const cachedOutline = unstable_cache((course: string) => rpc<Outline | null>("learn_course_outline", { p_course: course }), ["learn-outline-v1"], {
+// A `learn:import` is NOT seen for up to a day: a course read before it stays cached as missing (2026-11-27,
+// 24 new courses hidden). To show an import at once, bump LEARN_CACHE_KEY and deploy.
+const LEARN_CACHE_KEY = "v2";
+const cachedCourseList = unstable_cache(() => rpc<CourseRow[]>("learn_course_list"), [`learn-course-list-${LEARN_CACHE_KEY}`], { revalidate: 86400 });
+const cachedOutline = unstable_cache((course: string) => rpc<Outline | null>("learn_course_outline", { p_course: course }), [`learn-outline-${LEARN_CACHE_KEY}`], {
   revalidate: 86400,
 });
 
