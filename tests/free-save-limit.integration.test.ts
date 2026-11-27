@@ -36,7 +36,13 @@ const RUN_ID = testRunId();
 // "reveal": the daily answer limit's own student (claim_reveal, migration 0228).
 // The 7-day Practice Pass trial (0273): "trial" earns and takes it, "vtrial" meets the limit
 // on V, "offered" has used all 3 offer days, "lapsed" once held a pass.
-const ROLES = ["student", "pass", "practice", "off", "freeexam", "reveal", "trial", "vtrial", "offered", "lapsed", "intl"] as const;
+// The daily check (reveal_limit_overruns, 0294): "coveredtrial" answered while a trial ran that
+// ended the same evening, "aftertrial" answered after theirs ended, "refunded" under a pass later
+// revoked, "nopass" with none.
+const ROLES = [
+  "student", "pass", "practice", "off", "freeexam", "reveal", "trial", "vtrial", "offered", "lapsed", "intl",
+  "coveredtrial", "aftertrial", "refunded", "nopass",
+] as const;
 type Role = (typeof ROLES)[number];
 
 describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)", () => {
@@ -639,5 +645,61 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
       .eq("user_id", ids.student)
       .single();
     expect(Date.parse(data!.started_at as string)).toBeGreaterThan(Date.parse(past));
+  });
+
+  describe("the daily check: who went past the answer limit (0229, 0294)", () => {
+    // A fixed past day nothing else writes to, and the answers' own time: 04:00 IST on it.
+    const DAY = "2020-01-15";
+    const ANSWERED = "2020-01-14T22:30:00Z";
+    const pass = (role: Role, status: string, grantedAt: string, expiresAt: string) =>
+      admin.from("entitlements").insert({
+        user_id: ids[role],
+        scope: "practice",
+        source: "trial",
+        status,
+        granted_at: grantedAt,
+        expires_at: expiresAt,
+        note: `test ${RUN_ID}`,
+      });
+    let named: string[] = [];
+
+    beforeAll(async () => {
+      // 2026-11-27: a trial student opened 41 answers in the morning and the trial ended that
+      // evening; the check asked about passes held NOW and named them as a free student.
+      expect((await pass("coveredtrial", "active", "2020-01-09T15:30:00Z", "2020-01-15T15:30:00Z")).error).toBeNull();
+      expect((await pass("aftertrial", "active", "2020-01-08T15:30:00Z", "2020-01-14T21:30:00Z")).error).toBeNull();
+      expect((await pass("refunded", "revoked", "2020-01-10T00:00:00Z", "2020-07-10T00:00:00Z")).error).toBeNull();
+      for (const role of ["coveredtrial", "aftertrial", "refunded", "nopass"] as const) {
+        // 51 answers against this file's limit of 50.
+        const rows = Array.from({ length: 51 }, () => ({
+          user_id: ids[role],
+          ist_day: DAY,
+          question_id: randomUUID(),
+          surface: "bank",
+          counts: true,
+          created_at: ANSWERED,
+        }));
+        expect((await admin.from("daily_reveals").insert(rows)).error).toBeNull();
+      }
+      const { data, error } = await admin.rpc("reveal_limit_overruns", { p_day: DAY });
+      expect(error).toBeNull();
+      named = ((data ?? []) as { user_id: string }[]).map((r) => r.user_id);
+    });
+
+    it("does not name a student whose pass covered the answers, though it has ended since", () => {
+      expect(named).not.toContain(ids.coveredtrial);
+    });
+
+    it("names a student who answered after their pass ended", () => {
+      expect(named).toContain(ids.aftertrial);
+    });
+
+    it("names a student whose covering pass was refunded", () => {
+      expect(named).toContain(ids.refunded);
+    });
+
+    it("names a student with no pass", () => {
+      expect(named).toContain(ids.nopass);
+    });
   });
 });
