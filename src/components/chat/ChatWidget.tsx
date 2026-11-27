@@ -11,10 +11,12 @@ import {
   carriedLesson,
   goOnLabel,
   goOnMessage,
+  lessonHasButtons,
   lessonLinkLabels,
   lessonNotesLink,
   lessonOpenLink,
   parseLesson,
+  partTryCard,
   simplerMessage,
   type VLesson,
 } from "@/lib/chat/lesson";
@@ -131,6 +133,8 @@ const VLearnQuestionCard = dynamic(() => import("./VLearnQuestionCard"), {
 });
 // A Learn lesson played full screen (2026-11-22): loaded on the first lesson tapped on V's map.
 const LearnLessonOverlay = dynamic(() => import("@/components/learn/LearnLessonOverlay"), { ssr: false });
+// A notes part read in a panel over V (2026-11-27): the stuck offer's panel, loaded on the tap.
+const TeachPanel = dynamic(() => import("@/components/reveal/TeachPanel"), { ssr: false });
 // "Teach me step by step" loads only when tapped.
 
 /**
@@ -277,6 +281,10 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
   const [open, setOpen] = useState(() => !!start && start.kind !== "quiet");
   // The Learn lesson playing full screen over V, tapped on a chapter map (2026-11-22).
   const [playing, setPlaying] = useState<LessonTarget | null>(null);
+  // A notes part read in a panel over V (2026-11-27): from a lesson's map (its turn and part,
+  // for Your turn on close) or from a notes link in V's reply (no turn). Focus goes back to the tap.
+  const [reading, setReading] = useState<{ href: string; turn: number | null; part: number | null } | null>(null);
+  const readFromRef = useRef<HTMLButtonElement | null>(null);
   const [mode, setMode] = useState<"chat" | "builder">("chat");
   const [resume, setResume] = useState<BuilderAnswers | undefined>(undefined);
   // The greeting is drawn before these and never stored.
@@ -702,6 +710,30 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
   /** A fresh reply has shown its last line: what goes under it may show. */
   function endReveal(index: number) {
     setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, reveal: false } : t)));
+  }
+
+  /** A notes part opened in the panel over V: from a lesson's map (turn + part) or a link in a reply. */
+  function openNotes(href: string, from: HTMLButtonElement | null, at: { turn: number; part: number } | null) {
+    readFromRef.current = from;
+    setReading({ href, turn: at?.turn ?? null, part: at?.part ?? null });
+  }
+
+  /**
+   * The panel closed: back in V. A part read from a lesson's map puts that part's question
+   * under the map as Your turn (2026-11-27), in place of any earlier part's.
+   */
+  function closeNotes() {
+    const r = reading;
+    setReading(null);
+    if (!r || r.turn === null || r.part === null) return;
+    const { turn, part } = r;
+    setTurns((all) =>
+      all.map((t, i) => {
+        if (i !== turn || t.role !== "assistant" || !t.lesson) return t;
+        const card = partTryCard(t.lesson, part);
+        return card ? { ...t, card: { id: card.id, kind: "try" as const, turn: true, ...(card.again ? { again: true } : {}) } } : t;
+      })
+    );
   }
 
   /** A message from the student or V. A reply that lands with the window shut is announced. */
@@ -1190,8 +1222,8 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
   // V's latest reply (index into `turns`): a chapter lesson there puts its buttons under it and hides V's own.
   let lastReplyAt = turns.length - 1;
   while (lastReplyAt >= 0 && turns[lastReplyAt].role !== "assistant") lastReplyAt -= 1;
-  // A Learn lesson's map has no buttons of its own (the student taps a lesson), so V's stay.
-  const lessonOpen = lastReplyAt >= 0 && !!turns[lastReplyAt].lesson && turns[lastReplyAt].lesson!.kind !== "learn";
+  // A Learn map and a notes map the student picks from have no buttons of their own (2026-11-27), so V's stay.
+  const lessonOpen = lastReplyAt >= 0 && !!turns[lastReplyAt].lesson && lessonHasButtons(turns[lastReplyAt].lesson!);
 
   return (
     <VLauncher
@@ -1204,6 +1236,23 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
       buttonRef={launcherRef}
     >
       {playing && <LearnLessonOverlay key={`${playing.chapter}/${playing.concept}`} target={playing} onClose={() => setPlaying(null)} />}
+      {reading && (
+        <TeachPanel
+          key={reading.href}
+          open
+          onOpenChange={(o) => {
+            if (!o) closeNotes();
+          }}
+          notesHref={reading.href}
+          closeHint="Close to go back to V"
+          returnFocusTo={readFromRef}
+          onFullNotes={() => {
+            if (reading.turn !== null) sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "notes_full" });
+            setReading(null);
+            close();
+          }}
+        />
+      )}
       {open && (
         <div
           ref={panelRef}
@@ -1294,7 +1343,7 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
               // A lesson's pages show their names, never their paths (2026-11-21).
               const labels = t.lesson ? lessonLinkLabels(t.lesson) : undefined;
               // The lesson's buttons go under the latest reply only, once its last line is out.
-              const lessonHere = t.lesson && t.lesson.kind !== "learn" && !t.reveal && i === lastReplyAt ? t.lesson : null;
+              const lessonHere = t.lesson && lessonHasButtons(t.lesson) && !t.reveal && i === lastReplyAt ? t.lesson : null;
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
                   {/* The lesson's map comes first, as in mockup B: V's text then runs straight into the question to try. */}
@@ -1306,6 +1355,10 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
                       onOpenLesson={(target) => {
                         sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_learn", ...(t.lesson?.course ? { course: t.lesson.course } : {}) });
                         setPlaying(target);
+                      }}
+                      onOpenNotes={(part, href, row) => {
+                        sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "notes_part" });
+                        openNotes(href, row, { turn: i, part });
                       }}
                     />
                   )}
@@ -1322,6 +1375,7 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
                       onExplain={(step) => explainStep(i, step)}
                       onReply={(step) => replyToStep(i, step)}
                       onNavigate={close}
+                      onOpenNotes={(href, from) => openNotes(href, from, null)}
                       onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
                       onDone={() => endReveal(i)}
                     />
@@ -1335,11 +1389,12 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
                             links={t.links}
                             labels={labels}
                             onNavigate={close}
+                            onOpenNotes={(href, from) => openNotes(href, from, null)}
                             onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
                             onDone={() => endReveal(i)}
                           />
                         ) : (
-                          <ReplyText text={t.text} links={t.links} labels={labels} onNavigate={close} />
+                          <ReplyText text={t.text} links={t.links} labels={labels} onNavigate={close} onOpenNotes={(href, from) => openNotes(href, from, null)} />
                         )}
                       </div>
                     </div>
@@ -1491,6 +1546,8 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
                   )}
                   {t.card && !t.reveal && (
                     <VQuestionCard
+                      // A pick lesson swaps Your turn to the part just read (2026-11-27): a new question, a fresh card.
+                      key={t.card.id}
                       id={t.card.id}
                       kind={t.card.kind}
                       after={t.card.after}

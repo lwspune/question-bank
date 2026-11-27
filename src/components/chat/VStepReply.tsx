@@ -45,6 +45,8 @@ export default function VStepReply({
   onExplain,
   onReply,
   onNavigate,
+
+  onOpenNotes,
   onGrow,
   onDone,
 }: {
@@ -63,6 +65,10 @@ export default function VStepReply({
   onExplain?: (step: number) => void;
   onReply?: (step: number) => void;
   onNavigate?: () => void;
+
+  /** A notes part link opens in the panel over V (2026-11-27). */
+
+  onOpenNotes?: (href: string, from: HTMLButtonElement) => void;
   /** A bubble was added: keep the list scrolled to the bottom. */
   onGrow?: () => void;
   /** Every bubble is out: what goes under the reply may show. */
@@ -120,7 +126,7 @@ export default function VStepReply({
             <div key={i} className="flex items-end gap-2">
               {face}
               <div className={V_BUBBLE}>
-                <VReplyText text={u.text} links={links} labels={labels} onNavigate={onNavigate} />
+                <VReplyText text={u.text} links={links} labels={labels} onNavigate={onNavigate} onOpenNotes={onOpenNotes} />
               </div>
             </div>
           );

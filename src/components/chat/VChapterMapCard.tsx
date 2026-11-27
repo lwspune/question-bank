@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { BookOpen, ChevronRight } from "lucide-react";
-import type { LessonProgress, VLesson } from "@/lib/chat/lesson";
+import { notesPanelHref, type LessonProgress, type VLesson } from "@/lib/chat/lesson";
 import { parseLessonHref, type LessonTarget } from "@/lib/learn/links";
 
 /** A Learn lesson's progress chip (2026-11-22): Done, right answers so far, or New. */
@@ -29,16 +29,22 @@ function ProgressChip({ progress }: { progress: LessonProgress }) {
  * each; its mistakes sit on the starting lesson alone (lib/chat/learnLesson.ts).
  * With `onOpenLesson` (2026-11-22, owner: the student picks the lesson) a Learn row
  * plays its lesson full screen in V instead of leaving for its page.
+ * With `onOpenNotes` (2026-11-27, owner: notes chapters work the same way) a pick
+ * lesson's row opens that part's notes in a panel over V; the marked part is only
+ * a suggestion there.
  */
 export default function VChapterMapCard({
   lesson,
   onNavigate,
   placement = "below",
   onOpenLesson,
+  onOpenNotes,
 }: {
   lesson: VLesson;
   onNavigate?: () => void;
   onOpenLesson?: (target: LessonTarget) => void;
+  /** A pick lesson's part tapped: its number, its notes page, and the row (focus returns to it). */
+  onOpenNotes?: (n: number, href: string, row: HTMLButtonElement) => void;
   /** Above V's reply (the lesson's first reply, mockup B order) or under it. */
   placement?: "above" | "below";
 }) {
@@ -66,7 +72,7 @@ export default function VChapterMapCard({
             <>
               <span className={`w-4 shrink-0 tabular-nums ${current ? "text-brand-accent" : "text-muted-foreground"}`}>{p.n}</span>
               <span className="min-w-0 flex-1 break-words">{p.title}</span>
-              {current && <span className="sr-only">(we start here)</span>}
+              {current && <span className="sr-only">{lesson.pick ? "(suggested)" : "(we start here)"}</span>}
               {p.missed > 0 ? (
                 <span className="shrink-0 rounded-full bg-destructive/10 px-2 py-0.5 text-[11px] font-semibold text-destructive">
                   {p.missed} missed
@@ -79,9 +85,19 @@ export default function VChapterMapCard({
             </>
           );
           const inV = lesson.kind === "learn" && onOpenLesson && p.href ? parseLessonHref(p.href) : null;
+          const notesHref = onOpenNotes ? notesPanelHref(lesson, p) : null;
           return (
             <li key={p.n} aria-current={current ? "step" : undefined}>
-              {inV ? (
+              {notesHref ? (
+                <button
+                  type="button"
+                  onClick={(e) => onOpenNotes!(p.n, notesHref, e.currentTarget)}
+                  aria-label={`Read part ${p.n}, ${p.title}${p.missed > 0 ? `, ${p.missed} missed` : ""}`}
+                  className={`${row} w-full text-left transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+                >
+                  {body}
+                </button>
+              ) : inV ? (
                 <button
                   type="button"
                   onClick={() => onOpenLesson!(inV)}
