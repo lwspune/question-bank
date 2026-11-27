@@ -15,7 +15,7 @@ import {
 } from "@/components/auth/useGoogleOneTap";
 import { googleButtonDestination, nextStepAfterSessionCheck } from "@/lib/auth/oneTap";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
-import { signedInHome } from "@/lib/auth/redirect";
+import { needsFullLoad, signedInHome } from "@/lib/auth/redirect";
 
 /**
  * "Continue with Google" on /login and /signup, drawn by Google itself.
@@ -74,10 +74,10 @@ export default function GoogleAuthButton({
               const outcome = second === "seen" ? "recovered" : second === "unseen" ? "failed" : "no_answer";
               trackFunnel("signin_session_check", { outcome, page });
             }
-            if (step === "navigate") {
+            if (step === "navigate" && !needsFullLoad(destination)) {
               router.replace(destination);
               router.refresh();
-            } else if (step === "full-load") {
+            } else if (step === "navigate" || step === "full-load") {
               window.location.assign(destination);
             } else {
               setSigningIn(false);

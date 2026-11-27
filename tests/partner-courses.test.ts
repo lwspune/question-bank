@@ -17,6 +17,8 @@ import {
   courseShelves,
   providerLine,
   joinNames,
+  tapHref,
+  signInHref,
 } from "@/lib/partnerCourses/courses";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
@@ -71,9 +73,9 @@ describe("the course list", () => {
 });
 
 describe("providerLine", () => {
-  it("says plainly who runs the course and that it opens their site", () => {
-    expect(providerLine("Defence Mania")).toBe("From our partner Defence Mania. Opens their site.");
-    expect(providerLine("LWS Pune")).toBe("From LWS Pune. Opens their site.");
+  it("says plainly who runs the course, that it needs a free account, and that it opens their site", () => {
+    expect(providerLine("Defence Mania")).toBe("From our partner Defence Mania. Needs a free account, then opens their site.");
+    expect(providerLine("LWS Pune")).toBe("From LWS Pune. Needs a free account, then opens their site.");
   });
 });
 
@@ -179,5 +181,15 @@ describe("courseById", () => {
     expect(courseById("no-such-course")).toBeNull();
     expect(courseById("../etc")).toBeNull();
     expect(courseById("")).toBeNull();
+  });
+});
+
+describe("the sign-in step (owner, 2026-11-27)", () => {
+  it("sends a signed-out student to sign up, coming back through the same tap link", () => {
+    const course = PARTNER_COURSES[0];
+    const href = signInHref(course);
+    const url = new URL(href, "https://www.pyqvault.com");
+    expect(url.pathname).toBe("/signup");
+    expect(url.searchParams.get("next")).toBe(tapHref(course));
   });
 });

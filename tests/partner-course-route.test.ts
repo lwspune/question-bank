@@ -4,14 +4,16 @@
  * the partner's page with our UTM tags. Counting server-side counts signed-out
  * visitors too (most of the traffic) and no ad blocker can hide it.
  *
- * A tap must ALWAYS reach the partner: a failed write or session read only
- * loses the count. Bots are sent on without a row. Unique students are counted
+ * Since 2026-11-27 (owner) a signed-out tap is counted, then sent to sign up
+ * and back through the same link, so every student who reaches the partner has
+ * an account. A signed-in tap must ALWAYS reach the partner: a failed write
+ * only loses the count, and a failed session read sends the student on. Bots are sent on without a row. Unique students are counted
  * by account when signed in, else by a random first-party visitor id (qb_vid).
  * Session and database are mocked; the decisions are real.
  */
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
-import { PARTNER_COURSES, outboundUrl } from "@/lib/partnerCourses/courses";
+import { PARTNER_COURSES, outboundUrl, signInHref } from "@/lib/partnerCourses/courses";
 
 vi.mock("server-only", () => ({}));
 const user = { current: null as null | { id: string; email: string } };
@@ -41,10 +43,10 @@ beforeEach(() => {
 });
 
 describe("GET /api/partner-course/[id]", () => {
-  it("counts a signed-out tap with a new visitor id and sends it on to the partner", async () => {
+  it("counts a signed-out tap with a new visitor id and sends it to sign up first", async () => {
     const res = await tap(COURSE.id);
     expect(res.status).toBe(302);
-    expect(res.headers.get("location")).toBe(outboundUrl(COURSE));
+    expect(res.headers.get("location")).toBe(new URL(signInHref(COURSE), "http://localhost").toString());
     expect(res.headers.get("cache-control")).toContain("no-store");
 
     expect(from).toHaveBeenCalledWith("partner_course_clicks");
@@ -72,9 +74,11 @@ describe("GET /api/partner-course/[id]", () => {
     expect(String(row.visitor_id)).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
   });
 
-  it("records the account of a signed-in student", async () => {
+  it("records the account of a signed-in student and sends them on to the partner", async () => {
     user.current = { id: "11111111-2222-4333-8444-555555555555", email: "s@example.com" };
-    await tap(COURSE.id, { cookie: `qb_vid=${VID}` });
+    const res = await tap(COURSE.id, { cookie: `qb_vid=${VID}` });
+    expect(res.status).toBe(302);
+    expect(res.headers.get("location")).toBe(outboundUrl(COURSE));
     const [row] = insert.mock.calls[0] as unknown as [Record<string, unknown>];
     expect(row.user_id).toBe(user.current.id);
     expect(row.visitor_id).toBe(VID);
@@ -87,8 +91,9 @@ describe("GET /api/partner-course/[id]", () => {
     expect(insert).not.toHaveBeenCalled();
   });
 
-  it("still sends the student on when the write fails", async () => {
+  it("still sends a signed-in student on when the write fails", async () => {
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    user.current = { id: "11111111-2222-4333-8444-555555555555", email: "s@example.com" };
     insertError.current = { message: "boom" };
     const res = await tap(COURSE.id);
     expect(res.status).toBe(302);
@@ -106,6 +111,22 @@ describe("GET /api/partner-course/[id]", () => {
     expect(res.status).toBe(302);
     expect(res.headers.get("location")).toBe(outboundUrl(COURSE));
     spy.mockRestore();
+  });
+
+  it("still sends a signed-out student to sign up when the write fails", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    insertError.current = { message: "boom" };
+    const res = await tap(COURSE.id);
+    expect(new URL(res.headers.get("location")!).pathname).toBe("/signup");
+    spy.mockRestore();
+  });
+
+  it("does not count the app's own background fetch of the link (it re-runs as a full page load)", async () => {
+    user.current = { id: "11111111-2222-4333-8444-555555555555", email: "s@example.com" };
+    const res = await tap(COURSE.id, { rsc: "1" });
+    expect(res.status).toBe(302);
+    expect(res.headers.get("location")).toBe(outboundUrl(COURSE));
+    expect(insert).not.toHaveBeenCalled();
   });
 
   it("sends an unknown course back to the store, uncounted", async () => {

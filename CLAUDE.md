@@ -452,7 +452,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 - **2026-11-23 (fifth) — Store: Ebooks renamed, Defence Mania's CDS + AFCAT online courses linked as a counted trial (0269).**
   - **Why:** test online-course demand (Testbook's model) without recording any; nothing agreed with the partner, so taps decide whether to ask for a deal.
   - **New batches linked** (Sikandar 3.0 from 5 Dec, Crash Course from 20 Dec); start dates were only in the banner images. Shelf per exam via `ExamFeedList`, so CDS/AFCAT students see it first.
-  - **Counted by our own redirect + table** (signed-out too, unique by account or `qb_vid`); it always forwards, bots uncounted. Experiment `partner-courses`: 30+ students in 6 weeks. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Counted by our own redirect + table** (unique by account or `qb_vid`), bots uncounted; since 2026-11-27 a signed-out tap is counted, then sent to sign up and back (owner: name every tapper). Experiment `partner-courses`: 30+ students in 6 weeks. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-23 (fourth) — Classes moves to the avatar menu, a class lead needs an account, and the /me class card covers eight courses (migration 0285).**
   - **Why:** the header slot goes to a notes-visuals gallery. The /me card first had to reach more students: it asked only SPI and NDA, while the header brought ~11 leads in 7 days.
   - **Account required:** none of the 5 signed-out leads' mobiles matched an account later. The route refuses signed-out posts and /classes shows a sign-in step, still cached.
