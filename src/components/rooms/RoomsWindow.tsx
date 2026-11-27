@@ -50,6 +50,7 @@ import {
   type RoomsListResponse,
 } from "@/lib/rooms/client";
 import { isNearEnd, nextPollDelay } from "@/lib/rooms/poll";
+import { linkOpensHere, splitLinks } from "@/lib/rooms/links";
 import { plainPreview, roomBadge } from "@/lib/rooms/list";
 import { ROOM_TEXT_MAX } from "@/lib/rooms/text";
 import { NICK_MAX, suggestNickname } from "@/lib/rooms/nickname";
@@ -1222,6 +1223,34 @@ function RoomChat({
   );
 }
 
+/**
+ * A team message's text with its web links tappable (students cannot post
+ * links). Pieces become React nodes, never HTML. Our own pages open here,
+ * any other site in a new tab.
+ */
+function LinkedText({ body }: { body: string }) {
+  return (
+    <>
+      {splitLinks(body).map((p, i) =>
+        p.kind === "text" ? (
+          <span key={i}>{p.text}</span>
+        ) : (
+          <a
+            key={i}
+            href={p.href}
+            {...(linkOpensHere(p.href)
+              ? {}
+              : { target: "_blank", rel: "noopener noreferrer" })}
+            className="break-all font-medium text-brand-accent underline underline-offset-2 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {p.text}
+          </a>
+        ),
+      )}
+    </>
+  );
+}
+
 function MessageBubble({
   m,
   slug,
@@ -1307,6 +1336,10 @@ function MessageBubble({
               text={m.body}
               className="block whitespace-pre-wrap break-words text-sm"
             />
+          ) : m.kind === "team" ? (
+            <p className="whitespace-pre-wrap break-words text-sm">
+              <LinkedText body={m.body} />
+            </p>
           ) : (
             <p className="whitespace-pre-wrap break-words text-sm">{m.body}</p>
           )}
