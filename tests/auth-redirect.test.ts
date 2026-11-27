@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { safeNextPath, signedInAuthPageRedirect, signedInHome } from "@/lib/auth/redirect";
+import { safeNextPath, signedInAuthPageRedirect, signedInHome, withNext } from "@/lib/auth/redirect";
 
 describe("safeNextPath", () => {
   it("returns the fallback for non-string input", () => {
@@ -93,5 +93,19 @@ describe("signedInHome", () => {
 
   it("sends an admin to the dashboard", () => {
     expect(signedInHome("ADMIN")).toBe("/dashboard");
+  });
+});
+
+describe("withNext (switching between sign-up and sign-in keeps where the student was going)", () => {
+  it("adds a safe next", () => {
+    expect(withNext("/login", "/api/partner-course/cds-sikandar-3")).toBe("/login?next=%2Fapi%2Fpartner-course%2Fcds-sikandar-3");
+  });
+  it("leaves the link bare with no next", () => {
+    expect(withNext("/signup", null)).toBe("/signup");
+    expect(withNext("/signup", "")).toBe("/signup");
+  });
+  it("drops an off-site next rather than carrying it", () => {
+    expect(withNext("/login", "//evil.example")).toBe("/login");
+    expect(withNext("/login", "https://evil.example")).toBe("/login");
   });
 });

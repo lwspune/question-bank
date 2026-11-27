@@ -20,6 +20,17 @@ export function safeNextPath(raw: unknown, fallback = "/browse"): string {
   return raw;
 }
 
+/**
+ * The other auth page's link, keeping where the student was going: /signup's
+ * "Sign in" and /login's "Create one" drop `next` otherwise, so a student sent
+ * to sign up who already has an account lost their way back. An unsafe or
+ * empty next leaves the link bare.
+ */
+export function withNext(path: string, next: string | null): string {
+  const safe = safeNextPath(next, "");
+  return safe === "" ? path : `${path}?next=${encodeURIComponent(safe)}`;
+}
+
 /** An org role, or null for a signed-in person with no org membership (a student). */
 export type OrgRole = "ADMIN" | "TEACHER" | null;
 

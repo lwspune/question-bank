@@ -19,6 +19,7 @@ import { Label } from "@/components/ui/label";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import { cn } from "@/lib/utils";
 import { REFERRAL_FRIEND_PCT } from "@/lib/referrals/referral";
+import { withNext } from "@/lib/auth/redirect";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -33,12 +34,17 @@ export default function SignupPage() {
   // which quiz drove this signup). Read from window to avoid a useSearchParams
   // Suspense boundary on this client page.
   const [next, setNext] = useState("/browse");
+  // The asked-for next alone, for the "Sign in" links (null = none asked).
+  const [askedNext, setAskedNext] = useState<string | null>(null);
   const [signupSource, setSignupSource] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const n = params.get("next");
-    if (n && n.startsWith("/")) setNext(n);
+    if (n && n.startsWith("/")) {
+      setNext(n);
+      setAskedNext(n);
+    }
     setSignupSource(params.get("utm_source") ?? undefined);
   }, []);
 
@@ -98,7 +104,7 @@ export default function SignupPage() {
                 finish creating your account, then sign in.
               </p>
               <Button asChild variant="outline" className="w-full">
-                <Link href="/login">Go to sign in</Link>
+                <Link href={withNext("/login", askedNext)}>Go to sign in</Link>
               </Button>
             </div>
           ) : (
@@ -204,7 +210,7 @@ export default function SignupPage() {
               <p className="mt-6 text-sm text-muted-foreground">
                 Already have an account?{" "}
                 <Link
-                  href="/login"
+                  href={withNext("/login", askedNext)}
                   className="font-medium text-foreground underline-offset-4 hover:underline"
                 >
                   Sign in

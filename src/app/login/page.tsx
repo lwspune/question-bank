@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
-import { safeNextPath, signedInHome } from "@/lib/auth/redirect";
+import { safeNextPath, signedInHome, withNext } from "@/lib/auth/redirect";
 import { signInErrorMessage } from "@/lib/auth/credentials";
 import { cn } from "@/lib/utils";
 import { readOwnRole } from "@/components/auth/useGoogleOneTap";
@@ -156,7 +156,7 @@ function LoginSection() {
           <p className="mt-6 text-sm text-muted-foreground">
             Don&apos;t have an account?{" "}
             <Link
-              href="/signup"
+              href={withNext("/signup", next)}
               className="font-medium text-foreground underline-offset-4 hover:underline"
             >
               Sign up
