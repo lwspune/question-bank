@@ -49,7 +49,7 @@ import {
   sendMessage,
   type RoomsListResponse,
 } from "@/lib/rooms/client";
-import { nextPollDelay } from "@/lib/rooms/poll";
+import { isNearEnd, nextPollDelay } from "@/lib/rooms/poll";
 import { plainPreview, roomBadge } from "@/lib/rooms/list";
 import { ROOM_TEXT_MAX } from "@/lib/rooms/text";
 import { NICK_MAX, suggestNickname } from "@/lib/rooms/nickname";
@@ -695,7 +695,23 @@ function RoomChat({
   const [error, setError] = useState<string | null>(null);
   const lastIdRef = useRef(0);
   const listRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const atBottomRef = useRef(true);
+
+  // Open at the newest message and stay there while the chat grows: the first
+  // page drawing in, question cards, maths and pictures finishing a moment
+  // later. A jump timed to one frame landed before all of that (students had
+  // to scroll down on every open). Scrolling up to read stops the pinning.
+  useEffect(() => {
+    const list = listRef.current;
+    const content = contentRef.current;
+    if (!list || !content || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => {
+      if (atBottomRef.current) list.scrollTop = list.scrollHeight;
+    });
+    ro.observe(content);
+    return () => ro.disconnect();
+  }, []);
 
   const scrollToEnd = useCallback(() => {
     requestAnimationFrame(() => {
@@ -1061,13 +1077,12 @@ function RoomChat({
       <div
         ref={listRef}
         onScroll={(e) => {
-          const el = e.currentTarget;
-          atBottomRef.current =
-            el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+          atBottomRef.current = isNearEnd(e.currentTarget);
         }}
-        className="flex-1 space-y-2.5 overflow-y-auto bg-muted/60 px-3 py-3"
+        className="flex-1 overflow-y-auto bg-muted/60 px-3 py-3"
         aria-live="polite"
       >
+        <div ref={contentRef} className="space-y-2.5">
         {error && (
           <p className="py-6 text-center text-sm text-muted-foreground">
             {error}
@@ -1142,6 +1157,7 @@ function RoomChat({
             </div>
           );
         })}
+        </div>
       </div>
 
       <form
