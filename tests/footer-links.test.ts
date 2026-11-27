@@ -41,7 +41,8 @@ describe("footerLinks", () => {
 
   // /question-papers since 2026-11-07: the homepage listed it and the footer did
   // not. /learn left on 2026-11-08 (tests/learn-entry-points.test.ts).
-  it.each(["/browse", "/questions", "/mock", "/board", "/question-papers", "/homework", "/formula"])(
+  // /school-exams since 2026-11-27: the exams a school child can sit, by class.
+  it.each(["/browse", "/questions", "/mock", "/board", "/question-papers", "/homework", "/formula", "/school-exams"])(
     "Explore carries the content surface %s",
     (href) => {
       expect(byTitle("Explore").links.map((l) => l.href)).toContain(href);
