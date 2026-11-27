@@ -1,6 +1,6 @@
 /**
- * npm run rooms:daily: pin each open room's question of the day (migration
- * 0289; lib/rooms/dailyServer). DRY RUN by default: prints the plan. `--apply`
+ * npm run rooms:daily: pin the question of the day in the circle of every exam
+ * students have, joined or not (migrations 0289, 0292; lib/rooms/dailyServer). DRY RUN by default: prints the plan. `--apply`
  * lives ONLY in .github/workflows/rooms-daily.yml (01:30 UTC = 07:00 IST), so
  * running this by hand never posts. A room already pinned today is skipped,
  * so a re-run is safe.
@@ -8,7 +8,7 @@
 import { config } from "dotenv";
 config({ path: ".env.local" });
 import { createClient } from "@supabase/supabase-js";
-import { planDaily, pinDailyIfMissing } from "../../src/lib/rooms/dailyServer";
+import { ensureRoom, planDaily, pinDailyIfMissing } from "../../src/lib/rooms/dailyServer";
 
 async function main() {
   const apply = process.argv.includes("--apply");
@@ -27,6 +27,7 @@ async function main() {
       continue;
     }
     try {
+      await ensureRoom(db, p.slug);
       const id = await pinDailyIfMissing(db, p.slug, p.questionId);
       console.log(id == null ? `${p.slug}: skipped (pinned meanwhile)` : `${p.slug}: pinned ${p.questionId} (message ${id})`);
     } catch (e) {

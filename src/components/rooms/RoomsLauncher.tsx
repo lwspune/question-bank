@@ -7,6 +7,10 @@
  * button is hidden come from one GET /api/rooms a visit, shared through
  * lib/rooms/store with the account menu's Exam rooms entry and the Account card.
  *
+ * Circles not joined (owner, 2026-11-27): the badge also counts each circle of
+ * the student's exams not joined that has today's question, until the bubble
+ * is opened that day (lib/rooms/alert bubbleCount).
+ *
  * Hidden for focused study (migration 0290): the button stays away until the
  * time on the account passes (it comes back by itself on an open page) or the
  * student turns it back on; the account menu still opens the rooms meanwhile.
@@ -20,12 +24,15 @@ import { vPlacement } from "@/lib/chat/placement";
 import { hasAuthCookie } from "@/lib/viewer/useViewerSession";
 import { badgeCacheFresh } from "@/lib/rooms/poll";
 import { badgeText } from "@/lib/rooms/list";
+import { bubbleCount } from "@/lib/rooms/alert";
 import { buttonHidden, hiddenToast, hideUntilFor, msUntilShown, type HideMode } from "@/lib/rooms/button";
 import { fetchRooms, setRoomsButton } from "@/lib/rooms/client";
-import { OPEN_ROOMS_EVENT, readRoomsState, saveRoomsState, useRoomsState } from "@/lib/rooms/store";
+import { OPEN_ROOMS_EVENT, markCirclesSeen, readRoomsState, saveRoomsState, useRoomsState } from "@/lib/rooms/store";
 import { useLauncherTucked } from "@/components/chat/useLauncherTucked";
 
 const loadWindow = () => import("./RoomsWindow");
+const IST_DAY = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" });
+const istToday = () => IST_DAY.format(new Date());
 const RoomsWindow = lazy(loadWindow);
 
 export default function RoomsLauncher() {
@@ -43,13 +50,14 @@ export default function RoomsLauncher() {
     const cached = readRoomsState();
     if (!cached || !badgeCacheFresh(cached.at, Date.now())) {
       fetchRooms()
-        .then((r) => saveRoomsState({ unread: r.unread, hiddenUntil: r.hiddenUntil }))
+        .then((r) => saveRoomsState({ unread: r.unread, waiting: r.waiting, hiddenUntil: r.hiddenUntil }))
         .catch(() => {
           // The badge is a hint; the window shows the real list.
         });
     }
     function onOpen() {
       void loadWindow();
+      markCirclesSeen(istToday());
       setOpen(true);
     }
     window.addEventListener(OPEN_ROOMS_EVENT, onOpen);
@@ -98,8 +106,10 @@ export default function RoomsLauncher() {
 
   const hidden = buttonHidden(hiddenUntil, Date.now());
   const unread = state?.unread ?? 0;
-  const badge = badgeText(unread);
-  const label = unread > 0 ? `Exam circles, ${unread} unread` : "Exam circles";
+  const count = bubbleCount({ unread, waiting: state?.waiting ?? 0, seenDay: state?.seenDay ?? null, today: istToday() });
+  const badge = badgeText(count);
+  const label =
+    count === 0 ? "Exam circles" : unread > 0 ? `Exam circles, ${unread} unread` : "Exam circles, today's question is up";
 
   if (hidden && !open) return null;
 
@@ -107,13 +117,20 @@ export default function RoomsLauncher() {
     <div className="chat-launcher-offset fixed left-4 z-50 print:hidden">
       {open && (
         <Suspense fallback={null}>
-          <RoomsWindow onClose={() => setOpen(false)} onUnread={(n) => saveRoomsState({ unread: n })} onHide={hide} />
+          <RoomsWindow
+            onClose={() => setOpen(false)}
+            onCounts={(c) => saveRoomsState(c)}
+            onHide={hide}
+          />
         </Suspense>
       )}
       {!hidden && (
         <button
           type="button"
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            markCirclesSeen(istToday());
+            setOpen(true);
+          }}
           onPointerEnter={() => void loadWindow()}
           onTouchStart={() => void loadWindow()}
           onFocus={() => void loadWindow()}

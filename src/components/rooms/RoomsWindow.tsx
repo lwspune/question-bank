@@ -4,7 +4,9 @@
  * The exam rooms window (owner, 2026-11-25; mockup
  * https://claude.ai/artifact/2sYYprVehbTXjsuw69faX4). Full screen on a phone,
  * a panel at the LEFT from `sm` up, mirroring V's on the right. Three screens:
- * the student's rooms (joined first, then the other exams on their profile),
+ * the student's rooms (joined first, then the other exams on their profile,
+ * or their guessed exam while none is chosen; a circle not joined says when
+ * today's question is up, 2026-11-27),
  * a room's Join screen with its rules, and the room itself.
  *
  * No live connection (phase 1): an open room asks for new messages while the
@@ -53,6 +55,7 @@ import { ROOM_TEXT_MAX } from "@/lib/rooms/text";
 import { NICK_MAX, suggestNickname } from "@/lib/rooms/nickname";
 import { backAtLabel, hideUntilFor } from "@/lib/rooms/button";
 import type { RoomMessageView, RoomQuestionView } from "@/lib/rooms/view";
+import type { RoomListItem } from "@/lib/rooms/list";
 import { groupRoomItems, systemLineText } from "@/lib/rooms/systemLines";
 import type { RoomReportReason } from "@/lib/rooms/validate";
 
@@ -129,11 +132,12 @@ function RoomAvatar({
 
 export default function RoomsWindow({
   onClose,
-  onUnread,
+  onCounts,
   onHide,
 }: {
   onClose: () => void;
-  onUnread: (n: number) => void;
+  /** Fresh badge numbers for the bubble (lib/rooms/store). */
+  onCounts: (c: { unread: number; waiting: number }) => void;
   /** Hide the rooms button for focused study (lib/rooms/button). */
   onHide: (mode: "2h" | "off") => void;
 }) {
@@ -143,17 +147,17 @@ export default function RoomsWindow({
 
   // The parent's callback through a ref: depending on it would re-run the
   // fetch on every parent render (a loop, tests/rooms-store.test.ts).
-  const onUnreadRef = useRef(onUnread);
+  const onCountsRef = useRef(onCounts);
   useEffect(() => {
-    onUnreadRef.current = onUnread;
-  }, [onUnread]);
+    onCountsRef.current = onCounts;
+  }, [onCounts]);
 
   const reload = useCallback(async () => {
     try {
       const r = await fetchRooms();
       setRooms(r);
       setLoadError(null);
-      onUnreadRef.current(r.unread);
+      onCountsRef.current({ unread: r.unread, waiting: r.waiting });
     } catch (e) {
       setLoadError(errorText(e));
     }
@@ -215,6 +219,51 @@ export default function RoomsWindow({
   );
 }
 
+/** A circle the student has not joined: its name, whether today's question is up, and Join. */
+function NotJoinedRow({
+  room,
+  onJoin,
+}: {
+  room: RoomListItem;
+  onJoin: (slug: string, name: string) => void;
+}) {
+  return (
+    <>
+      <RoomAvatar name={room.name} />
+      <span className="min-w-0 flex-1">
+        <span className="block font-semibold">{room.name}</span>
+        {room.today ? (
+          <span className="block text-sm font-semibold text-brand-accent">
+            Today&apos;s question is up
+          </span>
+        ) : (
+          <span className="block text-sm text-muted-foreground">
+            Daily question, doubts on PYQs
+          </span>
+        )}
+      </span>
+      <button
+        type="button"
+        onClick={() => onJoin(room.slug, room.name)}
+        aria-label={
+          room.today
+            ? `Join the ${room.name} circle, today's question is up`
+            : `Join the ${room.name} circle`
+        }
+        className="relative inline-flex h-9 shrink-0 items-center rounded-full border-[1.5px] border-brand px-4 text-sm font-semibold text-brand-accent hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        Join
+        {room.today && (
+          <span
+            aria-hidden
+            className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-red-600 ring-2 ring-background"
+          />
+        )}
+      </button>
+    </>
+  );
+}
+
 function RoomList({
   rooms,
   error,
@@ -271,7 +320,7 @@ function RoomList({
             circles
           </p>
         )}
-        {rooms && rooms.joined.length === 0 && rooms.others.length === 0 && (
+        {rooms && rooms.joined.length === 0 && rooms.others.length === 0 && rooms.guessed.length === 0 && (
           <div className="px-4 py-8 text-sm text-muted-foreground">
             <p>Choose your exams to see their circles.</p>
             <a
@@ -337,27 +386,36 @@ function RoomList({
                   key={r.slug}
                   className="flex items-center gap-3 px-4 py-2.5"
                 >
-                  <RoomAvatar name={r.name} />
-                  <span className="min-w-0 flex-1">
-                    <span className="block font-semibold">{r.name}</span>
-                    <span className="block text-sm text-muted-foreground">
-                      Daily question, doubts on PYQs
-                    </span>
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => onJoin(r.slug, r.name)}
-                    aria-label={`Join the ${r.name} circle`}
-                    className="inline-flex h-9 shrink-0 items-center rounded-full border-[1.5px] border-brand px-4 text-sm font-semibold text-brand-accent hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  >
-                    Join
-                  </button>
+                  <NotJoinedRow room={r} onJoin={onJoin} />
                 </li>
               ))}
             </ul>
           </>
         )}
-        {rooms && (rooms.joined.length > 0 || rooms.others.length > 0) && (
+        {rooms && rooms.guessed.length > 0 && (
+          <>
+            <h3 className="px-4 pb-1 pt-5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Our guess for your exam
+            </h3>
+            <ul>
+              {rooms.guessed.map((r) => (
+                <li key={r.slug} className="flex items-center gap-3 px-4 py-2.5">
+                  <NotJoinedRow room={r} onJoin={onJoin} />
+                </li>
+              ))}
+            </ul>
+            <p className="mx-4 mt-3 text-xs leading-relaxed text-muted-foreground">
+              Joining adds {rooms.guessed[0].name} to your exams.{" "}
+              <a
+                href="/account"
+                className="font-semibold text-brand-accent underline-offset-4 hover:underline"
+              >
+                Choose a different exam
+              </a>
+            </p>
+          </>
+        )}
+        {rooms && (rooms.joined.length > 0 || rooms.others.length > 0) && rooms.guessed.length === 0 && (
           <p className="mx-4 mt-6 rounded-xl bg-muted p-3 text-xs leading-relaxed text-muted-foreground">
             You see circles only for the exams on your profile.{" "}
             <a
@@ -482,8 +540,12 @@ function JoinRoom({
   async function join() {
     setBusy(true);
     try {
-      await joinRoom(slug, nickname);
-      toast.success(`You joined the ${name} circle as ${nickname.trim()}.`);
+      const r = await joinRoom(slug, nickname);
+      toast.success(
+        r.promoted
+          ? `You joined the ${name} circle as ${nickname.trim()}. ${name} is now one of your exams.`
+          : `You joined the ${name} circle as ${nickname.trim()}.`
+      );
       onJoined();
     } catch (e) {
       toast.error(errorText(e));

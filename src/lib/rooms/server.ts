@@ -8,6 +8,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { buildRoomList, type RoomListItem } from "./list";
+import { joinDecision, waitingCount } from "./alert";
+import { loadStoredGuess } from "@/lib/profile/examGuessServer";
 import { checkNickname } from "./nickname";
 import { toMessageView, type RoomMessageRow, type RoomMessageView, type RoomQuestionView } from "./view";
 import type { RoomReportReason } from "./validate";
@@ -55,10 +57,29 @@ function nicknameTaken(err: { code?: string; message: string } | null): boolean 
 
 export type RoomSummary = RoomListItem & { last: { name: string; body: string; at: string } | null };
 
+const IST_DAY = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" });
+
+/** Of these circles, the ones whose pinned (morning) question was posted today, IST. */
+async function pinnedTodayOf(db: SupabaseClient, slugs: readonly string[], now: Date): Promise<Set<string>> {
+  if (slugs.length === 0) return new Set();
+  const { data, error } = await db
+    .from("exam_room_messages")
+    .select("exam_slug, created_at")
+    .in("exam_slug", [...slugs])
+    .eq("pinned", true)
+    .is("hidden_at", null);
+  if (error) throw new Error(`rooms pinned today: ${error.message}`);
+  const today = IST_DAY.format(now);
+  return new Set(
+    (data ?? []).filter((r) => IST_DAY.format(new Date(r.created_at as string)) === today).map((r) => r.exam_slug as string)
+  );
+}
+
 export async function loadRoomList(
   db: SupabaseClient,
-  userId: string
-): Promise<{ joined: RoomSummary[]; others: RoomListItem[]; hiddenUntil: string | null }> {
+  userId: string,
+  now: Date = new Date()
+): Promise<{ joined: RoomSummary[]; others: RoomListItem[]; guessed: RoomListItem[]; waiting: number; hiddenUntil: string | null }> {
   const [profile, summaries, closedRows] = await Promise.all([
     profileOf(db, userId),
     db.rpc("exam_room_summaries", { p_user_id: userId }),
@@ -73,12 +94,19 @@ export async function loadRoomList(
     last_body: string | null;
     last_at: string | null;
   }[];
+  // The guess matters only while nothing is chosen (lib/rooms/list).
+  const guessExam = profile.targets.length === 0 ? (await loadStoredGuess(db, userId))?.exam ?? null : null;
+  const joinedSlugs = new Set(rows.map((r) => r.exam_slug));
+  const notJoined = [...profile.targets, ...(guessExam ? [guessExam] : [])].filter((s) => !joinedSlugs.has(s));
+  const pinnedToday = await pinnedTodayOf(db, notJoined, now);
   const list = buildRoomList({
     targetExams: profile.targets,
+    guessExam,
     nameOf: roomName,
-    joined: new Set(rows.map((r) => r.exam_slug)),
+    joined: joinedSlugs,
     closed: new Set((closedRows.data ?? []).map((r) => r.exam_slug as string)),
     unread: new Map(rows.map((r) => [r.exam_slug, r.unread])),
+    pinnedToday,
   });
   const bySlug = new Map(rows.map((r) => [r.exam_slug, r]));
   return {
@@ -87,6 +115,8 @@ export async function loadRoomList(
       return { ...item, last: r?.last_at ? { name: r.last_name ?? "", body: r.last_body ?? "", at: r.last_at } : null };
     }),
     others: list.others,
+    guessed: list.guessed,
+    waiting: waitingCount(list),
     hiddenUntil: profile.hiddenUntil,
   };
 }
@@ -103,13 +133,19 @@ async function requireMember(db: SupabaseClient, userId: string, slug: string): 
   return { displayName: data.display_name as string, lastReadId: Number(data.last_read_id) };
 }
 
-/** Join a room of one of the student's exams. Idempotent. */
-export async function joinRoom(db: SupabaseClient, userId: string, slug: string, rawNickname: string): Promise<void> {
+/**
+ * Join a room of one of the student's exams, or, while they have chosen none,
+ * of their guessed exam (owner, 2026-11-27), which then becomes a chosen exam.
+ * Idempotent. Returns whether the guess was made a chosen exam.
+ */
+export async function joinRoom(db: SupabaseClient, userId: string, slug: string, rawNickname: string): Promise<{ promoted: boolean }> {
   if (!roomName(slug)) throw new RoomAccessError("There is no circle for that exam.", 404);
   const nick = checkNickname(rawNickname);
   if (!nick.ok) throw new RoomAccessError(nick.error, 400);
   const targets = await targetExams(db, userId);
-  if (!targets.includes(slug)) throw new RoomAccessError("Add this exam to your profile to join its circle.", 403);
+  const guess = targets.length === 0 ? (await loadStoredGuess(db, userId))?.exam ?? null : null;
+  const decision = joinDecision({ targets, guess, slug });
+  if (!decision.ok) throw new RoomAccessError("Add this exam to your profile to join its circle.", 403);
 
   const room = await db.from("exam_rooms").upsert({ exam_slug: slug }, { onConflict: "exam_slug", ignoreDuplicates: true });
   if (room.error) throw new Error(`rooms create: ${room.error.message}`);
@@ -130,6 +166,20 @@ export async function joinRoom(db: SupabaseClient, userId: string, slug: string,
   );
   if (nicknameTaken(member.error)) throw new RoomAccessError(TAKEN, 409);
   if (member.error) throw new Error(`rooms join: ${member.error.message}`);
+
+  if (!decision.promote) return { promoted: false };
+  // The guessed exam becomes a chosen one, only while nothing is chosen: a
+  // choice saved meanwhile (another tab) is never overwritten. A guessed
+  // student may have no profile row yet (the saveIntlTargets pattern).
+  const row = await db.from("student_profiles").upsert({ user_id: userId }, { onConflict: "user_id", ignoreDuplicates: true });
+  if (row.error) throw new Error(`rooms profile row: ${row.error.message}`);
+  const promote = await db
+    .from("student_profiles")
+    .update({ target_exams: [slug], updated_at: new Date().toISOString() })
+    .eq("user_id", userId)
+    .eq("target_exams", "{}");
+  if (promote.error) throw new Error(`rooms promote guess: ${promote.error.message}`);
+  return { promoted: true };
 }
 
 /** A new room nickname for new messages; old ones keep the name they were sent under. */
