@@ -82,6 +82,9 @@ const OFFICIAL_HOSTS = [
   "iiseradmission.in",
   // The Services Preparatory Institute (Government of Maharashtra), boys' and girls' sites.
   "spicsn.com",
+  // The Greater Bombay Science Teachers' Association, which runs the Homi Bhabha
+  // Balvaidnyanik Competition and posts its rules, schedule and papers only here.
+  "msta.in",
 ];
 
 const INTERNAL_RE = /^\/(?!\/)[A-Za-z0-9\-._~/?#&=%+:,]*$/;

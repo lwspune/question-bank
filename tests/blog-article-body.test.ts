@@ -33,6 +33,11 @@ describe("checkHref", () => {
     expect(checkHref("https://spicsn.com/wp-content/uploads/2026/10/Advt-2027-SPI.pdf")).toMatchObject({ official: true });
     expect(checkHref("https://girlspinashik.spicsn.com/")).toMatchObject({ official: true });
     expect(checkHref("https://notspicsn.com/")).toMatchObject({ official: false });
+    // The Greater Bombay Science Teachers' Association, which runs the Homi Bhabha
+    // Balvaidnyanik Competition and publishes its rules, schedule and papers only here.
+    expect(checkHref("https://msta.in/homi-bhabha-exams/")).toMatchObject({ official: true });
+    expect(checkHref("https://registration.msta.in/")).toMatchObject({ official: true });
+    expect(checkHref("https://notmsta.in/")).toMatchObject({ official: false });
     expect(checkHref("https://indianexpress.com/x")).toEqual({ ok: true, external: true, official: false });
   });
 
