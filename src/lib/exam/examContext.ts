@@ -360,7 +360,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/nda", // exam hub: lists Maths + Physics + Biology notes
     hasMocks: true, // 18 NDA Maths Paper I mocks published at /mock
     pastPaperSolutions: true,
-    learnPath: "/learn/nda-maths", // Concept Ladder's NDA Maths course, Class 11 and 12 (2026-11-22)
+    learnPath: "/learn#nda", // Concept Ladder's NDA Maths (2026-11-22), Physics and Chemistry (2026-11-27): the hub's NDA group
   },
   {
     slug: "mht-cet",
@@ -370,6 +370,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "MHT-CET",
     guidesPath: "/guide/mht-cet", // hub: MHT-CET Maths + Physics (Template C) + Chemistry (execution-mode strands)
     notesPath: "/notes/mht-cet", // exam hub: MHT-CET Maths notes
+    learnPath: "/learn#mht-cet", // Learn: Maths, Physics, Chemistry (2026-11-27), its own courses
     hasMocks: true, // 60 mocks: Paper I (Maths) + Paper II (Phy & Chem) per sitting
     pastPaperSolutions: true,
   },
@@ -384,6 +385,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     pastPaperSolutions: true,
     guidesPath: "/guide/jee-mains", // hub: JEE Mains Maths (Template C, tiers on recent weight, 2026-09-30)
     notesPath: "/notes/jee-mains", // exam hub: "coming soon" until JEE notes ship
+    learnPath: "/learn#jee-mains", // Learn: Maths, Physics, Chemistry (2026-11-27), its own courses
   },
   {
     slug: "cds",
@@ -417,6 +419,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "NEET", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/neet", // exam hub: "coming soon" until NEET notes ship
+    learnPath: "/learn#neet", // Learn: Physics, Chemistry (2026-11-27); no Biology course in Concept Ladder yet
     hasMocks: true, // 8 NEET (UG) mocks (2021-2026 + 2 Re-NEET) published at /mock
     pastPaperSolutions: true,
   },
@@ -501,7 +504,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // gets the /board reader + the "Board" nav tab
     board: "Maharashtra State Board",
     std: 12,
-    learnPath: "/learn/mh-hsc-12-maths", // Learn tab (2026-10-27 experiment)
+    learnPath: "/learn#mh-hsc-12", // Learn: Maths (2026-10-27 experiment), Physics, Chemistry, Biology (2026-11-27)
   },
   {
     slug: "cbse-10",
@@ -560,6 +563,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "CBSE Class 11", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/cbse-11", // exam hub: "coming soon" until notes ship
+    learnPath: "/learn#cbse-11", // Learn: Maths, Physics, Chemistry (2026-11-27)
     practiceOnly: true, // NCERT textbook corpus; Class 11 is not a board year, so this exam can NEVER carry PYQs (the mh-sb-11 shape, unlike cbse-12 where CBSE PYQs are a later phase)
     boardExam: true, // NCERT textbook content → gets the /board reader + the "Board" nav tab
     board: "CBSE",
@@ -617,7 +621,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // textbook content → keeps the /board reader + "Board" nav tab
     board: "CBSE",
     std: 12,
-    learnPath: "/learn/cbse-12-maths", // Learn tab (2026-10-27 experiment)
+    learnPath: "/learn#cbse-12", // Learn: Maths (2026-10-27 experiment), Physics, Chemistry (2026-11-27)
   },
   {
     slug: "isc-12",
@@ -734,6 +738,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     mixedFormats: true, // 1,176 subjective vs 111 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-sb-9", // exam hub: "coming soon" until notes ship
+    learnPath: "/learn/mh-sb-9-maths", // Learn: Maths (2026-11-27)
     practiceOnly: true, // Balbharati textbook exercises/solved-examples corpus (9th is not a board year → no PYQs) → /browse defaults to Practice
     boardExam: true, // textbook content → gets the /board reader + the "Board" nav tab
     board: "Maharashtra State Board",
@@ -748,6 +753,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     mixedFormats: true, // 2,738 subjective vs 203 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-sb-11", // exam hub: "coming soon" until notes ship
+    learnPath: "/learn#mh-sb-11", // Learn: Maths, Physics, Chemistry, Biology (2026-11-27)
     practiceOnly: true, // Balbharati textbook exercises/solved-examples corpus (11th is not a board year → no PYQs) → /browse defaults to Practice
     boardExam: true, // textbook content → gets the /board reader + the "Board" nav tab
     board: "Maharashtra State Board",
@@ -769,6 +775,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     bilingual: true,
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-ssc-10", // exam hub: "coming soon" until notes ship
+    learnPath: "/learn/mh-ssc-10-maths", // Learn: Maths (2026-11-27)
     hasMocks: true, // 12 chapter tests published 2026-10-06
     // NOT practiceOnly: Class 10 IS a board year → these are real past-year board
     // papers (question_kind='pyq'), so /browse defaults to the PYQ view.
