@@ -16,6 +16,8 @@ export default function VRevealReply({
   links,
   labels,
   onNavigate,
+
+  onOpenNotes,
   onGrow,
   onDone,
 }: {
@@ -23,6 +25,10 @@ export default function VRevealReply({
   links?: string[];
   labels?: Readonly<Record<string, string>>;
   onNavigate?: () => void;
+
+  /** A notes part link opens in the panel over V (2026-11-27). */
+
+  onOpenNotes?: (href: string, from: HTMLButtonElement) => void;
   /** The bubble grew: keep the list scrolled to the bottom. */
   onGrow?: () => void;
   /** Every line is out: the card and thumbs under the reply may show. */
@@ -57,7 +63,7 @@ export default function VRevealReply({
       aria-busy={shown < steps.length}
       className={shown < steps.length ? "cursor-pointer" : undefined}
     >
-      <VReplyText text={steps.slice(0, shown).join("").replace(/\n+$/, "")} links={links} labels={labels} onNavigate={onNavigate} />
+      <VReplyText text={steps.slice(0, shown).join("").replace(/\n+$/, "")} links={links} labels={labels} onNavigate={onNavigate} onOpenNotes={onOpenNotes} />
     </span>
   );
 }

@@ -643,9 +643,14 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/7c\. /);
     expect(p).toMatch(/call chapter_overview/);
     expect(p).toMatch(/weak at/i);
-    expect(p).toMatch(/one part at a time/i);
-    // 2026-11-21: it may name the student's waiting mistakes and a part to start at; the rule must not say "first part" over it.
-    expect(p).toMatch(/the part it says to start at/i);
+    // 2026-11-27 (owner): V teaches in its own words only where neither Learn nor notes teach the chapter.
+    expect(p).toMatch(/where neither does, teach one topic at a time/i);
+    // 2026-11-21: it may name the student's waiting mistakes and a topic to start at; the rule must not say "first" over it.
+    expect(p).toMatch(/the topic it says to start at/i);
+    // 2026-11-27: the old rule said "with their mistake as the example" while the tool said "an example of
+    // your own" and kept the mistake for Your turn. The two now agree.
+    expect(p).not.toMatch(/their mistake as the example/i);
+    expect(p).toMatch(/one small example of your own/i);
     // 2026-11-21 (owner's phone): the Go on button asks for a part by number; a card and buttons
     // carry the map, the notes and "go on", so V never writes them as text.
     expect(p).toMatch(/with part N/i);
@@ -654,7 +659,9 @@ describe("buildSystemPrompt", () => {
     // 2026-11-22: Learn first wherever it teaches the chapter; its Go on asks for a lesson by number.
     expect(p).toMatch(/Teach me lesson 3 of/);
     // Second change the same day (owner): on a Learn chapter the map is the reply and a tap plays the lesson.
-    expect(p).toMatch(/Learn lessons teach the chapter, the card above your reply is the lesson map and a tap plays the lesson/);
+    // 2026-11-27 (owner): a notes chapter too; a tap opens the part's notes in a panel.
+    expect(p).toMatch(/Where our Learn lessons or notes teach the chapter, the card above your reply is the map/);
+    expect(p).toMatch(/a tap plays the lesson or opens the part's notes/);
     expect(p).toMatch(/teach nothing yourself/);
     // Its answers and pages are usable like the other tools'.
     expect(p).toMatch(/returned by [^.]*chapter_overview/);

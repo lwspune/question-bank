@@ -10,6 +10,12 @@
 -- From the lesson update (2026-11-21) the lesson's buttons send messages too
 -- (place lesson_go_on / lesson_simpler / lesson_notes): read the typed second
 -- message row beside the any-message row before applying the 30% bar.
+-- From the pick change (2026-11-27, set live_from to its push day for that
+-- readout): on a notes chapter the student taps a part, which opens its notes in
+-- a panel and sends NO message (place notes_part; notes_full = left the panel for
+-- the full page). So "went on" = a part opened or a second message. notes_part
+-- is kept once a day per student, so a second Teach me chat the same day can
+-- only count by its messages.
 
 with params as (
   select timestamptz '2026-11-21 00:00+05:30' as live_from,   -- set to the deploy day (India midnight)
@@ -64,7 +70,17 @@ went_on as (
              and n.message not like 'Explain part % more simply.'
              and n.message not like 'Teach me lesson %'
              and n.message not like 'Explain lesson % more simply.'
-         ) as second_typed
+         ) as second_typed,
+         -- A notes part opened from the map (2026-11-27): the first that day, at or after this chat.
+         exists (
+           select 1 from public.user_activity a
+           where a.user_id = t.user_id
+             and a.kind = 'surface_viewed'
+             and a.metadata->>'surface' = 'teach_chapter'
+             and a.metadata->>'from' = 'notes_part'
+             and a.created_at >= t.created_at
+             and a.created_at < t.created_at + interval '1 day'
+         ) as opened_part
   from taught t
 )
 select 'place' as kind, place as label, students_shown, students_tapped,
@@ -77,5 +93,9 @@ from went_on
 union all
 select 'taught', 'chats opened by Teach me: a typed second message', count(*), count(*) filter (where second_typed),
        round(100.0 * count(*) filter (where second_typed) / nullif(count(*), 0), 1)
+from went_on
+union all
+select 'taught', 'chats opened by Teach me: a part opened or a second message', count(*), count(*) filter (where opened_part or second_message),
+       round(100.0 * count(*) filter (where opened_part or second_message) / nullif(count(*), 0), 1)
 from went_on
 order by kind, label;

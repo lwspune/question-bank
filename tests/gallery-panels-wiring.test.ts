@@ -37,7 +37,8 @@ describe("the Visuals viewer's panels", () => {
   it("the notes panel can name where closing goes and hand focus back", () => {
     const teach = read("src", "components", "reveal", "TeachPanel.tsx");
     expect(teach).toMatch(/closeHint = "Close to go back to your question"/);
-    expect(teach).toMatch(/returnFocusTo\?\.current\?\.focus\(\)/);
+    // Focus still goes back; since 2026-11-27 without scrolling ({ preventScroll: true }), so V can show Your turn.
+    expect(teach).toMatch(/returnFocusTo\?\.current\?\.focus\((\{ preventScroll: true \})?\)/);
     expect(teach).toMatch(/diagramNoteShown\(c, skipDiagramNoteFor\)/);
   });
 });
