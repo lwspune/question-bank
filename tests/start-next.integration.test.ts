@@ -15,6 +15,7 @@ import { randomUUID } from "node:crypto";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { mustSignIn } from "./helpers/fixture";
 import { testRunId } from "./helpers/runId";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -44,11 +45,14 @@ describe.skipIf(!HAS_ENV)("Start next reads (0242)", () => {
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
     anon = createClient(url, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, { auth: { persistSession: false } });
 
-    // Three PUBLIC questions of one exam, two in one chapter and one in another.
+    // Three PUBLIC questions of one exam, two in one chapter and one in another. SEED rows only
+    // (2026-11-27): any PUBLIC row could be another file's fixture, deleted mid-run, and failed
+    // this file twice in full runs while it passed alone.
     const { data: rows, error } = await admin
       .from("questions")
       .select("id, exam_id, chapter_id")
       .eq("visibility", "PUBLIC")
+      .like("content_hash", `${SEED_CONTENT_HASH_PREFIX}%`)
       .limit(200);
     if (error) throw new Error(error.message);
     const byExam = new Map<string, { id: string; chapter_id: string }[]>();

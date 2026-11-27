@@ -22,6 +22,11 @@ export const REFERRAL_FRIEND_PCT = 25;
 export const REFERRAL_REWARD_DAYS = 30;
 export const REFERRAL_MAX_REWARDS = 6;
 
+/** What V tells students about inviting a friend (2026-11-27), built from the offer's own numbers. */
+export const REFERRAL_V_FACT =
+  `Invite a friend: on /me (Invite a friend), a student gets their own link. A friend who signs up with it gets ${REFERRAL_FRIEND_PCT}% off their first pass, ` +
+  `and when the friend buys one, the student gets ${REFERRAL_REWARD_DAYS} days of the Premium Pass free, up to ${REFERRAL_MAX_REWARDS * REFERRAL_REWARD_DAYS} days.`;
+
 /** Capitals and digits a student can read aloud: no 0/O, 1/I. 32 symbols. */
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const CODE_LENGTH = 8;

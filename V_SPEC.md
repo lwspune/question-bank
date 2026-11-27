@@ -312,6 +312,14 @@ reads everything else from the stored row.
    job, failures by kind (false not-found, ungrounded, wrong, refused something
    answerable, made-up apology), thumbs, and practice within 30 minutes of a
    reply. Read-only, free.
+1a. **Gap list:** `npm run v:denials` (2026-11-27): the week's replies where V
+   denied a feature or said it had no information about the product
+   (`scripts/lib/vDenials.ts`). Each real one is a fact V lacks: add it (a
+   `V_FACT` beside the code it describes where there is one, else
+   `facts.ts`) and make the message a case. About half the hits are true or
+   off-topic (a "no" to a pass length we do not sell, a physics "there is no
+   buoyancy"); read, do not count. On its first run it found 23 in 30 days,
+   ~11 of them real gaps.
 2. **New failures become cases** (`v:eval:seed`).
 2a. **Follow-up line:** `npm run v:followups`: the share of V's replies the
    student followed up within 30 minutes, a week at a time (repeat Ask V taps
@@ -482,3 +490,14 @@ reads everything else from the stored row.
   (expects no 7%) and bc8c0da3 expects "no CLAT" (live since 11-11); the
   other new failures pass on rerun (run 7ea48498, 5/5). Invented apologies
   ("correct my earlier reply") are rare since 11-08 but not gone: 2 in a week.
+- 2026-11-27: V knowledge gaps. A Practice Pass holder asked about the ₹300
+  /pricing showed them for Premium (their upgrade price); V said "PYQ Vault
+  has no ₹300 pass" and warned them not to pay anyone. In 30 days V had
+  denied or "had no information" about 8 real features. Shipped: rule 1a
+  (a fact V lacks is never a "no", save PASSES ON SALE and EXAMS), rule 6d (a
+  lower price is the student's own), THEIR PASS in the tail
+  (`lib/chat/ownPass.ts`, checkout's own upgrade price), and V_FACT sentences
+  beside the billing code (upgrade, Vault Points, invites, renewal), plus the
+  gap list (step 1a). 8 new cases; run b9750dc5 11/11 on the touched cases.
+  The replay cannot carry a student's pass, so the exact ₹300 was checked by
+  hand with a made-up Practice Pass: V quoted ₹300 and the same end date.

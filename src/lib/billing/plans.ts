@@ -31,6 +31,14 @@ import { countryName } from "@/lib/acquisition/country";
 
 export const SELLABLE_SCOPES: readonly string[] = [SCOPE_MOCKS, SCOPE_PRACTICE, SCOPE_TEACHER, SCOPE_IMAT, SCOPE_MCAT];
 
+/**
+ * What V tells students about paying (2026-11-27): asked "Is the 199 rs one
+ * time payment", V said it had no details on renewal. Every pass is one
+ * Razorpay or Paddle order; nothing here charges again.
+ */
+export const PASS_RENEWAL_V_FACT =
+  "Paying for a pass: it is paid once, for its length, and does not renew or charge again on its own. When it ends, the student can buy a pass again on /pricing.";
+
 /** Which site sells a plan (migration 0203): www in INR, intl.pyqvault.com in USD. */
 export type PlanSite = "pyqvault" | "intl";
 export type PlanCurrency = "INR" | "USD";

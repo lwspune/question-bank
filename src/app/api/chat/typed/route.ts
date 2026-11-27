@@ -395,6 +395,8 @@ export async function POST(request: NextRequest) {
             country,
             signedIn: ownId !== null,
             profileExamSlugs: profile?.examSlugs ?? [],
+            // Their own pass and upgrade price (2026-11-27): V called a ₹300 upgrade price a payment outside the site.
+            loadOwnPasses: ownId ? () => loadEntitlements(admin, ownId) : null,
             language: profile?.language ?? null,
             saveLanguage: ownId ? (lang) => saveVLanguage(ownId, lang) : null,
             question: asked,
