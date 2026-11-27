@@ -18,6 +18,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { testRunId } from "./helpers/runId";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -124,7 +125,7 @@ describe.skipIf(!HAS_ENV)("exam rooms (0289)", () => {
   });
 
   it("keeps one pin per room and swaps it in one call", async () => {
-    const { data: q } = await admin.from("questions").select("id").eq("question_format", "mcq").limit(1).single();
+    const { data: q } = await admin.from("questions").select("id").eq("question_format", "mcq").like("content_hash", `${SEED_CONTENT_HASH_PREFIX}%`).limit(1).single();
     const first = await admin.rpc("post_exam_room_daily", { p_exam_slug: ROOM, p_question_id: q!.id, p_body: "Today's question." });
     expect(first.error).toBeNull();
     const second = await admin.rpc("post_exam_room_daily", { p_exam_slug: ROOM, p_question_id: q!.id, p_body: "Swapped." });

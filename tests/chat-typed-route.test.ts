@@ -349,21 +349,26 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     // Two chapter pages, so the page carries a chapter line too (2026-10-19), and neither path is a nav fact.
     const pageA = "/questions/cbse-12/physics/atoms";
     const pageB = "/board/mh-hsc-12/chemistry/solid-state";
-    await POST(post({ message: `route-${RUN}-cache1 atoms`, pagePath: pageA }));
-    await POST(post({ message: `route-${RUN}-cache2 nuclei`, pagePath: pageB }));
+    // A tag per attempt: the retry found the first attempt's row and failed on two (2026-11-27).
+    const tag = `route-${RUN}-${Date.now()}`;
+    await POST(post({ message: `${tag}-cache1 atoms`, pagePath: pageA }));
+    await POST(post({ message: `${tag}-cache2 nuclei`, pagePath: pageB }));
     const [systemA, systemB] = [askV.mock.calls[0][0].system as string, askV.mock.calls[1][0].system as string];
     expect(systemA).not.toContain(pageA);
     expect(systemB).not.toContain(pageB);
-    // The live numbers (bank size, free limits) are read per question, and a neighbouring test file can
-    // change them between the two calls in the shared test database: 177 -> 178 questions, then a free
-    // limit 5 -> 2, each failed a push on 2026-10-19. The page is what must not change the prompt.
-    const withoutNumbers = (s: string) => s.replace(/\d+/g, "N");
-    expect(withoutNumbers(systemA)).toBe(withoutNumbers(systemB));
+    // The live data (bank size, free limits, the passes on sale) is read per question, and a neighbouring
+    // test file can change it between the two calls in the shared test database: 177 -> 178 questions,
+    // then a free limit 5 -> 2 (2026-10-19), then plans.integration's test pass on sale (2026-11-27). The
+    // page is what must not change the prompt.
+    const withoutLiveData = (s: string) =>
+      s.replace(/PASSES ON SALE\n[\s\S]*?\n\nWHERE THINGS ARE/, "PASSES ON SALE\n\nWHERE THINGS ARE").replace(/\d+/g, "N");
+    expect(withoutLiveData(systemA)).toContain("PASSES ON SALE\n\nWHERE THINGS ARE");
+    expect(withoutLiveData(systemA)).toBe(withoutLiveData(systemB));
     expect(askV.mock.calls[0][0].systemTail).not.toBe(askV.mock.calls[1][0].systemTail);
     const { data } = await admin
       .from("chat_interactions")
       .select("cache_read_tokens, cache_write_tokens, cache_write_1h_tokens")
-      .like("message", `route-${RUN}-cache1%`);
+      .like("message", `${tag}-cache1%`);
     expect(data).toEqual([{ cache_read_tokens: 2800, cache_write_tokens: 1200, cache_write_1h_tokens: 1200 }]);
   });
 

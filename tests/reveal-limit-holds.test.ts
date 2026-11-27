@@ -9,9 +9,11 @@
  * running code from before a deploy, a new surface that skipped the claim, or
  * someone reading answers out of the page.
  *
- * It measures against today's limit and passes (none of either is kept as
- * history), so a limit lowered mid-day or a lapsed pass can name a student
- * wrongly. Read the student's day before acting: the query is in migration 0229.
+ * Each answer is checked against the passes held when it was opened (0294: on
+ * 2026-11-27 a trial that ended the same evening named a student who had
+ * answered under it). It still measures against TODAY's limit, which is kept
+ * as no history, so a limit lowered mid-day can name a student wrongly. Read
+ * the student's day before acting: the query is in migration 0294.
  * Yesterday, not today: today's count is still moving.
  */
 import { describe, it, expect } from "vitest";

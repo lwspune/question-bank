@@ -36,6 +36,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { testRunId } from "./helpers/runId";
+import { takeSettingsTurn } from "./helpers/settingsTurn";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -99,7 +100,10 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       .select("id")
       .single();
 
+  // The shared settings row, one file at a time (helpers/settingsTurn.ts): taken before reading it.
+  let releaseSettings: (() => void) | null = null;
   beforeAll(async () => {
+    releaseSettings = await takeSettingsTurn("free-mock-limit.integration");
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
@@ -305,20 +309,24 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   });
 
   afterAll(async () => {
-    if (saved) {
-      await admin.from("paywall_settings").update(saved).eq("id", true);
+    try {
+      if (saved) {
+        await admin.from("paywall_settings").update(saved).eq("id", true);
+      }
+      // Deleting the mocks cascades their attempts; deleting users cascades the rest.
+      const all = [
+        ...mockIds, ...chapterIds, ...imatMockIds, ...markedMockIds,
+        ...freeTestIds.full, ...freeTestIds.sectional, ...freeTestIds.custom,
+      ];
+      if (all.length) await admin.from("mock_tests").delete().in("id", all);
+      if (imatExamId) await admin.from("exams").delete().eq("id", imatExamId);
+      if (markedExamId) await admin.from("exams").delete().eq("id", markedExamId);
+      if (freeExamId) await admin.from("exams").delete().eq("id", freeExamId);
+      if (orgId) await admin.from("organizations").delete().eq("id", orgId);
+      for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
+    } finally {
+      releaseSettings?.();
     }
-    // Deleting the mocks cascades their attempts; deleting users cascades the rest.
-    const all = [
-      ...mockIds, ...chapterIds, ...imatMockIds, ...markedMockIds,
-      ...freeTestIds.full, ...freeTestIds.sectional, ...freeTestIds.custom,
-    ];
-    if (all.length) await admin.from("mock_tests").delete().in("id", all);
-    if (imatExamId) await admin.from("exams").delete().eq("id", imatExamId);
-    if (markedExamId) await admin.from("exams").delete().eq("id", markedExamId);
-    if (freeExamId) await admin.from("exams").delete().eq("id", freeExamId);
-    if (orgId) await admin.from("organizations").delete().eq("id", orgId);
-    for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
   });
 
   it("lets a student start three different mocks, then refuses the fourth with PT402", async () => {
