@@ -1,4 +1,7 @@
 import "server-only";
+import { unstable_cache } from "next/cache";
+import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
+import { singleFlight } from "@/lib/cache/singleFlight";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { type Lesson, lessonFromRaw, type RawLesson } from "./lessonFromRaw";
 import type { Outline } from "./lessonState";
@@ -23,12 +26,22 @@ async function rpc<T>(fn: string, args: Record<string, unknown> = {}): Promise<T
   return data as T;
 }
 
+// The course list and each outline change only on a `learn:import`, and every lesson page reads ALL
+// the outlines (lessonProps: which courses a lesson sits in). With 27 courses (2026-11-27) that is
+// 1.7 MB a render, so each is kept for a day (the pages' own revalidate), one load per process at a
+// time. Per course, not one entry for all: the data cache refuses an entry over 2 MB (largest
+// outline 119 KB).
+const cachedCourseList = unstable_cache(() => rpc<CourseRow[]>("learn_course_list"), ["learn-course-list-v1"], { revalidate: 86400 });
+const cachedOutline = unstable_cache((course: string) => rpc<Outline | null>("learn_course_outline", { p_course: course }), ["learn-outline-v1"], {
+  revalidate: 86400,
+});
+
 export function listCourses(): Promise<CourseRow[]> {
-  return rpc<CourseRow[]>("learn_course_list");
+  return singleFlight("learn-course-list", cachedCourseList, { rememberFailureMs: buildFailureMemoMs() });
 }
 
 export function getOutline(course: string): Promise<Outline | null> {
-  return rpc<Outline | null>("learn_course_outline", { p_course: course });
+  return singleFlight(`learn-outline:${course}`, () => cachedOutline(course), { rememberFailureMs: buildFailureMemoMs() });
 }
 
 export async function getAllOutlines(): Promise<Outline[]> {

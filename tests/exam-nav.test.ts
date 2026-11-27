@@ -85,12 +85,14 @@ describe("resolveExamNav", () => {
     expect(resolveExamNav("cds", IDS).guidesHref).toBe("/guide/cds");
   });
 
-  it("sends Learn to the exam's course, or to the Learn hub when it has none", () => {
+  it("sends Learn to the exam's course, its group on the Learn hub when it has several, or the hub when it has none", () => {
     // Learn is a tab for every visitor (2026-10-28); an exam without lessons
     // lands on /learn, which says they are coming and lists what is ready.
-    expect(resolveExamNav("mh-hsc-12", IDS).learnHref).toBe("/learn/mh-hsc-12-maths");
-    expect(resolveExamNav("cbse-12", IDS).learnHref).toBe("/learn/cbse-12-maths");
-    expect(resolveExamNav("nda", IDS).learnHref).toBe("/learn/nda-maths");
+    // Several subjects per exam since 2026-11-27: the hub's group for that exam.
+    expect(resolveExamNav("mh-hsc-12", IDS).learnHref).toBe("/learn#mh-hsc-12");
+    expect(resolveExamNav("cbse-12", IDS).learnHref).toBe("/learn#cbse-12");
+    expect(resolveExamNav("nda", IDS).learnHref).toBe("/learn#nda");
+    expect(resolveExamNav("mh-sb-9", IDS).learnHref).toBe("/learn/mh-sb-9-maths");
     expect(resolveExamNav("cds", IDS).learnHref).toBe("/learn");
     expect(resolveExamNav(null, IDS).learnHref).toBe("/learn");
   });

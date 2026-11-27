@@ -1,5 +1,8 @@
-// Copied from Concept Ladder (src/lib/richText.ts, afca8bf).
+// Copied from Concept Ladder (src/lib/richText.ts, 806bca7).
 import katex from "katex";
+// Registers \ce and \pu (chemical formulas, equations and units) on KaTeX, as Concept Ladder does.
+// Lessons are drawn on the server, so a phone downloads none of it.
+import "katex/contrib/mhchem";
 import type { RenderedBlock, RenderedInline } from "./renderedText";
 
 /**

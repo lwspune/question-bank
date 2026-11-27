@@ -1142,7 +1142,7 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
             : undefined;
       // A Learn lesson's map counts as shown (experiment v-learn-first, 2026-11-22); the server keeps one a day per student.
       if (lesson?.kind === "learn" && lesson.showMap) {
-        sendActivityOnce(`teach_chapter:learn_shown:${lesson.exam}:${lesson.chapter}`, { kind: "surface_viewed", surface: "teach_chapter", action: "shown", from: "lesson_learn" });
+        sendActivityOnce(`teach_chapter:learn_shown:${lesson.exam}:${lesson.chapter}`, { kind: "surface_viewed", surface: "teach_chapter", action: "shown", from: "lesson_learn", ...(lesson.course ? { course: lesson.course } : {}) });
       }
       // A Learn lesson's own check question, when no other card took the slot (2026-11-22).
       const learnTry = !card && lesson?.tryLearn ? { ...lesson.tryLearn, n: lesson.current } : undefined;
@@ -1304,7 +1304,7 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
                       onNavigate={close}
                       placement="above"
                       onOpenLesson={(target) => {
-                        sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_learn" });
+                        sendActivity({ kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_learn", ...(t.lesson?.course ? { course: t.lesson.course } : {}) });
                         setPlaying(target);
                       }}
                     />

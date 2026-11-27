@@ -395,12 +395,15 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       if (raw.chapterId !== undefined && (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId))) {
         return { ok: false, error: "Invalid chapter id." };
       }
+      // The Learn course of a lesson map (2026-11-27), so v-learn-first reads its first three Maths courses apart from the rest.
+      if (raw.course !== undefined && (typeof raw.course !== "string" || !GALLERY_SLUG_RE.test(raw.course))) return { ok: false, error: "Invalid course." };
       const chapterId = typeof raw.chapterId === "string" ? raw.chapterId : null;
+      const course = typeof raw.course === "string" ? raw.course : null;
       return {
         ok: true,
         value: {
           kind: "surface_viewed",
-          metadata: { surface: "teach_chapter", action: raw.action, from: raw.from, ...(chapterId ? { chapterId } : {}) },
+          metadata: { surface: "teach_chapter", action: raw.action, from: raw.from, ...(chapterId ? { chapterId } : {}), ...(course ? { course } : {}) },
           dedupeKey: `view:teach_chapter:${raw.action}:${raw.from}:${chapterId ?? "-"}:${userId}:${istDayKey(now)}`,
         },
       };

@@ -1,6 +1,6 @@
 /**
  * PROD-CONTRACT: Learn's links for V (src/lib/learn/vLinks.ts) vs the live Learn
- * outlines and the live taxonomy (2026-11-22).
+ * outlines and the live taxonomy (2026-11-22; every subject and the generated chapter links 2026-11-27).
  *
  * Both files are hand-declared facts matched by NAME and SLUG at request time, so a
  * near-miss does not error: a renamed topic silently stops counting mistakes against
@@ -23,10 +23,24 @@ const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE
 /** The exam whose topics a course's lessons are filed under, as the database names it (NDA since 2026-11-22). */
 const BOARD_EXAM: Record<string, string> = { "cbse-12-maths": "CBSE Class 12", "mh-hsc-12-maths": "Maharashtra HSC Class 12", "nda-maths": "NDA" };
 
+/** The pages of a read, 1,000 rows at a time (PostgREST's cap). */
+async function allRows<T>(page: (from: number, to: number) => PromiseLike<{ data: unknown; error: unknown }>): Promise<T[]> {
+  const out: T[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await page(from, from + 999);
+    if (error) throw error;
+    const rows = (data ?? []) as T[];
+    out.push(...rows);
+    if (rows.length < 1000) return out;
+  }
+}
+
 describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy", () => {
   let client: SupabaseClient;
   const outlines = new Map<string, Outline>();
-  /** `${exam}|${chapter}` → topic names. */
+  /** `${exam}|${subject}|${chapter}` of every bank chapter in the linked exams. */
+  const chapters = new Set<string>();
+  /** `${exam}|${subject}|${chapter}` → topic names, for the board courses' exams. */
   const bank = new Map<string, Set<string>>();
 
   beforeAll(async () => {
@@ -37,15 +51,23 @@ describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy",
       outlines.set(course, data as Outline);
     }
     const exams = [...new Set(Object.keys(LEARN_CHAPTER_LINKS).map((k) => k.split("|")[0]))];
-    const { data, error } = await client
-      .from("subtopics")
-      .select("name, chapter:chapters!inner(name, subject:subjects!inner(name, exam:exams!inner(name)))")
-      .in("chapter.subject.exam.name", exams)
-      .in("chapter.subject.name", ["Mathematics", "Maths"])
-      .limit(5000);
-    if (error) throw error;
-    for (const r of (data ?? []) as unknown as { name: string; chapter: { name: string; subject: { exam: { name: string } } } }[]) {
-      const key = `${r.chapter.subject.exam.name}|${r.chapter.name}`;
+    type ChapterRow = { name: string; subject: { name: string; exam: { name: string } } };
+    const chapterRows = await allRows<ChapterRow>((from, to) =>
+      client.from("chapters").select("name, subject:subjects!inner(name, exam:exams!inner(name))").in("subject.exam.name", exams).order("id").range(from, to),
+    );
+    for (const r of chapterRows) chapters.add(`${r.subject.exam.name}|${r.subject.name}|${r.name}`);
+    type TopicRow = { name: string; chapter: ChapterRow };
+    const topicRows = await allRows<TopicRow>((from, to) =>
+      client
+        .from("subtopics")
+        .select("name, chapter:chapters!inner(name, subject:subjects!inner(name, exam:exams!inner(name)))")
+        .in("chapter.subject.exam.name", Object.values(BOARD_EXAM))
+        .in("chapter.subject.name", ["Mathematics", "Maths"])
+        .order("id")
+        .range(from, to),
+    );
+    for (const r of topicRows) {
+      const key = `${r.chapter.subject.exam.name}|${r.chapter.subject.name}|${r.chapter.name}`;
       if (!bank.has(key)) bank.set(key, new Set());
       bank.get(key)!.add(topicKey(r.name));
     }
@@ -56,8 +78,13 @@ describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy",
       const ch = outlines.get(link.course)?.chapters.find((c) => c.slug === link.chapter);
       expect(ch, `${key}: no Learn chapter ${link.course}/${link.chapter}`).toBeDefined();
       for (const p of link.parts ?? []) expect(p <= (ch?.parts.length ?? 0), `${key}: no part ${p}`).toBe(true);
-      expect(bank.has(key), `${key}: no such bank chapter`).toBe(true);
+      expect(chapters.has(key), `${key}: no such bank chapter`).toBe(true);
     }
+  });
+
+  it("every live course chapter has a link, so V can teach from it (2026-11-27)", () => {
+    const linked = new Set(Object.values(LEARN_CHAPTER_LINKS).map((l) => `${l.course}/${l.chapter}`));
+    for (const [course, outline] of outlines) for (const ch of outline.chapters) expect(linked.has(`${course}/${ch.slug}`), `${course}/${ch.slug}`).toBe(true);
   });
 
   it("every board lesson has topics, every listed lesson is live, and every topic exists", () => {

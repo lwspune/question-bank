@@ -73,6 +73,8 @@ export type ClientEvent =
       action: "shown" | "tap";
       from: TeachChapterFrom;
       chapterId?: string;
+      /** A Learn lesson map's course (2026-11-27). */
+      course?: string;
     }
   | {
       /** The stuck offer seen, or one of its buttons tapped (lib/questions/stuckOffer). */

@@ -21,6 +21,9 @@ import { languageLine, type VLanguage } from "./language";
 import { followUpTailLine } from "./followUp";
 import { isAskVMessage } from "./askVEvent";
 import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
+import { LEARN_BANK_CHAPTERS } from "@/lib/learn/bankLinks.generated";
+import { courseHref } from "@/lib/learn/links";
+import { SUBJECT_NAMES } from "@/lib/learn/subjects";
 
 export type ChatExamFact = {
   /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
@@ -172,10 +175,27 @@ export function buildIntlFreeFacts(limits: FreeLimits | null): string[] {
   ];
 }
 
-/** The Learn courses, from the registry's learnPath, so a new course reaches V without an edit here. */
+/**
+ * The Learn courses, from the generated chapter-link file (`npm run learn:links`), so a new course
+ * reaches V without an edit here. Each course by its own link: V's reply links stop at "#", so an
+ * exam's hub anchor (its learnPath when it has several subjects) would link only to /learn.
+ */
 function learnLine(): string {
-  const courses = EXAM_REGISTRY.filter((e) => e.learnPath).map((e) => `${e.displayName} (${e.learnPath})`);
-  return `/learn: step-by-step Maths lessons, one idea at a time: a short lesson, then questions until the student has it, with the mistake behind each wrong answer explained. Courses: ${courses.join(", ")}. In the account menu.`;
+  const byExam = new Map<string, string[]>();
+  for (const key of Object.keys(LEARN_BANK_CHAPTERS)) {
+    const course = key.split("/")[0];
+    const exam = course.slice(0, course.lastIndexOf("-"));
+    const list = byExam.get(exam) ?? [];
+    if (!list.includes(course)) list.push(course);
+    byExam.set(exam, list);
+  }
+  const subjectOf = (course: string) => course.slice(course.lastIndexOf("-") + 1);
+  const order = Object.keys(SUBJECT_NAMES);
+  const courses = EXAM_REGISTRY.filter((e) => byExam.has(e.slug)).map((e) => {
+    const list = [...byExam.get(e.slug)!].sort((a, b) => order.indexOf(subjectOf(a)) - order.indexOf(subjectOf(b)));
+    return `${e.displayName} ${e.slug} (${list.map(subjectOf).join(", ")})`;
+  });
+  return `/learn: step-by-step lessons, one idea at a time: a short lesson, then questions until the student has it, with the mistake behind each wrong answer explained. A course is ${courseHref("<exam>-<subject>")}, e.g. ${courseHref("nda-physics")}. Courses: ${courses.join("; ")}. In the account menu.`;
 }
 
 /** Hand-written: there's no registry for "what's at this route", and building

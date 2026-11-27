@@ -29,13 +29,14 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 export async function readStuckOffer(db: SupabaseClient, admin: SupabaseClient, userId: string, questionId: string): Promise<StuckOffer | null> {
   const { data: q, error: qErr } = await db
     .from("questions")
-    .select("subtopic_id, exam:exams(name), chapter:chapters(name)")
+    .select("subtopic_id, exam:exams(name), chapter:chapters(name, subject:subjects(name))")
     .eq("id", questionId)
     .maybeSingle();
   if (qErr || !q?.subtopic_id) return null;
   const subtopicId = q.subtopic_id as string;
   const examName = (q.exam as { name?: string } | null)?.name ?? null;
   const chapterName = (q.chapter as { name?: string } | null)?.name ?? null;
+  const subjectName = (q.chapter as { subject?: { name?: string } | null } | null)?.subject?.name ?? null;
 
   const { data: rows, error } = await db
     .from("user_activity")
@@ -76,8 +77,8 @@ export async function readStuckOffer(db: SupabaseClient, admin: SupabaseClient, 
 
   // Learn first where it teaches the question (2026-11-22); a failed read keeps the notes panel.
   const learn =
-    examName && chapterName
-      ? await learnTargetForQuestion(db, { exam: examName, chapter: chapterName, subtopic: name.name as string }).catch((e) => {
+    examName && subjectName && chapterName
+      ? await learnTargetForQuestion(db, { exam: examName, subject: subjectName, chapter: chapterName, subtopic: name.name as string }).catch((e) => {
           console.error("stuck offer: Learn unavailable", questionId, e);
           return null;
         })

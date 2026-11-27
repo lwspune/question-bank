@@ -65,6 +65,8 @@ export type VLesson = {
   tryOwn: boolean;
   /** A Learn lesson's check question to try instead; null off Learn. */
   tryLearn: LearnTry | null;
+  /** The Learn course the map comes from (2026-11-27, for the readout); absent off Learn. */
+  course?: string;
 };
 
 export function lessonOrder(parts: readonly LessonPart[]): number[] {
