@@ -47,9 +47,9 @@ export type PartnerCourse = {
   url: string;
 };
 
-/** The line under a card: who runs the course, and that a tap leaves PYQ Vault. */
+/** The line under a card: who runs the course, that a tap needs an account (2026-11-27), and that it leaves PYQ Vault. */
 export function providerLine(provider: Provider): string {
-  return `From ${PROVIDERS[provider].from}. Opens their site.`;
+  return `From ${PROVIDERS[provider].from}. Needs a free account, then opens their site.`;
 }
 
 /**
@@ -177,6 +177,14 @@ export function joinNames(names: readonly string[]): string {
 /** Our own tap link for a course (counted, then sent on to the partner). */
 export function tapHref(course: Pick<PartnerCourse, "id">): string {
   return `/api/partner-course/${course.id}`;
+}
+
+/**
+ * Where a signed-out tap goes (owner, 2026-11-27): sign up, then back through
+ * the same tap link, which counts it against the account and sends it on.
+ */
+export function signInHref(course: Pick<PartnerCourse, "id">): string {
+  return `/signup?next=${encodeURIComponent(tapHref(course))}`;
 }
 
 export function courseById(id: string): PartnerCourse | null {
