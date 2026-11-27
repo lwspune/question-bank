@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
-import { safeNextPath, signedInHome, withNext } from "@/lib/auth/redirect";
+import { safeNextPath, signedInHome, withNext, needsFullLoad } from "@/lib/auth/redirect";
 import { signInErrorMessage } from "@/lib/auth/credentials";
 import { cn } from "@/lib/utils";
 import { readOwnRole } from "@/components/auth/useGoogleOneTap";
@@ -65,7 +65,12 @@ function LoginSection() {
       return;
     }
     const role = next ? null : await readOwnRole(signedIn.user.id).catch(() => null);
-    router.replace(next ?? signedInHome(role));
+    const destination = next ?? signedInHome(role);
+    if (needsFullLoad(destination)) {
+      window.location.assign(destination);
+      return;
+    }
+    router.replace(destination);
     router.refresh();
   }
 

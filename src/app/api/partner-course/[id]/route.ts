@@ -21,10 +21,11 @@
  * when signed in, else one per browser by a random first-party id (qb_vid, a
  * year, httpOnly). Staff are left out at read time.
  *
- * The login page returns to `next` with a client navigation, whose background
- * fetch (header `rsc: 1`) cannot follow an off-site redirect, so the browser
- * loads the link again for real. That fetch is sent on but not counted, or each
- * returning student would count twice.
+ * Sign-in returns to this link with a full page load (`needsFullLoad`). If a
+ * client navigation ever reaches it instead, its background fetch (header
+ * `rsc: 1`) cannot follow the off-site redirect and the browser loads the link
+ * again for real, so that fetch is sent on but not counted, or the student
+ * would count twice.
  */
 import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";

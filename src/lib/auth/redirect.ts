@@ -31,6 +31,15 @@ export function withNext(path: string, next: string | null): string {
   return safe === "" ? path : `${path}?next=${encodeURIComponent(safe)}`;
 }
 
+/**
+ * A `next` that is a route handler (e.g. /api/partner-course/[id], which
+ * redirects off-site) must be opened with a full page load: a client
+ * navigation fetches it in the background and cannot follow that redirect.
+ */
+export function needsFullLoad(path: string): boolean {
+  return path.startsWith("/api/");
+}
+
 /** An org role, or null for a signed-in person with no org membership (a student). */
 export type OrgRole = "ADMIN" | "TEACHER" | null;
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { safeNextPath, signedInAuthPageRedirect, signedInHome, withNext } from "@/lib/auth/redirect";
+import { safeNextPath, signedInAuthPageRedirect, signedInHome, withNext, needsFullLoad } from "@/lib/auth/redirect";
 
 describe("safeNextPath", () => {
   it("returns the fallback for non-string input", () => {
@@ -107,5 +107,16 @@ describe("withNext (switching between sign-up and sign-in keeps where the studen
   it("drops an off-site next rather than carrying it", () => {
     expect(withNext("/login", "//evil.example")).toBe("/login");
     expect(withNext("/login", "https://evil.example")).toBe("/login");
+  });
+});
+
+describe("needsFullLoad (a sign-in returning to a link that leaves the app)", () => {
+  it("is true for a route handler such as the course tap link", () => {
+    expect(needsFullLoad("/api/partner-course/cds-sikandar-3")).toBe(true);
+  });
+  it("is false for an app page", () => {
+    expect(needsFullLoad("/me")).toBe(false);
+    expect(needsFullLoad("/welcome?next=%2Fapi%2Fpartner-course%2Fx")).toBe(false);
+    expect(needsFullLoad("/apiary")).toBe(false);
   });
 });
