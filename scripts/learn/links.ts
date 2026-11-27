@@ -65,7 +65,8 @@ async function main() {
   }
   const file = renderBankLinksFile(links, bundle.commit.slice(0, 7));
   if (check) {
-    const now = readFileSync(OUT, "utf8");
+    // Line endings ignored: a Windows checkout turns them into CRLF.
+    const now = readFileSync(OUT, "utf8").replace(/\r\n/g, "\n");
     if (now !== file) {
       console.error(`${OUT} is stale: run npm run learn:links -- --from=${from} and commit it.`);
       process.exit(1);
