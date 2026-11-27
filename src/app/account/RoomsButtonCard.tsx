@@ -43,7 +43,7 @@ export default function RoomsButtonCard() {
     try {
       const r = await setRoomsButton(next);
       saveRoomsState({ hiddenUntil: r.hiddenUntil });
-      toast.success(r.hiddenUntil ? `${hiddenLabel(r.hiddenUntil)}.` : "Rooms button shown.");
+      toast.success(r.hiddenUntil ? `${hiddenLabel(r.hiddenUntil)}.` : "Circles button shown.");
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Could not save.");
     } finally {
@@ -54,13 +54,13 @@ export default function RoomsButtonCard() {
   return (
     <section className="my-6 rounded-xl border bg-card p-6" aria-labelledby="rooms-button">
       <h2 id="rooms-button" className="text-base font-semibold">
-        Exam rooms button
+        Exam circles button
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        The round chat button at the bottom left. Hiding it keeps your rooms: open them from the account menu.
+        The round chat button at the bottom left. Hiding it keeps your circles: open them from the account menu.
       </p>
       <fieldset className="mt-4 space-y-2" disabled={saving}>
-        <legend className="sr-only">Show or hide the exam rooms button</legend>
+        <legend className="sr-only">Show or hide the exam circles button</legend>
         <label className={OPTION}>
           <input type="radio" name="rooms-button" checked={mode === "show"} onChange={() => choose("show")} className="h-4 w-4 accent-brand" />
           Show

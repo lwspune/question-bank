@@ -22,7 +22,7 @@ export default function ExamRoomsMenuItem({ className }: { className: string }) 
   async function showNow() {
     const before = state?.hiddenUntil ?? null;
     saveRoomsState({ hiddenUntil: null });
-    toast.success("Rooms button is back.");
+    toast.success("Circles button is back.");
     try {
       const r = await setRoomsButton("show");
       saveRoomsState({ hiddenUntil: r.hiddenUntil });
@@ -37,7 +37,7 @@ export default function ExamRoomsMenuItem({ className }: { className: string }) 
       <Popover.Close asChild>
         <button type="button" onClick={openRoomsWindow} className={className}>
           <MessagesSquare className="h-4 w-4" aria-hidden />
-          Exam rooms
+          Exam circles
           {unread > 0 && (
             <span className="ml-auto rounded-full bg-red-600 px-2 py-0.5 text-xs font-semibold tabular-nums text-white">
               <span className="sr-only">Unread: </span>

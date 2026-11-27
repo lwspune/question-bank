@@ -11,7 +11,7 @@ function RoomPicker({ rooms, fixed }: { rooms: { slug: string; name: string }[];
   if (fixed) return <input type="hidden" name="slug" value={rooms[0].slug} />;
   return (
     <label className="block text-sm">
-      Room
+      Circle
       <select name="slug" required className={`${FIELD} mt-1 w-full`}>
         {rooms.map((r) => (
           <option key={r.slug} value={r.slug}>

@@ -200,6 +200,7 @@ Then save any plan at `/dashboard/pricing` (or wait a day) so the cached plan li
 
 ### Exam rooms (migration 0289, 2026-11-25)
 
+- **Students and staff see them as "Exam circles"** (renamed 2026-11-26). Addresses, tables and code still say rooms: `/dashboard/rooms`, `exam_room_*`, `npm run rooms:daily`.
 - **Moderation:** `/dashboard/rooms` (superadmin). A message reported by 3 members hides itself; Keep shows it again (earlier reports stop counting), Hide keeps it hidden, Mute author 7 days stops them posting in that room. The evening email (`rooms-digest.yml`, 18:30 IST) lists the same plus doubts nobody answered for 2+ hours.
 - **Switch a room off:** Close room on the dashboard (`exam_rooms.open = false`). Students stop seeing it and nobody can post; its history stays.
 - **Daily question:** `rooms-daily.yml` at 07:00 IST pins one per open room with members, and a student's join pins one at once when the room has none from today (migration 0291), so a room never waits for tomorrow. To change today's, paste a question id into Swap today's question (a PUBLIC MCQ of that exam, no figure). By hand: `npm run rooms:daily` (dry run) shows the plan; to post it now, run the workflow from the Actions tab (`gh workflow run rooms-daily.yml`).

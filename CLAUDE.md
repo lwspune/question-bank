@@ -391,6 +391,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **Day one's rooms were empty** because the push (07:31 IST) missed the 07:00 run; now a join pins one at once, under a lock (`post_exam_room_daily_if_missing`) so nothing pins twice.
   - **Lines are message rows written by triggers** (`author_kind 'system'`): first join of a room only, answers folded and never right/wrong; never unread, reported, replied to or counted.
   - **`/dashboard/rooms/<exam>`:** whole chat with emails, hidden ones too, and each option's count for staff only. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Renamed "Exam circles" on screen the same day** (owner: "room" reads negatively); code, tables, URLs and `exam-rooms` keep "room".
 - **2026-11-25 (third) — CBSE Class 12 Maths board notes, all 13 chapters (3,180 q); answers cleaned; CBSE PCM complete (no migration).**
   - **Integrals split over two agents** (indefinite / definite) with page slugs fixed up front and tag maps merged; concept slugs prefixed per half.
   - **Maths answers needed method-note removal more than dash removal** ("verified numerically", scans, decimal arguments, binomial checks); student check lines kept.

@@ -26,9 +26,9 @@ export default async function RoomsAdminPage() {
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-6">
         <BackToDashboard />
         <header>
-          <h1 className="text-2xl font-semibold tracking-tight">Exam rooms</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Exam circles</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            One room per exam, opened from the bubble at the bottom left. A message is hidden by itself after 3 reports; keep or hide each one
+            One circle per exam, opened from the bubble at the bottom left. A message is hidden by itself after 3 reports; keep or hide each one
             here. The evening email lists these too, with doubts nobody answered.
           </p>
         </header>
