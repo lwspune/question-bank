@@ -128,6 +128,39 @@ describe("/api/billing/parent-order: a parent pays the upgrade price", () => {
   });
 });
 
+const INSTAGRAM_ANDROID =
+  "Mozilla/5.0 (Linux; Android 13; RMX3363 Build/TP1A.220905.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.6723.107 Mobile Safari/537.36 Instagram 356.0.0.41.101 Android";
+
+describe("every Razorpay order names the phone and browser (2026-11-27)", () => {
+  const withUa = (url: string, body: unknown) =>
+    new NextRequest(url, {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: { "content-type": "application/json", "x-vercel-ip-country": "IN", "user-agent": INSTAGRAM_ANDROID },
+    });
+
+  it("on a student's own order, even the fullest one (upgrade + points), within Razorpay's 15 notes", async () => {
+    vi.mocked(loadEntitlements).mockResolvedValueOnce([practiceRow()]);
+    vi.mocked(readFixPoints).mockResolvedValueOnce({ points: 12, pct: 12, oldestAt: null });
+    await order(withUa("http://localhost/api/billing/order", { planId: "mock-pass-6m" }));
+    const notes = vi.mocked(createOrder).mock.calls[0][0].notes;
+    expect(notes.device).toBe("android/instagram");
+    expect(notes.fixPoints).toBe("12");
+    expect(Object.keys(notes).length).toBeLessThanOrEqual(15);
+  });
+
+  it("on a parent's order", async () => {
+    vi.mocked(readParentLink).mockResolvedValueOnce({
+      code: "Vx9ZVknnkt", userId: STUDENT, planId: "mock-pass-6m", studentName: "Banti",
+      createdAt: new Date(Date.now() - 3_600_000).toISOString(),
+      expiresAt: new Date(Date.now() + 6 * 86_400_000).toISOString(),
+    });
+    vi.mocked(loadEntitlements).mockResolvedValue([]);
+    await parentOrder(withUa("http://localhost/api/billing/parent-order", { code: "Vx9ZVknnkt" }));
+    expect(vi.mocked(createOrder).mock.calls[0][0].notes.device).toBe("android/instagram");
+  });
+});
+
 describe("the grant marks an upgrade on the pass row", () => {
   it("the webhook's note keeps the points mark first", () => {
     const d = decideWebhook({

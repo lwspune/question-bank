@@ -93,6 +93,13 @@ export const FUNNEL_EVENTS = [
   "checkout_failed",
   "checkout_dismissed",
   /**
+   * A payment failed inside Razorpay's checkout (2026-11-26); prop kind
+   * ("declined" | "timed_out" | "no_balance" | "other", lib/billing/paymentFailure).
+   * Fires before the step that ends the checkout (paid on a retry, or dismissed),
+   * so it is not one of the "exactly one" outcomes above.
+   */
+  "checkout_payment_failed",
+  /**
    * An account took its one free Word download (2026-10-04, migration 0131);
    * prop: kind ("paper" | "key"). The table is the lasting record; this is the
    * funnel count beside teacher_gate_shown.

@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createOrder } from "@/lib/billing/razorpay";
+import { stampDeviceNotes } from "@/lib/billing/checkoutDevice";
 import { createPaddleTransaction, isPaddleConfigured, transactionBody } from "@/lib/billing/paddle";
 import { resolveOrderPlan, stampOrderNotes } from "@/lib/billing/plans";
 import { listActivePlans } from "@/lib/billing/plansQuery";
@@ -55,7 +56,10 @@ export async function POST(request: NextRequest) {
       amountPaise: terms.amountPaise,
       currency: "INR",
       receipt: `qb_ebook_${user.id.slice(0, 8)}`,
-      notes: stampEbookOrderNotes({ slug: terms.slug, listPaise: terms.listPaise, amountPaise: terms.amountPaise }, user.id),
+      notes: stampDeviceNotes(
+        stampEbookOrderNotes({ slug: terms.slug, listPaise: terms.listPaise, amountPaise: terms.amountPaise }, user.id),
+        request.headers.get("user-agent")
+      ),
     });
     if (!result.ok) {
       console.error("razorpay createOrder (ebook) failed:", result.error);
@@ -139,7 +143,8 @@ export async function POST(request: NextRequest) {
     amountPaise: Number(notes.amountPaise),
     currency: plan.currency,
     receipt: `qb_${plan.id}_${user.id.slice(0, 8)}`,
-    notes,
+    // The phone and browser, for reading failed payments (lib/billing/checkoutDevice, 2026-11-27).
+    notes: stampDeviceNotes(notes, request.headers.get("user-agent")),
   });
   if (!result.ok) {
     console.error("razorpay createOrder failed:", result.error);

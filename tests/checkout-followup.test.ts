@@ -7,12 +7,14 @@
 import { describe, it, expect } from "vitest";
 import {
   FOLLOWUP_QUIET_DAYS,
+  bookFollowupCandidates,
   buildFollowupEmail,
   followupCandidates,
   followupFirstName,
   followupMessage,
   followupWindow,
   keepUnpaid,
+  keepUnpaidBooks,
   type FollowupEvent,
   type FollowupRow,
 } from "@/lib/billing/checkoutFollowup";
@@ -144,6 +146,60 @@ describe("followupCandidates", () => {
   });
 });
 
+// Ebook checkouts (2026-11-26, owner): a book order is its own step,
+// book_checkout_opened, naming the book's slug. Listed the same way as a pass,
+// once per 14 days per kind; a student who also left a pass is listed for the
+// pass only, so one person gets one message.
+describe("bookFollowupCandidates", () => {
+  const book = (userId: string, at: Date, slug = "cbse-12-physics-repeated-pyqs"): FollowupEvent => ({
+    userId,
+    at,
+    step: "book_checkout_opened",
+    gate: "store",
+    planId: slug,
+    country: "IN",
+    reason: null,
+  });
+
+  it("lists a student who opened a book checkout in the window, naming their latest book", () => {
+    const c = bookFollowupCandidates([book("u1", hoursAgo(8), "a-book"), book("u1", hoursAgo(5))], WINDOW, NO_STAFF, new Set());
+    expect(c).toEqual([
+      { userId: "u1", slug: "cbse-12-physics-repeated-pyqs", openedAt: hoursAgo(8), lastOpenedAt: hoursAgo(5), country: "IN" },
+    ]);
+  });
+
+  it("leaves out the last hour, the quiet days before the window, staff and pass leavers", () => {
+    expect(bookFollowupCandidates([book("u1", hoursAgo(0.5))], WINDOW, NO_STAFF, new Set())).toEqual([]);
+    expect(bookFollowupCandidates([book("u1", daysAgo(5)), book("u1", hoursAgo(5))], WINDOW, NO_STAFF, new Set())).toEqual([]);
+    expect(bookFollowupCandidates([book("u1", hoursAgo(5))], WINDOW, new Set(["u1"]), new Set())).toEqual([]);
+    expect(bookFollowupCandidates([book("u1", hoursAgo(5))], WINDOW, NO_STAFF, new Set(["u1"]))).toEqual([]);
+  });
+
+  it("is not counted as a pass checkout, and a pass open does not quiet a book", () => {
+    expect(followupCandidates([book("u1", hoursAgo(5))], WINDOW, NO_STAFF)).toEqual([]);
+    expect(bookFollowupCandidates([open("u1", daysAgo(5)), book("u1", hoursAgo(5))], WINDOW, NO_STAFF, new Set())).toHaveLength(1);
+  });
+});
+
+describe("keepUnpaidBooks", () => {
+  const BOOKS = new Map([["cbse-12-physics-repeated-pyqs", { title: "CBSE 12 Physics Repeated PYQs", pricePaise: 14900 }]]);
+  const cand = { userId: "u1", slug: "cbse-12-physics-repeated-pyqs", openedAt: hoursAgo(5), lastOpenedAt: hoursAgo(5), country: "IN" };
+
+  it("keeps an unpaid book at the price checkout would charge", () => {
+    expect(keepUnpaidBooks([cand], new Map(), BOOKS, new Map(), NOW)).toEqual([{ ...cand, title: "CBSE 12 Physics Repeated PYQs", amountPaise: 14900 }]);
+  });
+
+  it("prices it with the pass-holder discount for a Premium holder", () => {
+    const premium = grant({ scope: "mocks", grantedAt: daysAgo(30).toISOString() });
+    expect(keepUnpaidBooks([cand], new Map(), BOOKS, new Map([["u1", [premium]]]), NOW)[0].amountPaise).toBe(11900);
+  });
+
+  it("drops a book the student owns and a book no longer on sale", () => {
+    expect(keepUnpaidBooks([cand], new Map([["u1", new Set(["cbse-12-physics-repeated-pyqs"])]]), BOOKS, new Map(), NOW)).toEqual([]);
+    expect(keepUnpaidBooks([{ ...cand, slug: "gone" }], new Map(), BOOKS, new Map(), NOW)).toEqual([]);
+  });
+});
+
 describe("keepUnpaid", () => {
   const [c] = followupCandidates([open("u1", hoursAgo(5))], WINDOW, NO_STAFF);
 
@@ -205,6 +261,23 @@ describe("followupMessage", () => {
     );
   });
 
+  // A failed payment (2026-11-26): a decline gets the "try again" line, naming
+  // FamPay when it was FamPay (5 of 5 retries after a FamPay decline paid).
+  it("tells a student whose UPI app declined to try again, naming FamPay", () => {
+    expect(followupMessage({ ...base, parentUrl: null, failure: { kind: "declined", app: "FamPay" } })).toBe(
+      "Hi Riya, this is Vilas. I built PYQ Vault. I saw your payment for the Practice Pass (₹199) for NDA didn't go through. FamPay often declines the first try, and trying again usually works. Paying with another UPI app works too. Any questions I can help with?"
+    );
+    expect(followupMessage({ ...base, parentUrl: null, failure: { kind: "declined", app: "PhonePe" } })).toContain(
+      "didn't go through. This often works on a second try, or with another UPI app. Any questions"
+    );
+  });
+
+  it("keeps the usual wording for a timeout or a low balance", () => {
+    for (const kind of ["timed_out", "no_balance", "other"] as const) {
+      expect(followupMessage({ ...base, failure: { kind, app: "FamPay" } })).toBe(followupMessage(base));
+    }
+  });
+
   it("has no em dash", () => {
     expect(followupMessage(base)).not.toMatch(/[—–]/);
   });
@@ -258,6 +331,15 @@ describe("buildFollowupEmail", () => {
     expect(email.subject).toBe("PYQ Vault: 1 student left checkout without paying");
     expect(email.text).toContain("Second Account");
     expect(email.text).not.toContain("First Account");
+  });
+
+  it("says what happened to a failed payment", () => {
+    const email = buildFollowupEmail([row({ failure: { kind: "declined", app: "FamPay" } })], NOW)!;
+    expect(email.text).toContain("payment failed: FamPay declined it");
+  });
+
+  it("names a pass or ebook checkout in the intro", () => {
+    expect(buildFollowupEmail([row({})], NOW)!.text).toContain("opened a pass or ebook checkout");
   });
 
   it("escapes a student's name in the HTML", () => {

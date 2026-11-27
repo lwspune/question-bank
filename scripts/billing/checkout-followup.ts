@@ -1,7 +1,8 @@
 /**
  * npm run billing:followup: the owner's 6 pm email of students who left a pass
- * checkout without paying, each with a WhatsApp link that opens with a message
- * typed (2026-11-19, owner).
+ * checkout (or, since 2026-11-26, an ebook checkout) without paying, each with
+ * a WhatsApp link that opens with a message typed (2026-11-19, owner). A
+ * payment that failed is named beside the student, read from Razorpay.
  *
  *   npm run billing:followup                            # DRY RUN: print the email, write nothing
  *   npm run billing:followup -- --at=2026-11-18T12:30:00Z   # as if run then (a past day's list)
