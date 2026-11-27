@@ -23,6 +23,12 @@ export const FIX_POINTS_MAX_PCT = 40;
 export const FIX_POINTS_WINDOW_DAYS = 30;
 export const COMBINED_DISCOUNT_CAP_PCT = 50;
 
+/** What V tells students about Vault Points (2026-11-27), built from the rule's own numbers. */
+export const FIX_POINTS_V_FACT =
+  `Vault Points: a student earns one point for each mistake they fix (a question they got wrong, then answer right), and each point is 1% off the Practice or Premium Pass, up to ${FIX_POINTS_MAX_PCT}%. ` +
+  `Only points from the last ${FIX_POINTS_WINDOW_DAYS} days count, and buying a pass starts the count again. A friend's invite discount adds to it, up to ${COMBINED_DISCOUNT_CAP_PCT}% off in all. ` +
+  "A student sees their points on /me and their price on /pricing.";
+
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /** The percentage `points` are worth: one each, capped, junk counts as none. */

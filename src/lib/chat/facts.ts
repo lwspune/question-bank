@@ -9,7 +9,10 @@
  * 2027", price, and help with a question on screen. No em dashes anywhere in
  * here, since the model copies the style it is shown.
  */
-import { formatPrice, planLengthLabel, type PlanCurrency } from "@/lib/billing/plans";
+import { formatPrice, planLengthLabel, PASS_RENEWAL_V_FACT, type PlanCurrency } from "@/lib/billing/plans";
+import { UPGRADE_V_FACT } from "@/lib/billing/upgrade";
+import { FIX_POINTS_V_FACT } from "@/lib/billing/fixPoints";
+import { REFERRAL_V_FACT } from "@/lib/referrals/referral";
 import type { FreeLimits } from "@/lib/billing/perkLimits";
 import type { VPageContext } from "./pageContext";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
@@ -139,6 +142,17 @@ export function buildPlanFacts(plans: readonly ChatPlanFact[]): string[] {
     const head = `${p.label}: ${formatPrice(p.amountPaise, p.currency ?? "INR")} for ${planLengthLabel(p)} (unlocks: ${p.scope}).`;
     return p.perks && p.perks.length > 0 ? `${head} What it gives: ${p.perks.join("; ")}.` : head;
   });
+}
+
+/**
+ * How pass prices work on www (2026-11-27): upgrading, Vault Points, the
+ * invite discount, and that a pass never renews. Each sentence lives beside
+ * the code it describes (lib/billing, lib/referrals), so changing a rule there
+ * changes what V says. Before, V knew only list prices and called a student's
+ * own ₹300 upgrade price a payment outside the site.
+ */
+export function buildPassRuleFacts(): string[] {
+  return [UPGRADE_V_FACT, FIX_POINTS_V_FACT, REFERRAL_V_FACT, PASS_RENEWAL_V_FACT];
 }
 
 /** What a free account gets today, from the live limits. A limit that is off is unlimited. */
@@ -338,6 +352,8 @@ export function buildNotesFacts(
 export type ChatFacts = {
   exams: readonly string[];
   plans: readonly string[];
+  /** How pass prices work: upgrade, Vault Points, invites, renewal (buildPassRuleFacts; www only). */
+  passRules?: readonly string[];
   /** What a free account gets (buildFreeFacts). */
   free?: readonly string[];
   bankTotal: number;
@@ -379,6 +395,11 @@ function siteText(facts: ChatFacts) {
       : `4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. It picks whole chapters (up to ${MAX_CHAPTERS}), not subtopics, so name the chapter to pick. For a whole past paper, point to /mock.`,
     boardTop10: intl ? "" : "; for board exams also point to each chapter's Top 10 PYQs on /board",
     payBy,
+    team: intl ? "/contact" : "/about",
+    // 2026-11-27: V called a Practice Pass holder's ₹300 upgrade price a payment outside the site.
+    ownPrice: intl
+      ? ""
+      : "\n6d. A price the student names that is not a list price in PASSES ON SALE is most likely their own price on /pricing: an upgrade from a pass they hold, Vault Points or a friend's invite discount. When THEIR PASS is given at the end, answer from it. Never call a price shown on our site a scam, and never tell them not to pay it. Warn about paying outside the site only when they say someone outside PYQ Vault asked them for money.",
     coverage: intl
       ? "Whether a pass covers other exams: each exam below says when it is free, and a pass is for the exam its perks name; link /pricing."
       : "Whether a pass is for one exam or all of them: each pass covers every exam on PYQ Vault, not just one, so a student preparing for two exams needs one pass; link /pricing.",
@@ -460,6 +481,7 @@ const PLAN_RULE = `8a. Planning (a plan, a timetable, what to study this week, h
 export function buildSystemPrompt(facts: ChatFacts): string {
   const examBlock = facts.exams.length ? facts.exams.join("\n") : "(no exams currently live)";
   const planBlock = facts.plans.length ? facts.plans.join("\n") : "(nothing is on sale right now)";
+  const passRulesBlock = facts.passRules && facts.passRules.length ? `\n${facts.passRules.join("\n")}` : "";
   const questionRule = facts.explainEnabled ? `${EXPLAIN_RULE}
 ${CONCEPT_RULE}` : NO_EXPLAIN_RULE;
   // The tools whose answers V may use (rule 1) and whose pages it may link (rule 2).
@@ -488,6 +510,7 @@ ${CONCEPT_RULE}` : NO_EXPLAIN_RULE;
 
 RULES
 1. Answer ONLY from the facts below and from what the ${listed(answerTools, "and")} tools return. Never guess, and never use outside knowledge about these exams or this product (exceptions: a textbook's chapter names, rule 3a${facts.explainEnabled ? ", and the labelled general explanation of rule 7a" : ""}).
+1a. A feature, page, button, option, discount, price rule or policy that the facts below do not name: never say we do not have it, that it does not exist, or that you have no information about it, because the facts may simply not mention it. Say you are not sure, and point to the page most likely to show it: /pricing for prices and passes, /account for their own pass, ${t.team} to ask the team about anything else. Two lists below are complete, so a plain no is right there: PASSES ON SALE (no other pass or length is sold) and EXAMS (rule 3e).
 2. Links: write site pages as bare paths such as /pricing, never [text](path). Use ONLY paths listed below or returned by ${listed(linkTools, "or")}. Never make up a path or a full web address.
 3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it, the page shows it, or their profile lists it (the page and the profile are given at the end when known); never guess the exam.${t.classNote} Then:
 - the chapters found are all in one exam: link the best one to three chapter pages.
@@ -504,7 +527,7 @@ ${t.tests}
 5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): call exam_strategy with the exam, and the subject if they named one. Quote only the percentages it returns and say they are shares of the past papers in our bank. Name the top two or three chapters, link their pages, and link the subject's guide from STRATEGY GUIDES when it gives one. If it asks which subject or which exam, ask the student. Never say you have no weightage data.
 6. Price, fees, cost, how to buy, buying: give each pass's price and length from PASSES ON SALE in one short sentence (a few words on what sets them apart), then the steps: open /pricing, sign in (or create a free account first), tap Buy on the pass they want, and pay by ${t.payBy}. Do not list what is free unless they ask. If you are not sure they mean our pass, still give the prices and the steps, then ask.
 6b. Free or not, what is free, what a free account gets: say what is free from FREE ACCOUNT, then that the cheapest pass in PASSES ON SALE removes the limits (name it and its price), and link /pricing.
-6c. Which pass to buy, the difference between the passes, what a pass gives: say what each pass gives from PASSES ON SALE, and link /pricing. ${t.coverage}
+6c. Which pass to buy, the difference between the passes, what a pass gives: say what each pass gives from PASSES ON SALE, and link /pricing. ${t.coverage}${t.ownPrice}
 ${t.paymentProblems}
 ${questionRule}
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link ${t.progressPath} (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}
@@ -525,7 +548,7 @@ FREE ACCOUNT
 ${freeBlock}
 
 PASSES ON SALE
-${planBlock}
+${planBlock}${passRulesBlock}
 
 WHERE THINGS ARE
 ${facts.nav.join("\n")}
@@ -590,6 +613,8 @@ export function buildSystemTail(who: {
   language?: VLanguage | null;
   /** "Show me where I went wrong" on a follow-up card: the question V explained before (V_LEARNING_LOOP.md step 2). */
   followsUp?: { stem: string | null } | null;
+  /** The student's own pass and upgrade price (lib/chat/ownPass.ts), signed in only. */
+  ownPass?: string | null;
 }): string {
   const parts: string[] = [];
   if (who.language) parts.push(languageLine(who.language));
@@ -621,6 +646,7 @@ export function buildSystemTail(who: {
       `Their exams, from their profile: ${who.profileExams.join(", ")}. When they name no exam and the page shows none, use these; if more than one fits, ask which.`
     );
   }
+  if (who.ownPass) parts.push(who.ownPass);
   if (!who.signedIn) parts.push(ONE_REPLY_RULE);
   return parts.join("\n\n");
 }

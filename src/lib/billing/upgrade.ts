@@ -35,6 +35,14 @@ import type { Plan } from "./plans";
 /** Razorpay's smallest charge, ₹1: an upgrade never costs less. */
 export const MIN_CHARGE_PAISE = 100;
 
+/**
+ * What V tells students about upgrading (2026-11-27): V called a Practice Pass
+ * holder's ₹300 upgrade price a payment outside the site. Kept beside the rule
+ * it describes so a change to the rule is a change to this sentence.
+ */
+export const UPGRADE_V_FACT =
+  "Upgrading: a student who paid for the Practice Pass pays less for the Premium Pass. The days left on their Practice Pass come off the price, and the Premium Pass ends on the same day the Practice Pass would have. Right after buying the Practice Pass, the upgrade costs the difference between the two passes' prices, and it gets lower as the days pass. /pricing shows each student their own price.";
+
 const DAY_MS = 86_400_000;
 const FALLBACK_LABEL = "current pass";
 

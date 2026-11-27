@@ -27,8 +27,11 @@ import {
   buildIntlNotesFacts,
   INTL_NAV_FACTS,
   buildAbroadFacts,
+  buildPassRuleFacts,
   type ChatSite,
 } from "./facts";
+import { ownPassLine } from "./ownPass";
+import type { Entitlement } from "@/lib/entitlements/access";
 import { LIVE_INTL_EXAMS } from "@/lib/sites/intl";
 import { forSite } from "@/lib/sites/siteScope";
 import { payMethods } from "@/lib/billing/paymentLine";
@@ -139,6 +142,8 @@ export async function loadVContext(
     saveLanguage?: ((lang: VLanguage) => Promise<boolean>) | null;
     /** The site V answers on (2026-11-19): www (the default) or intl.pyqvault.com. */
     site?: ChatSite;
+    /** The signed-in student's own pass rows (2026-11-27), for THEIR PASS in the tail; absent when signed out. */
+    loadOwnPasses?: (() => Promise<Entitlement[]>) | null;
   } = {}
 ): Promise<VContext> {
   const site: ChatSite = opts.site ?? "pyqvault";
@@ -150,13 +155,20 @@ export async function loadVContext(
   const registry = intl ? LIVE_INTL_EXAMS : PYQVAULT_EXAMS;
   // The bank total comes from the cached catalogue too (2026-11-08): it was its
   // own uncached count of every PUBLIC question on every message.
-  const [plans, limits, catalog] = await Promise.all([
+  const [plans, limits, catalog, ownPasses] = await Promise.all([
     listActivePlans(anon),
     readFreeLimits(anon),
     (opts.loadExamCatalog ?? (() => getCachedExamCatalog(registry)))().catch((err) => {
       console.error("V: exam catalogue unavailable", err);
       return null;
     }),
+    // An unreadable pass is no line at all, never "no pass": V must not tell a payer they hold none.
+    opts.loadOwnPasses
+      ? opts.loadOwnPasses().catch((err) => {
+          console.error("V: own pass unavailable", err);
+          return null;
+        })
+      : Promise.resolve(null),
   ]);
   const pyqBySlug = catalog ? new Map(catalog.exams.map((e) => [e.slug, e.counts.pyq] as const)) : null;
 
@@ -177,6 +189,7 @@ export async function loadVContext(
     site,
     exams,
     plans: buildPlanFacts(onSale),
+    passRules: intl ? [] : buildPassRuleFacts(),
     payBy: payMethods(onSale),
     free: intl ? buildIntlFreeFacts(limits) : buildFreeFacts(limits),
     // On intl, its own exams' total (the catalogue of LIVE_INTL_EXAMS); on www, every PUBLIC question.
@@ -207,6 +220,7 @@ export async function loadVContext(
     notesBrief: opts.questionTools ? (opts.notesBrief ?? null) : null,
     followsUp: opts.questionTools ? (opts.followsUp ?? null) : null,
     language: opts.language ?? null,
+    ownPass: ownPasses ? ownPassLine(ownPasses, plans, onSale, Date.now()) : null,
   });
 
   const allowedPaths = new Set(pathsInReply([...nav, ...guides, ...exams, ...notes, ...abroad].join("\n")));
