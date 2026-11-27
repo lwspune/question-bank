@@ -1,6 +1,7 @@
 /**
- * The morning question for every open room with members (owner, 2026-11-25:
- * automatic, the team can swap it). Candidates, in order: the exam's Most
+ * The morning question for every open circle of an exam students have (owner,
+ * 2026-11-25: automatic, the team can swap it; 2026-11-27: members or not, so
+ * a student who has not joined sees it waiting, lib/rooms/alert). Candidates, in order: the exam's Most
  * Asked "asked again" questions (homework_plan_items part 1, published plans),
  * then its other PUBLIC past-year MCQs, newest sitting first. Only questions a
  * chat card can show whole: an MCQ with options, no figure on the stem or an
@@ -11,6 +12,8 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { readInChunks } from "@/lib/supabase/readInChunks";
 import { pickDailyQuestion } from "./daily";
+import { dailyRooms } from "./alert";
+import { roomName } from "./server";
 
 export const DAILY_BODY = "Today's question. Answer first, then discuss.";
 const MAX_STEM = 700;
@@ -86,8 +89,6 @@ export async function dailyCandidates(db: SupabaseClient, examId: string): Promi
 
 /** Which question one room gets today, or why none. Writes nothing. */
 export async function planRoom(db: SupabaseClient, slug: string, now: Date): Promise<DailyPlan> {
-  const members = await db.from("exam_room_members").select("user_id", { count: "exact", head: true }).eq("exam_slug", slug);
-  if (!members.count) return { slug, questionId: null, skipped: "no members" };
   const pin = await db.from("exam_room_messages").select("created_at").eq("exam_slug", slug).eq("pinned", true).maybeSingle();
   if (pin.data && IST_DAY.format(new Date(pin.data.created_at as string)) === IST_DAY.format(now)) {
     return { slug, questionId: null, skipped: "already pinned today" };
@@ -107,13 +108,32 @@ export async function planRoom(db: SupabaseClient, slug: string, now: Date): Pro
   return { slug, questionId, skipped: questionId ? null : "no usable question" };
 }
 
-/** Which question each open room gets this morning. Writes nothing. */
+/**
+ * Which question each circle gets this morning: every exam students have
+ * (exam_room_audience, 0292) and every open circle, never a closed one. A
+ * circle nobody has joined may have no row yet: ensureRoom makes it before
+ * the pin. Writes nothing.
+ */
 export async function planDaily(db: SupabaseClient, now: Date): Promise<DailyPlan[]> {
-  const rooms = await db.from("exam_rooms").select("exam_slug").eq("open", true);
+  const [audience, rooms] = await Promise.all([db.rpc("exam_room_audience"), db.from("exam_rooms").select("exam_slug, open")]);
+  if (audience.error) throw new Error(`rooms daily audience: ${audience.error.message}`);
   if (rooms.error) throw new Error(`rooms daily rooms: ${rooms.error.message}`);
+  const rows = (rooms.data ?? []) as { exam_slug: string; open: boolean }[];
+  const slugs = dailyRooms({
+    audience: ((audience.data ?? []) as { exam_slug: string }[]).map((r) => r.exam_slug),
+    openRooms: rows.filter((r) => r.open).map((r) => r.exam_slug),
+    closed: rows.filter((r) => !r.open).map((r) => r.exam_slug),
+    nameOf: roomName,
+  });
   const out: DailyPlan[] = [];
-  for (const { exam_slug: slug } of (rooms.data ?? []) as { exam_slug: string }[]) out.push(await planRoom(db, slug, now));
+  for (const slug of slugs) out.push(await planRoom(db, slug, now));
   return out;
+}
+
+/** Make a circle's row if it has none (a circle nobody has joined). Never reopens a closed one. */
+export async function ensureRoom(db: SupabaseClient, slug: string): Promise<void> {
+  const { error } = await db.from("exam_rooms").upsert({ exam_slug: slug }, { onConflict: "exam_slug", ignoreDuplicates: true });
+  if (error) throw new Error(`rooms daily create ${slug}: ${error.message}`);
 }
 
 /**
