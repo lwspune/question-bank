@@ -73,7 +73,8 @@ const nextConfig = {
     const week = [{ key: "Cache-Control", value: "public, max-age=604800" }];
     const day = [{ key: "Cache-Control", value: "public, max-age=86400" }];
     return [
-      ...["/icons/:path*", "/chat/:path*", "/marketing/:path*", "/favicon.ico", "/icon.png", "/apple-icon.png"].map(
+      // /katex (2026-11-27): KaTeX's stylesheet + fonts that V adds for its maths (lib/chat/katexStylesheet).
+      ...["/icons/:path*", "/chat/:path*", "/marketing/:path*", "/katex/:path*", "/favicon.ico", "/icon.png", "/apple-icon.png"].map(
         (source) => ({ source, headers: week }),
       ),
       { source: "/manifest.webmanifest", headers: day },
