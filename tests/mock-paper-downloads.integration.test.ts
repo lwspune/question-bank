@@ -19,6 +19,7 @@ import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { claimMockPaperDownload, readTodaysMockPapers } from "@/lib/export/mockPaperLimit";
 import { testRunId } from "./helpers/runId";
+import { takeSettingsTurn } from "./helpers/settingsTurn";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -35,7 +36,10 @@ describe.skipIf(!HAS_ENV)("mock paper daily download limit (migration 0137)", ()
   const mockIds: string[] = [];
   let savedLimit: number | null | undefined;
 
+  // The shared settings row, one file at a time (helpers/settingsTurn.ts): taken before reading it.
+  let releaseSettings: (() => void) | null = null;
   beforeAll(async () => {
+    releaseSettings = await takeSettingsTurn("mock-paper-downloads.integration");
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
@@ -80,11 +84,15 @@ describe.skipIf(!HAS_ENV)("mock paper daily download limit (migration 0137)", ()
   });
 
   afterAll(async () => {
-    if (savedLimit !== undefined) {
-      await admin.from("paywall_settings").update({ mock_papers_per_day: savedLimit }).eq("id", true);
+    try {
+      if (savedLimit !== undefined) {
+        await admin.from("paywall_settings").update({ mock_papers_per_day: savedLimit }).eq("id", true);
+      }
+      if (userId) await admin.auth.admin.deleteUser(userId); // cascades its download rows
+      if (mockIds.length) await admin.from("mock_tests").delete().in("id", mockIds);
+    } finally {
+      releaseSettings?.();
     }
-    if (userId) await admin.auth.admin.deleteUser(userId); // cascades its download rows
-    if (mockIds.length) await admin.from("mock_tests").delete().in("id", mockIds);
   });
 
   it("allows two different papers, then refuses a third the same day", async () => {

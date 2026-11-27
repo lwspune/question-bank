@@ -25,6 +25,7 @@ import { mustSignIn } from "./helpers/fixture";
 import { istDayKey } from "@/lib/email/dueNudge";
 import { markFreeReveal } from "@/lib/chat/followUpServer";
 import { testRunId } from "./helpers/runId";
+import { takeSettingsTurn } from "./helpers/settingsTurn";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -66,7 +67,10 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
         { onConflict: "user_id,question_id", ignoreDuplicates: true }
       );
 
+  // The shared settings row, one file at a time (helpers/settingsTurn.ts): taken before reading it.
+  let releaseSettings: (() => void) | null = null;
   beforeAll(async () => {
+    releaseSettings = await takeSettingsTurn("free-save-limit.integration");
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
@@ -197,13 +201,17 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
   });
 
   afterAll(async () => {
-    if (saved) await admin.from("paywall_settings").update(saved).eq("id", true);
-    // Deleting users cascades their bookmarks and entitlements.
-    for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
-    if (freeQuestionIds.length) await admin.from("questions").delete().in("id", freeQuestionIds);
-    if (freeExamId) await admin.from("exams").delete().eq("id", freeExamId);
-    if (intlQuestionIds.length) await admin.from("questions").delete().in("id", intlQuestionIds);
-    if (intlExamId) await admin.from("exams").delete().eq("id", intlExamId);
+    try {
+      if (saved) await admin.from("paywall_settings").update(saved).eq("id", true);
+      // Deleting users cascades their bookmarks and entitlements.
+      for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
+      if (freeQuestionIds.length) await admin.from("questions").delete().in("id", freeQuestionIds);
+      if (freeExamId) await admin.from("exams").delete().eq("id", freeExamId);
+      if (intlQuestionIds.length) await admin.from("questions").delete().in("id", intlQuestionIds);
+      if (intlExamId) await admin.from("exams").delete().eq("id", intlExamId);
+    } finally {
+      releaseSettings?.();
+    }
   });
 
   it("lets a free student save two questions, then refuses the third with PT402", async () => {

@@ -26,6 +26,7 @@ import {
 import { SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
 import { mustSignIn } from "./helpers/fixture";
 import { testRunId } from "./helpers/runId";
+import { takeSettingsTurn } from "./helpers/settingsTurn";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -44,7 +45,10 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
   let studentId = "";
   let originalSettings: { freeMockLimit: number | null; countsFrom: string | null; freeRevealsPerDay: number | null };
 
+  // The shared settings row, one file at a time (helpers/settingsTurn.ts): taken before reading it.
+  let releaseSettings: (() => void) | null = null;
   beforeAll(async () => {
+    releaseSettings = await takeSettingsTurn("plans.integration");
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
@@ -59,17 +63,21 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
   });
 
   afterAll(async () => {
-    if (!admin) return;
-    await admin.from("plans").delete().eq("id", TEST_ID);
-    if (studentId) await admin.auth.admin.deleteUser(studentId);
-    await admin
-      .from("paywall_settings")
-      .update({
-        free_mock_limit: originalSettings.freeMockLimit,
-        counts_from: originalSettings.countsFrom,
-        free_reveals_per_day: originalSettings.freeRevealsPerDay,
-      })
-      .eq("id", true);
+    try {
+      if (!admin) return;
+      await admin.from("plans").delete().eq("id", TEST_ID);
+      if (studentId) await admin.auth.admin.deleteUser(studentId);
+      await admin
+        .from("paywall_settings")
+        .update({
+          free_mock_limit: originalSettings.freeMockLimit,
+          counts_from: originalSettings.countsFrom,
+          free_reveals_per_day: originalSettings.freeRevealsPerDay,
+        })
+        .eq("id", true);
+    } finally {
+      releaseSettings?.();
+    }
   });
 
   it("seeds the two passes under the ids the code constant used", async () => {
