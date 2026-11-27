@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ComponentType } from "react";
+import { inlineFractions } from "@/lib/chat/inlineMath";
 import { useKatexStylesheet } from "@/lib/chat/katexStylesheet";
 
 type Renderer = ComponentType<{ text: string; className?: string }>;
@@ -13,7 +14,8 @@ let loaded: Renderer | null = null;
  * is shown as it is.
  *
  * 2026-11-27: the renderer comes by a plain import(), whose CSS the production
- * build did not bring, so KaTeX's stylesheet is added here (lib/chat/katexStylesheet).
+ * build did not bring, so KaTeX's stylesheet is added here (lib/chat/katexStylesheet);
+ * and an inline \dfrac is drawn at text size (lib/chat/inlineMath): it broke lines.
  */
 export default function MathText({ text }: { text: string }) {
   const hasMath = text.includes("\\(") || text.includes("\\[");
@@ -33,5 +35,5 @@ export default function MathText({ text }: { text: string }) {
     };
   }, [hasMath, Katex]);
   if (!hasMath || !Katex) return <>{text}</>;
-  return <Katex text={text} />;
+  return <Katex text={inlineFractions(text)} />;
 }

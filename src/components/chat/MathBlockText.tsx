@@ -3,6 +3,7 @@
 import { useEffect, useState, type ComponentType } from "react";
 import { hasBlockContent } from "@/lib/chat/tableText";
 import MathText from "./MathText";
+import { inlineFractions } from "@/lib/chat/inlineMath";
 import { useKatexStylesheet } from "@/lib/chat/katexStylesheet";
 
 type Renderer = ComponentType<{ text: string; className?: string }>;
@@ -34,5 +35,5 @@ export default function MathBlockText({ text }: { text: string }) {
     };
   }, [table, Block]);
   if (!table || !Block) return <MathText text={text} />;
-  return <Block text={text} />;
+  return <Block text={inlineFractions(text)} />;
 }
