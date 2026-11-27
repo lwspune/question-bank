@@ -8,6 +8,7 @@
  * course names is in the bundle. Translations are dropped: none are imported yet.
  */
 import { isExamSlug } from "@/lib/exam/examContext";
+import { type LearnSubject, isLearnSubject } from "./subjects";
 
 export type LearnCourseChapter = {
   slug: string;
@@ -21,7 +22,7 @@ export type LearnCourse = {
   slug: string;
   title: string;
   exam: string;
-  subject: "maths" | "physics";
+  subject: LearnSubject;
   standard: number;
   chapters: LearnCourseChapter[];
 };
@@ -70,6 +71,7 @@ export function readBundle(manifestIn: unknown, bundleIn: unknown): ReadBundle {
 
   for (const course of courses) {
     if (!isExamSlug(course.exam)) errors.push(`course ${course.slug}: no PYQ Vault exam ${course.exam}`);
+    if (!isLearnSubject(course.subject)) errors.push(`course ${course.slug}: no Learn subject ${String(course.subject)}`);
     if (course.slug !== `${course.exam}-${course.subject}`) errors.push(`course slug ${course.slug} is not <exam>-<subject>`);
     for (const ch of course.chapters) {
       for (const part of ch.parts) {

@@ -353,9 +353,9 @@ describe.skipIf(!HAS_ENV)("Learn tables (0192)", () => {
     });
 
     it("learn_my_misses counts the student's still-wrong questions by chapter of one exam (0194)", async () => {
-      type Q = { id: string; chapters: { name: string; subjects: { exams: { name: string } } } };
+      type Q = { id: string; chapters: { name: string; subjects: { name: string; exams: { name: string } } } };
       const pick = (exam?: string) => {
-        let query = admin.from("questions").select("id, chapters!inner(name, subjects!inner(exams!inner(name)))").eq("visibility", "PUBLIC");
+        let query = admin.from("questions").select("id, chapters!inner(name, subjects!inner(name, exams!inner(name)))").eq("visibility", "PUBLIC");
         if (exam) query = query.eq("chapters.subjects.exams.name", exam);
         return query.limit(2);
       };
@@ -371,8 +371,10 @@ describe.skipIf(!HAS_ENV)("Learn tables (0192)", () => {
 
       const { data, error } = await alice.rpc("learn_my_misses", { p_exam: exam });
       expect(error).toBeNull();
-      const rows = data as { chapter: string; misses: number }[];
+      const rows = data as { subject: string; chapter: string; misses: number }[];
       expect(rows.find((r) => r.chapter === q1.chapters.name)?.misses).toBeGreaterThanOrEqual(1);
+      // Each row names its subject (0293): two subjects of one exam can share a chapter name.
+      expect(rows.find((r) => r.chapter === q1.chapters.name)?.subject).toBe(q1.chapters.subjects.name);
       expect(rows.reduce((n, r) => n + r.misses, 0)).toBe(1);
 
       const other = await bob.rpc("learn_my_misses", { p_exam: exam });
@@ -490,6 +492,19 @@ describe.skipIf(!HAS_ENV)("Learn tables (0192)", () => {
       expect(error).toBeNull();
       const { data } = await anon.rpc("learn_course_outline", { p_course: COURSE });
       expect(data.chapters.map((c: { slug: string }) => c.slug)).toEqual(["first"]);
+    });
+
+    it("takes chemistry and biology courses, and refuses a subject Learn does not have (0293)", async () => {
+      for (const subject of ["chemistry", "biology"]) {
+        const slug = `${EXAM}-${subject}`;
+        const { error } = await admin.rpc("learn_seed_courses", { p: { courses: [{ ...course, slug, subject }] } });
+        expect(error, subject).toBeNull();
+        const { data } = await anon.rpc("learn_course_outline", { p_course: slug });
+        expect(data).toMatchObject({ slug, subject });
+        await admin.from("learn_courses").delete().eq("slug", slug);
+      }
+      const { error } = await admin.rpc("learn_seed_courses", { p: { courses: [{ ...course, slug: `${EXAM}-economics`, subject: "economics" }] } });
+      expect(error?.message).toMatch(/learn_courses_subject_check/);
     });
 
     it("refuses a course that names a concept that does not exist", async () => {

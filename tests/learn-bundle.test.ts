@@ -68,6 +68,19 @@ describe("readBundle", () => {
     expect(() => readBundle(b.manifest, b.bundle)).toThrow(/something-else/);
   });
 
+  it("takes every subject PYQ Vault names, and refuses one it does not (2026-11-27: chemistry and biology)", () => {
+    for (const subject of ["physics", "chemistry", "biology"]) {
+      const a = fixture();
+      a.bundle.courses[0].subject = subject;
+      a.bundle.courses[0].slug = `mh-hsc-12-${subject}`;
+      expect(readBundle(a.manifest, a.bundle).courses[0].subject).toBe(subject);
+    }
+    const b = fixture();
+    b.bundle.courses[0].subject = "economics";
+    b.bundle.courses[0].slug = "mh-hsc-12-economics";
+    expect(() => readBundle(b.manifest, b.bundle)).toThrow(/economics/);
+  });
+
   it("refuses a course part whose chapter or concept is not in the bundle", () => {
     const a = fixture();
     a.bundle.courses[0].chapters[0].parts[0].chapter = "vectors";

@@ -81,6 +81,17 @@ describe("renderMath", () => {
   });
 });
 
+describe("renderMath: chemistry (2026-11-27)", () => {
+  it("draws ce formulas and equations and pu units, as Concept Ladder does", () => {
+    for (const tex of ["\\ce{H2SO4}", "\\ce{2H2 + O2 -> 2H2O}", "\\ce{Fe^{3+}}", "\\pu{5.0 mol L-1}"]) {
+      const html = renderMath(tex, false);
+      // Without mhchem KaTeX prints an unknown \ce in its error red (#cc0000), with no katex-error class.
+      expect(html, tex).not.toContain("katex-error");
+      expect(html, tex).not.toContain("#cc0000");
+    }
+  });
+});
+
 describe("renderRichText", () => {
   it("pre-renders math to KaTeX HTML and keeps text as text", () => {
     const [p] = renderRichText("Let **$x$** be <b>");
