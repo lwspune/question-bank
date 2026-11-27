@@ -7,6 +7,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { getDashboardStats } from "@/lib/dashboard/stats";
 import { testRunId } from "./helpers/runId";
+import { readWhileStill } from "./helpers/stableRead";
 
 const EMPTY_ORG_RUN_ID = testRunId();
 
@@ -75,42 +76,41 @@ describe.skipIf(!HAS_ENV)("getDashboardStats (against LWS Pune seed)", () => {
     // `.select(...)` then `data.length`, silently truncating at 1000.
     // `count: "exact", head: true` returns the true count via headers,
     // bypassing the cap; we use that as ground truth.
-    const { count: truthTotal, error: ce } = await client
-      .from("questions")
-      .select("id", { count: "exact", head: true })
-      .eq("org_id", orgId);
-    expect(ce).toBeNull();
-    expect(truthTotal).not.toBeNull();
-
-    // Per-exam ground truth: one HEAD count per exam in the org.
-    const { data: examRows, error: ee } = await client
-      .from("exams")
-      .select("id");
+    // Read before AND after the stats (helpers/stableRead.ts): other files add fixture questions
+    // to this org mid-run, and a row arriving in between failed a gate run (177 vs 180, 2026-11-27).
+    const { data: examRows, error: ee } = await client.from("exams").select("id");
     expect(ee).toBeNull();
-    const truthByExam: { exam_id: string; count: number }[] = [];
-    for (const e of examRows ?? []) {
-      const { count } = await client
+    const truth = async () => {
+      const { count: total, error: ce } = await client
         .from("questions")
         .select("id", { count: "exact", head: true })
-        .eq("org_id", orgId)
-        .eq("exam_id", e.id);
-      if ((count ?? 0) > 0) {
-        truthByExam.push({ exam_id: e.id, count: count ?? 0 });
+        .eq("org_id", orgId);
+      expect(ce).toBeNull();
+      // Per-exam ground truth: one HEAD count per exam in the org.
+      const byExam: Record<string, number> = {};
+      for (const e of examRows ?? []) {
+        const { count } = await client
+          .from("questions")
+          .select("id", { count: "exact", head: true })
+          .eq("org_id", orgId)
+          .eq("exam_id", e.id);
+        if ((count ?? 0) > 0) byExam[e.id] = count ?? 0;
       }
-    }
-
-    const stats = await getDashboardStats(client, orgId);
+      return { total, byExam };
+    };
+    const { truth: t, measured: stats, still } = await readWhileStill(truth, () => getDashboardStats(client, orgId));
+    expect(still, "the org's questions never stood still across 5 reads").toBe(true);
+    expect(t.total).not.toBeNull();
 
     // Exact match against SQL, no matter how many rows.
-    expect(stats.totalQuestions).toBe(truthTotal);
+    expect(stats.totalQuestions).toBe(t.total);
     // And the byExam slices sum to the same total.
-    expect(stats.byExam.reduce((a, r) => a + r.count, 0)).toBe(truthTotal);
+    expect(stats.byExam.reduce((a, r) => a + r.count, 0)).toBe(t.total);
 
     // byExam matches truth per-exam.
     const statsMap = new Map(stats.byExam.map((r) => [r.examId, r.count]));
-    const truthMap = new Map(truthByExam.map((r) => [r.exam_id, r.count]));
-    expect(statsMap.size).toBe(truthMap.size);
-    for (const [examId, count] of truthMap) {
+    expect(statsMap.size).toBe(Object.keys(t.byExam).length);
+    for (const [examId, count] of Object.entries(t.byExam)) {
       expect(statsMap.get(examId)).toBe(count);
     }
   });

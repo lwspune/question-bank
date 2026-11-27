@@ -9,6 +9,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -27,7 +28,7 @@ describe.skipIf(!HAS_ENV)("step chips (0252, 0259)", () => {
     admin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
       auth: { persistSession: false },
     });
-    const { data, error } = await admin.from("questions").select("id").eq("visibility", "PUBLIC").limit(1).single();
+    const { data, error } = await admin.from("questions").select("id").eq("visibility", "PUBLIC").like("content_hash", `${SEED_CONTENT_HASH_PREFIX}%`).limit(1).single();
     if (error) throw new Error(`seed question: ${error.message}`);
     questionId = data.id as string;
   });

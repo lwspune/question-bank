@@ -12,6 +12,7 @@ import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { claimBoardPaperDownload, claimMockPaperDownload, readTodaysMockPapers } from "@/lib/export/mockPaperLimit";
 import { testRunId } from "./helpers/runId";
+import { takeSettingsTurn } from "./helpers/settingsTurn";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -68,7 +69,10 @@ describe.skipIf(!HAS_ENV)("board papers (migration 0146)", () => {
   });
   const replace = (p: unknown, items: unknown[]) => admin.rpc("board_paper_replace", { p_paper: p, p_items: items });
 
+  // The shared settings row, one file at a time (helpers/settingsTurn.ts): taken before reading it.
+  let releaseSettings: (() => void) | null = null;
   beforeAll(async () => {
+    releaseSettings = await takeSettingsTurn("board-papers.integration");
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
     anon = createClient(url, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, { auth: { persistSession: false } });
@@ -148,17 +152,21 @@ describe.skipIf(!HAS_ENV)("board papers (migration 0146)", () => {
   });
 
   afterAll(async () => {
-    if (!admin) return;
-    if (savedLimit !== undefined) {
-      await admin.from("paywall_settings").update({ mock_papers_per_day: savedLimit }).eq("id", true);
+    try {
+      if (!admin) return;
+      if (savedLimit !== undefined) {
+        await admin.from("paywall_settings").update({ mock_papers_per_day: savedLimit }).eq("id", true);
+      }
+      if (userId) await admin.auth.admin.deleteUser(userId); // cascades download rows
+      await admin.from("export_events").delete().in("board_paper_id", [paperId, secondPaperId].filter(Boolean));
+      await admin.from("board_papers").delete().like("slug", `test-${RUN_ID}%`);
+      if (mockId) await admin.from("mock_tests").delete().eq("id", mockId);
+      if (privateQ) await admin.from("questions").delete().eq("id", privateQ);
+      if (sameExamOtherSubject) await admin.from("questions").delete().eq("id", sameExamOtherSubject.id);
+      if (madeSubjectId) await admin.from("subjects").delete().eq("id", madeSubjectId);
+    } finally {
+      releaseSettings?.();
     }
-    if (userId) await admin.auth.admin.deleteUser(userId); // cascades download rows
-    await admin.from("export_events").delete().in("board_paper_id", [paperId, secondPaperId].filter(Boolean));
-    await admin.from("board_papers").delete().like("slug", `test-${RUN_ID}%`);
-    if (mockId) await admin.from("mock_tests").delete().eq("id", mockId);
-    if (privateQ) await admin.from("questions").delete().eq("id", privateQ);
-    if (sameExamOtherSubject) await admin.from("questions").delete().eq("id", sameExamOtherSubject.id);
-    if (madeSubjectId) await admin.from("subjects").delete().eq("id", madeSubjectId);
   });
 
   it("writes a paper and its items in one call", async () => {

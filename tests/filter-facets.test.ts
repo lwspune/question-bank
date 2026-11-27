@@ -13,6 +13,7 @@
  */
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { readWhileStill } from "./helpers/stableRead";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -62,17 +63,6 @@ describe.skipIf(!HAS_ENV)("filter facets RPCs", () => {
     });
 
     it("matches per-chapter ground truth from a direct count", async () => {
-      const { data: facets } = await client.rpc("get_chapter_facets", {
-        p_exam_id: ndaExamId,
-        p_subject_id: mathsSubjectId,
-      });
-      const facetMap = new Map(
-        (facets as { chapter_id: string; q_count: number }[]).map((r) => [
-          r.chapter_id,
-          r.q_count,
-        ])
-      );
-
       // Spot-check the largest chapter (Matrices & Determinants in NDA Maths)
       // by direct HEAD count under the same RLS scope.
       const { data: chapter } = await client
@@ -85,15 +75,28 @@ describe.skipIf(!HAS_ENV)("filter facets RPCs", () => {
 
       // The facet RPCs default to p_kind='pyq', so the ground-truth direct count
       // must also filter to PYQ (the chapter now also holds practice questions).
-      const { count } = await client
-        .from("questions")
-        .select("id", { count: "exact", head: true })
-        .eq("exam_id", ndaExamId)
-        .eq("subject_id", mathsSubjectId)
-        .eq("chapter_id", chapter!.id)
-        .eq("question_kind", "pyq");
-
-      expect(facetMap.get(chapter!.id)).toBe(count);
+      const truth = async () =>
+        (
+          await client
+            .from("questions")
+            .select("id", { count: "exact", head: true })
+            .eq("exam_id", ndaExamId)
+            .eq("subject_id", mathsSubjectId)
+            .eq("chapter_id", chapter!.id)
+            .eq("question_kind", "pyq")
+        ).count;
+      const facetCount = async () => {
+        const { data: facets } = await client.rpc("get_chapter_facets", {
+          p_exam_id: ndaExamId,
+          p_subject_id: mathsSubjectId,
+        });
+        return (facets as { chapter_id: string; q_count: number }[]).find((r) => r.chapter_id === chapter!.id)?.q_count;
+      };
+      // Read before AND after the RPC (helpers/stableRead.ts): another file added a question to this
+      // chapter between the two counts and failed a gate run (13 vs 14, 2026-11-27).
+      const r = await readWhileStill(truth, facetCount);
+      expect(r.still, "the chapter's questions never stood still across 5 reads").toBe(true);
+      expect(r.measured).toBe(r.truth);
     });
 
     it("narrows counts when a difficulty filter is applied", async () => {

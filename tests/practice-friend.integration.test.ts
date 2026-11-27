@@ -12,6 +12,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { testRunId } from "./helpers/runId";
+import { takeSettingsTurn } from "./helpers/settingsTurn";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -69,7 +70,10 @@ describe.skipIf(!HAS_ENV)("send a practice test to a friend (migration 0163)", (
       .select("id")
       .single();
 
+  // The shared settings row, one file at a time (helpers/settingsTurn.ts): taken before reading it.
+  let releaseSettings: (() => void) | null = null;
   beforeAll(async () => {
+    releaseSettings = await takeSettingsTurn("practice-friend.integration");
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
@@ -99,12 +103,16 @@ describe.skipIf(!HAS_ENV)("send a practice test to a friend (migration 0163)", (
   });
 
   afterAll(async () => {
-    if (saved) await admin.from("paywall_settings").update(saved).eq("id", true);
-    // Copies first: shared_from is ON DELETE SET NULL, but deleting them first
-    // keeps the order obvious.
-    if (created.length) await admin.from("mock_tests").delete().in("id", [...created].reverse());
-    await admin.from("share_events").delete().like("subject_slug", `practice-friend-${RUN_ID}%`);
-    for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
+    try {
+      if (saved) await admin.from("paywall_settings").update(saved).eq("id", true);
+      // Copies first: shared_from is ON DELETE SET NULL, but deleting them first
+      // keeps the order obvious.
+      if (created.length) await admin.from("mock_tests").delete().in("id", [...created].reverse());
+      await admin.from("share_events").delete().like("subject_slug", `practice-friend-${RUN_ID}%`);
+      for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
+    } finally {
+      releaseSettings?.();
+    }
   });
 
   it("refuses shared_from on a test that is not personal, and a test pointing at itself", async () => {
