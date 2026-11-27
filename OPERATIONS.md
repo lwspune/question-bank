@@ -208,6 +208,7 @@ Then save any plan at `/dashboard/pricing` (or wait a day) so the cached plan li
 - **Grey lines in the chat** ("Asha joined", "Asha answered the daily question") are written by the database (0291): a student's first join of a room only, and each daily answer, never saying right or wrong. They are not messages: no unread, no report, no reply, left out of every count.
 - **Who wrote it:** students see only room nicknames; /dashboard/rooms shows the account email beside a reported one. A nickname clash is refused per room, ignoring case.
 - **A student who hid the button:** `student_profiles.rooms_button_hidden_until` (a time, or `infinity` until they turn it back on). They can show it from the account menu or Account; nothing for staff to do.
+- **Post as the team, with a picture (migration 0295):** Post as PYQ Vault team on either dashboard page. Web links in a team post are tappable (students still cannot post links). A picture is optional: PNG or JPEG up to 1 MB (save a big one as JPEG), plus one line saying what it shows, read aloud to students who cannot see it. It lands in the public `question-images` bucket at `circles/<exam>/`. Only team posts can carry one; the database refuses it on any other message.
 - **Limits (in the database, not the route):** 5 s between a student's messages, 100 a day, 1,000 characters; Ask V 5 a day per student. Change them only by a migration.
 
 ### Outbound email (Resend) — the mock-recommendation campaign
