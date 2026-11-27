@@ -727,6 +727,22 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
     setReading(null);
     if (!r || r.turn === null || r.part === null) return;
     const { turn, part } = r;
+    // The card lands under the map, below the fold on a phone: when this lesson is the latest message, keep the
+    // card's TOP at the top of the chat while it loads. It mounts as a short placeholder, so the chat cannot scroll
+    // far enough until the question arrives; scrolling once was not enough (a browser check stopped half way).
+    const atEnd = turn === turns.length - 1 && !!turns[turn]?.lesson && !!partTryCard(turns[turn].lesson!, part);
+    if (atEnd) {
+      setTimeout(() => {
+        const list = listRef.current;
+        const card = list?.querySelector(`[data-turn-card="${turn}"]`);
+        if (!list || !card) return;
+        const toCard = () => list.scrollTo({ top: list.scrollTop + card.getBoundingClientRect().top - list.getBoundingClientRect().top - 8 });
+        toCard();
+        const watch = new ResizeObserver(toCard);
+        watch.observe(card);
+        setTimeout(() => watch.disconnect(), 3000);
+      }, 60);
+    }
     setTurns((all) =>
       all.map((t, i) => {
         if (i !== turn || t.role !== "assistant" || !t.lesson) return t;
@@ -1545,17 +1561,20 @@ export default function ChatWidget({ start, onReady }: ChatWidgetProps) {
                     </div>
                   )}
                   {t.card && !t.reveal && (
-                    <VQuestionCard
-                      // A pick lesson swaps Your turn to the part just read (2026-11-27): a new question, a fresh card.
-                      key={t.card.id}
-                      id={t.card.id}
-                      kind={t.card.kind}
-                      after={t.card.after}
-                      heading={t.card.turn ? "Your turn" : undefined}
-                      again={t.card.again === true}
-                      onMore={t.card.kind === "try" ? () => void moreLike(t.card!.id) : undefined}
-                      onNavigate={close}
-                    />
+                    // data-turn-card: closeNotes scrolls a pick lesson's Your turn into view (2026-11-27).
+                    <div data-turn-card={i}>
+                      <VQuestionCard
+                        // A pick lesson swaps Your turn to the part just read (2026-11-27): a new question, a fresh card.
+                        key={t.card.id}
+                        id={t.card.id}
+                        kind={t.card.kind}
+                        after={t.card.after}
+                        heading={t.card.turn ? "Your turn" : undefined}
+                        again={t.card.again === true}
+                        onMore={t.card.kind === "try" ? () => void moreLike(t.card!.id) : undefined}
+                        onNavigate={close}
+                      />
+                    </div>
                   )}
                   {t.learnTry && !t.reveal && <VLearnQuestionCard chapter={t.learnTry.chapter} concept={t.learnTry.concept} lessonN={t.learnTry.n} />}
                   {lessonHere && (

@@ -88,7 +88,9 @@ export default function TeachPanel({
           returnFocusTo
             ? (e) => {
                 e.preventDefault();
-                returnFocusTo?.current?.focus();
+                // No scroll (2026-11-27): in V the chat moves to the part's Your turn as the panel closes, and
+                // focusing the part's row would scroll back up to it. The button was on screen when tapped.
+                returnFocusTo?.current?.focus({ preventScroll: true });
               }
             : undefined
         }
