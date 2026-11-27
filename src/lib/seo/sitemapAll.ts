@@ -38,6 +38,7 @@ import { listPosts, type BlogPost } from "@/lib/blog/posts";
 import { getPublishedArticles } from "@/lib/blog/articles";
 import { mergeCatalog, type DbPost } from "@/lib/blog/catalog";
 import { syllabusHref } from "@/lib/blog/paths";
+import { SCHOOL_CLASSES, classHref } from "@/lib/schoolExams/select";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
@@ -830,6 +831,20 @@ export async function allSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      // The exams a school child can sit, by class (lib/schoolExams). The index
+      // and one page per class: parents search "exams for class 5 students".
+      url: `${SITE_URL}/school-exams`,
+      lastModified: buildDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    ...SCHOOL_CLASSES.map((n) => ({
+      url: `${SITE_URL}${classHref(n)}`,
+      lastModified: buildDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
     {
       // Named-author / provenance page. Indexed deliberately: it is the page
       // that answers "who is behind this", for readers and for E-E-A-T alike.

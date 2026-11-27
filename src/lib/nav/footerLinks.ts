@@ -53,6 +53,7 @@ export function footerLinks(): FooterGroup[] {
         { href: "/question-papers", label: "Board past papers" },
         { href: "/homework", label: "Most asked PYQs" },
         { href: "/formula", label: "Questions by formula" },
+        { href: "/school-exams", label: "School exams by class" },
       ],
     },
     {
