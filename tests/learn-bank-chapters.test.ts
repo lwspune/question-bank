@@ -6,6 +6,7 @@
  */
 import { describe, expect, it } from "vitest";
 import { bankChapterLinks, bankChapterName, learnChapterFor, missesByCourseChapter } from "@/lib/learn/bankChapters";
+import { LEARN_BANK_CHAPTERS } from "@/lib/learn/bankLinks.generated";
 
 const LEARN: Record<string, [string, string][]> = {
   "mh-hsc-12-maths": [
@@ -95,6 +96,19 @@ describe("missesByCourseChapter", () => {
     ]);
   });
 
+  it("keeps two subjects' same-named chapters apart when the rows name their subject (0293)", () => {
+    const misses = [
+      { subject: "Chemistry", chapter: "Thermodynamics", misses: 4, last_missed_at: "2026-11-20T00:00:00Z" },
+      { subject: "Physics", chapter: "Thermodynamics", misses: 2, last_missed_at: "2026-11-21T00:00:00Z" },
+    ];
+    expect(missesByCourseChapter("cbse-11-physics", [{ slug: "thermodynamics", title: "Thermodynamics" }], misses)).toEqual([
+      { slug: "thermodynamics", title: "Thermodynamics", misses: 2 },
+    ]);
+    expect(missesByCourseChapter("cbse-11-chemistry", [{ slug: "chemical-thermodynamics", title: "Chemical Thermodynamics" }], misses)).toEqual([
+      { slug: "chemical-thermodynamics", title: "Chemical Thermodynamics", misses: 4 },
+    ]);
+  });
+
   it("is empty with no misses", () => {
     expect(missesByCourseChapter("mh-hsc-12-maths", chapters, [])).toEqual([]);
   });
@@ -117,6 +131,29 @@ describe("bankChapterLinks", () => {
       board: null,
       questions: "/questions/nda/mathematics/matrices-determinants",
     });
+  });
+
+  it("links each chapter under its own bank subject, from the generated file (2026-11-27)", () => {
+    expect(bankChapterLinks("jee-mains", "jee-mains-physics", { slug: "atoms", title: "Atoms" })).toEqual({
+      board: null,
+      questions: "/questions/jee-mains/physics/atoms",
+    });
+    // SSC 10's two Maths papers are two bank subjects.
+    expect(bankChapterLinks("mh-ssc-10", "mh-ssc-10-maths", { slug: "circle-10", title: "Circle" }).questions).toBe("/questions/mh-ssc-10/geometry/circle");
+    expect(bankChapterLinks("mh-ssc-10", "mh-ssc-10-maths", { slug: "arithmetic-progression", title: "Arithmetic Progression" }).questions).toBe(
+      "/questions/mh-ssc-10/algebra/arithmetic-progression",
+    );
+    expect(bankChapterLinks("mht-cet", "mht-cet-chemistry", { slug: "halogen-derivatives", title: "Halogen Derivatives" }).questions).toBe(
+      "/questions/mht-cet/chemistry/halogen-derivatives-of-alkanes",
+    );
+  });
+
+  it("names the bank chapter of every course chapter in the generated file", () => {
+    expect(Object.keys(LEARN_BANK_CHAPTERS).length).toBeGreaterThanOrEqual(480);
+    for (const [key, link] of Object.entries(LEARN_BANK_CHAPTERS)) {
+      const [course, slug] = key.split("/");
+      expect(bankChapterName(course, { slug, title: "ignored" }), key).toBe(link.chapter);
+    }
   });
 
   it("gives every chapter of both board courses a board and a questions link", () => {
