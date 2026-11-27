@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState, type ComponentType } from "react";
+import { inlineFractions } from "@/lib/chat/inlineMath";
+import { useKatexStylesheet } from "@/lib/chat/katexStylesheet";
 
 type Renderer = ComponentType<{ text: string; className?: string }>;
 let loaded: Renderer | null = null;
@@ -10,12 +12,17 @@ let loaded: Renderer | null = null;
  * (2026-10-19). V is on every page, so KaTeX is fetched only the first time a
  * reply actually holds maths; until then, and for text without any, the text
  * is shown as it is.
+ *
+ * 2026-11-27: the renderer comes by a plain import(), whose CSS the production
+ * build did not bring, so KaTeX's stylesheet is added here (lib/chat/katexStylesheet);
+ * and an inline \dfrac is drawn at text size (lib/chat/inlineMath): it broke lines.
  */
 export default function MathText({ text }: { text: string }) {
   const hasMath = text.includes("\\(") || text.includes("\\[");
   // An initialiser: a component handed to useState directly would be CALLED as one (it crashed the
   // second maths reply on a page, 2026-10-19 browser check).
   const [Katex, setKatex] = useState<Renderer | null>(() => loaded);
+  useKatexStylesheet(hasMath);
   useEffect(() => {
     if (!hasMath || Katex) return;
     let live = true;
@@ -28,5 +35,5 @@ export default function MathText({ text }: { text: string }) {
     };
   }, [hasMath, Katex]);
   if (!hasMath || !Katex) return <>{text}</>;
-  return <Katex text={text} />;
+  return <Katex text={inlineFractions(text)} />;
 }

@@ -3,6 +3,8 @@
 import { useEffect, useState, type ComponentType } from "react";
 import { hasBlockContent } from "@/lib/chat/tableText";
 import MathText from "./MathText";
+import { inlineFractions } from "@/lib/chat/inlineMath";
+import { useKatexStylesheet } from "@/lib/chat/katexStylesheet";
 
 type Renderer = ComponentType<{ text: string; className?: string }>;
 let loaded: Renderer | null = null;
@@ -19,6 +21,8 @@ export default function MathBlockText({ text }: { text: string }) {
   const table = hasBlockContent(text);
   // An initialiser, as in MathText: a component handed to useState directly would be called as one.
   const [Block, setBlock] = useState<Renderer | null>(() => loaded);
+  // BlockText draws its maths with KaTeX, loaded the same way, so it needs the same stylesheet (2026-11-27).
+  useKatexStylesheet(table);
   useEffect(() => {
     if (!table || Block) return;
     let live = true;
@@ -31,5 +35,5 @@ export default function MathBlockText({ text }: { text: string }) {
     };
   }, [table, Block]);
   if (!table || !Block) return <MathText text={text} />;
-  return <Block text={text} />;
+  return <Block text={inlineFractions(text)} />;
 }

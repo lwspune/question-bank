@@ -2,3 +2,5 @@
 # resolves correctly on Linux / WSL contributors.
 .githooks/* text eol=lf
 *.sh        text eol=lf
+# KaTeX copy for V (public/katex, npm run katex:assets): byte-identical to node_modules, never line-ending converted (tests/katex-public-stylesheet.test.ts).
+public/katex/** -text
