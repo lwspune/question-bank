@@ -207,7 +207,7 @@ export function followupFirstName(preferredName: string | null | undefined, name
 }
 
 /** A failed payment, as the 6 pm list carries it. */
-export type FollowupFailure = { kind: FailureKind; app: string | null };
+export type FollowupFailure = { kind: FailureKind; app: string | null; device?: string | null };
 
 /**
  * The owner's message (wording approved 2026-11-19). A payment their UPI app

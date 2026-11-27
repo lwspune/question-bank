@@ -76,6 +76,15 @@ describe("ownerFailureLabel", () => {
     expect(ownerFailureLabel({ kind: "no_balance", app: "PhonePe" })).toBe("payment failed: not enough balance");
     expect(ownerFailureLabel({ kind: "other", app: null })).toBe("payment failed");
   });
+
+  it("adds the phone and browser when the order recorded them (2026-11-27)", () => {
+    expect(ownerFailureLabel({ kind: "timed_out", app: null, device: "android/instagram" })).toBe(
+      "payment failed: not approved in time (Android, inside Instagram)"
+    );
+    expect(ownerFailureLabel({ kind: "declined", app: "FamPay", device: "ios/browser" })).toBe("payment failed: FamPay declined it (iPhone)");
+    expect(ownerFailureLabel({ kind: "other", app: null, device: "unknown" })).toBe("payment failed");
+    expect(ownerFailureLabel({ kind: "other", app: null, device: null })).toBe("payment failed");
+  });
 });
 
 describe("latestFailureByUser", () => {
@@ -99,14 +108,23 @@ describe("latestFailureByUser", () => {
       ],
       WINDOW
     );
-    expect(out.get("u1")).toEqual({ kind: "declined", app: "FamPay", at: new Date("2026-11-26T09:30:00Z"), planId: "mock-pass-6m", ebookSlug: null });
+    expect(out.get("u1")).toEqual({ kind: "declined", app: "FamPay", at: new Date("2026-11-26T09:30:00Z"), planId: "mock-pass-6m", ebookSlug: null, device: null });
     expect(out.get("u2")).toEqual({
       kind: "timed_out",
       app: null,
       at: new Date("2026-11-26T09:30:00Z"),
       planId: null,
       ebookSlug: "cbse-12-physics-repeated-pyqs",
+      device: null,
     });
+  });
+
+  it("carries the device the order was opened on (2026-11-27)", () => {
+    const out = latestFailureByUser(
+      [pay({ id: "p1", error_reason: "payment_timed_out", vpa: null, notes: { userId: "u1", planId: "mock-pass-6m", device: "android/instagram" } })],
+      WINDOW
+    );
+    expect(out.get("u1")?.device).toBe("android/instagram");
   });
 
   it("ignores captured payments, payments outside the window and payments naming no student", () => {

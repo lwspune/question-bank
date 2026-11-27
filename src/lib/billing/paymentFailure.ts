@@ -15,6 +15,8 @@
  * name is read server-side from Razorpay's own payment record.
  */
 
+import { deviceLabel } from "./checkoutDevice";
+
 export const FAILURE_KINDS = ["declined", "timed_out", "no_balance", "other"] as const;
 export type FailureKind = (typeof FAILURE_KINDS)[number];
 
@@ -80,8 +82,7 @@ export function studentFailureHint(kind: FailureKind): string {
   }
 }
 
-/** What the owner reads beside a student on the 6 pm list. */
-export function ownerFailureLabel(f: { kind: FailureKind; app: string | null }): string {
+function whatFailed(f: { kind: FailureKind; app: string | null }): string {
   switch (f.kind) {
     case "declined":
       return `payment failed: ${f.app ?? "their UPI app"} declined it`;
@@ -92,6 +93,12 @@ export function ownerFailureLabel(f: { kind: FailureKind; app: string | null }):
     default:
       return "payment failed";
   }
+}
+
+/** What the owner reads beside a student on the 6 pm list, with the phone and browser when the order recorded them. */
+export function ownerFailureLabel(f: { kind: FailureKind; app: string | null; device?: string | null }): string {
+  const device = deviceLabel(f.device);
+  return device ? `${whatFailed(f)} (${device})` : whatFailed(f);
 }
 
 /** The fields of a Razorpay payment this reads (`created_at` in seconds). */
@@ -111,6 +118,8 @@ export type PaymentFailure = {
   /** What the order was for, from the notes the order route stamped. */
   planId: string | null;
   ebookSlug: string | null;
+  /** The phone and browser the order was opened on (./checkoutDevice), null before 2026-11-27. */
+  device: string | null;
 };
 
 function noteString(notes: FailedPayment["notes"], key: string): string | null {
@@ -141,6 +150,7 @@ export function latestFailureByUser(
       at: new Date(atMs),
       planId: noteString(p.notes, "planId"),
       ebookSlug: noteString(p.notes, "ebookSlug"),
+      device: noteString(p.notes, "device"),
     });
   }
   return out;

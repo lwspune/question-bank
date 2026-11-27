@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createOrder } from "@/lib/billing/razorpay";
+import { stampDeviceNotes } from "@/lib/billing/checkoutDevice";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import { ownsPlan } from "@/lib/billing/plans";
 import { loadEntitlements } from "@/lib/entitlements/query";
@@ -59,7 +60,7 @@ export async function POST(request: NextRequest) {
     amountPaise: Number(notes.amountPaise),
     currency: plan.currency,
     receipt: `qb_parent_${link.code}`,
-    notes,
+    notes: stampDeviceNotes(notes, request.headers.get("user-agent")),
   });
   if (!result.ok) {
     console.error("razorpay createOrder (parent) failed:", result.error);
