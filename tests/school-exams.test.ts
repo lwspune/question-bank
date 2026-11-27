@@ -49,8 +49,12 @@ describe("examsForClass: the class the child is in NOW", () => {
   });
 
   it("shows Class 9 admission tests and NMMS to a Class 8 child", () => {
-    expect(ids(8)).toEqual(expect.arrayContaining(["aissee-9", "rms-cet-9", "nmms"]));
+    expect(ids(8)).toEqual(expect.arrayContaining(["aissee-9", "rms-cet-9", "jnvst-9", "nmms"]));
     expect(ids(9)).not.toContain("aissee-9");
+  });
+
+  it("shows Navodaya's Class 9 lateral entry in Class 8 only", () => {
+    for (const n of SCHOOL_CLASSES) expect(ids(n).includes("jnvst-9")).toBe(n === 8);
   });
 
   it("shows the Maharashtra scholarship in Class 4 and Class 7 only", () => {

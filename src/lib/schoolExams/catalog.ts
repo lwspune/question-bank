@@ -7,8 +7,9 @@
  * Every fact here was read on the conducting body's own site or notice
  * (`sourceUrl`) on `checkedOn`. Anything that could not be confirmed there was
  * left out rather than guessed: EMRS, the Vidyaniketan entrance, Ganit
- * Pravinya, the drawing grade exams and the Navodaya Class 9 and 11 entries
- * were all searched for on 2026-11-27 and are NOT here for that reason.
+ * Pravinya and the drawing grade exams were all searched for on 2026-11-27
+ * and are NOT here for that reason. (Navodaya's Class 11 entry is sat in
+ * Class 10 on vacant seats; not added.)
  *
  * `sitInClasses` is the class the child is in WHEN they sit the test (a Class 5
  * child sits AISSEE for Class 6), because that is the class a parent picks.
@@ -95,6 +96,24 @@ export const SCHOOL_EXAMS: readonly SchoolExam[] = [
     sitInClasses: [5],
     officialUrl: "https://navodaya.gov.in/",
     sourceUrl: "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf",
+    checkedOn: CHECKED,
+  },
+  {
+    // Added at the owner's request (2026-11-27). Only the facts that hold each year:
+    // Navodaya's admissions page lists the Class IX Lateral Entry Selection Test
+    // prospectus (2025-26) and its answer key for the test of 8 February 2025.
+    // The 2027-28 notice was not posted when checked, so no date of birth here.
+    id: "jnvst-9",
+    name: "Navodaya (JNVST), Class 9 lateral entry",
+    kind: "admission",
+    body: "Navodaya Vidyalaya Samiti",
+    forWhat: "Admission to Class 9 in a Jawahar Navodaya Vidyalaya, on the seats left vacant.",
+    whoCanSit: "Students in Class 8. The date-of-birth window and other rules are in each year's prospectus.",
+    when: "The test has been held in early February (8 February 2025), with applications closing around November. The notice for 2027-28 entry is not out yet.",
+    region: "india",
+    sitInClasses: [8],
+    officialUrl: "https://navodaya.gov.in/",
+    sourceUrl: "https://navodaya.gov.in/nvs/en/Admission-JNVST/Admission-Notifications/",
     checkedOn: CHECKED,
   },
   {
