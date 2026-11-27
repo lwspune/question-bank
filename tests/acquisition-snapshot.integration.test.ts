@@ -20,6 +20,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { testRunId } from "./helpers/runId";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -92,7 +93,7 @@ describe.skipIf(!HAS_ENV)("get_acquisition_snapshot (migration 0125)", () => {
 
     // mocker: a finished mock (a signal AND a mock)
     const { data: exam } = await admin.from("exams").select("id").order("name").limit(1).single();
-    const { data: q } = await admin.from("questions").select("id").eq("visibility", "PUBLIC").limit(1).single();
+    const { data: q } = await admin.from("questions").select("id").eq("visibility", "PUBLIC").like("content_hash", `${SEED_CONTENT_HASH_PREFIX}%`).limit(1).single();
     mockId = randomUUID();
     const { error: mErr } = await admin.from("mock_tests").insert({
       id: mockId,

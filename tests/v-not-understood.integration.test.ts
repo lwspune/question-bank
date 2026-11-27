@@ -16,6 +16,7 @@ import { logActivityOnce } from "@/lib/activity/service";
 import { hasPriorWrong, loadDrillEvents } from "@/lib/drill/query";
 import { questionState } from "@/lib/drill/select";
 import { testRunId } from "./helpers/runId";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -42,7 +43,7 @@ describe.skipIf(!HAS_ENV)("a No to V's explanation", () => {
     client = createClient(url, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, { auth: { persistSession: false } });
     await mustSignIn("v-not-understood student", client, { email: EMAIL, password: PASSWORD });
 
-    const { data, error } = await admin.from("questions").select("id").eq("visibility", "PUBLIC").limit(1).single();
+    const { data, error } = await admin.from("questions").select("id").eq("visibility", "PUBLIC").like("content_hash", `${SEED_CONTENT_HASH_PREFIX}%`).limit(1).single();
     if (error) throw new Error(`seed question: ${error.message}`);
     questionId = (data as { id: string }).id;
 

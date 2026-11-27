@@ -13,6 +13,7 @@ import { mustSignIn } from "./helpers/fixture";
 import { logActivityOnce } from "@/lib/activity/service";
 import { parseVisualEvent } from "@/lib/visuals/usage";
 import { testRunId } from "./helpers/runId";
+import { SEED_CONTENT_HASH_PREFIX } from "./helpers/testdb";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -60,7 +61,7 @@ describe.skipIf(!HAS_ENV)("animated-solution usage in the database", () => {
     client = createClient(url, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, { auth: { persistSession: false } });
     await mustSignIn("visual-usage student", client, { email: EMAIL, password: PASSWORD });
 
-    const { data: seed, error } = await admin.from("questions").select("*").eq("visibility", "PUBLIC").limit(1).single();
+    const { data: seed, error } = await admin.from("questions").select("*").eq("visibility", "PUBLIC").like("content_hash", `${SEED_CONTENT_HASH_PREFIX}%`).limit(1).single();
     if (error) throw new Error(`seed question: ${error.message}`);
     base = seed as Record<string, unknown>;
     for (const k of ["id", "created_at", "updated_at", "search_vector", "solution_visual", "solution_visual_at"]) delete base[k];
