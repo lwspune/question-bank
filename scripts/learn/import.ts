@@ -81,6 +81,9 @@ async function main() {
   });
   if (log.error) throw new Error(`logging the import: ${log.error.message}`);
   console.log("done");
+  if (target !== "test") {
+    console.log("The site keeps Learn outlines for a day: bump LEARN_CACHE_KEY in src/lib/learn/query.ts and deploy to show this import now.");
+  }
 }
 
 main().catch((e) => {
