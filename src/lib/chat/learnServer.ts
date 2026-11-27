@@ -32,8 +32,8 @@ async function outlineOf(course: string): Promise<Outline | null> {
 type ProgressRow = { chapter: string; slug: string; state: "learning" | "mastered"; streak: number | null };
 
 /** An exam chapter's Learn lessons with the student's progress, or null where Learn does not teach it. `user` = the student's own client, null signed out. */
-async function loadLearnChapter(user: SupabaseClient | null, examName: string, chapterName: string): Promise<LearnChapter | null> {
-  const link = learnChapterFor(examName, chapterName);
+async function loadLearnChapter(user: SupabaseClient | null, examName: string, subjectName: string, chapterName: string): Promise<LearnChapter | null> {
+  const link = learnChapterFor(examName, subjectName, chapterName);
   if (!link) return null;
   const outline = await outlineOf(link.course);
   const ch = outline?.chapters.find((c) => c.slug === link.chapter);
@@ -57,17 +57,17 @@ async function loadLearnChapter(user: SupabaseClient | null, examName: string, c
 
 /** The chapter's Learn lessons for V, or null where Learn does not teach it. `user` = the student's own client, null signed out. */
 export function learnLoader(user: SupabaseClient | null): (hit: ChapterSearchRow) => Promise<LearnChapter | null> {
-  return (hit) => loadLearnChapter(user, hit.examName, hit.chapterName);
+  return (hit) => loadLearnChapter(user, hit.examName, hit.subjectName, hit.chapterName);
 }
 
 /**
  * The stuck offer's "Teach me the idea" (2026-11-22, owner: "open the relevant concept"): the
  * Learn lesson filed under the question's topic, the first the student has not mastered; where
- * no lesson is filed under the topic (MHT-CET, JEE), the Learn chapter, opened in V. Null where
+ * no lesson is filed under the topic (every course but the three Maths ones), the Learn chapter, opened in V. Null where
  * Learn does not teach the chapter.
  */
-export async function learnTargetForQuestion(user: SupabaseClient, q: { exam: string; chapter: string; subtopic: string }): Promise<StuckLearn | null> {
-  const lc = await loadLearnChapter(user, q.exam, q.chapter);
+export async function learnTargetForQuestion(user: SupabaseClient, q: { exam: string; subject: string; chapter: string; subtopic: string }): Promise<StuckLearn | null> {
+  const lc = await loadLearnChapter(user, q.exam, q.subject, q.chapter);
   if (!lc || lc.lessons.length === 0) return null;
   const lesson = pickTopicLesson(lc.lessons, q.subtopic);
   if (lesson) return { kind: "lesson", chapter: lesson.chapter, concept: lesson.slug, course: lc.course };
@@ -76,11 +76,11 @@ export async function learnTargetForQuestion(user: SupabaseClient, q: { exam: st
 
 /**
  * Where to learn the idea behind a missed question: on the boards, the first
- * Learn lesson filed under its topic; for MHT-CET and JEE, the Learn chapter
- * (their topics are not mapped to lessons). Null where Learn does not teach it.
+ * Learn lesson filed under its topic; elsewhere, the Learn chapter (only the
+ * three Maths courses map topics to lessons so far). Null where Learn does not teach it.
  */
-export async function learnLinkForQuestion(q: { exam: string; chapter: string; subtopic: string | null }): Promise<{ href: string; title: string } | null> {
-  const link = learnChapterFor(q.exam, q.chapter);
+export async function learnLinkForQuestion(q: { exam: string; subject: string; chapter: string; subtopic: string | null }): Promise<{ href: string; title: string } | null> {
+  const link = learnChapterFor(q.exam, q.subject, q.chapter);
   if (!link) return null;
   const outline = await outlineOf(link.course);
   if (!outline) return null;

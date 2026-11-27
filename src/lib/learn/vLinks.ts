@@ -4,133 +4,54 @@
  * available"). V's chapter lesson reads these to draw Learn's lessons as the map,
  * start where the student's mistakes are, and link a missed question to its lesson.
  *
- * Both are hand-checked data, not name matching:
- *  - CHAPTER LINKS: the boards' own chapters, plus MHT-CET (its Class 12 Maths is
- *    the HSC syllabus) and JEE Mains (its Class 12 chapters are CBSE's). A JEE
- *    chapter that is half of a Learn chapter names its parts (Learn's
- *    learn_course_concepts.part, 1-based in the outline's order). NDA has its own
- *    course (2026-11-22), Class 11 and 12, one Learn chapter per bank chapter. JEE's
- *    and MHT-CET's Class 11 chapters (limits, conics, complex numbers...) are not
- *    linked: only the NDA course teaches them, cut to NDA's syllabus.
- *  - LESSON TOPICS: our topics are usually broader than Learn's lessons (CBSE
- *    Linear Programming is 1 topic and 13 lessons), so several lessons share a
+ *  - CHAPTER LINKS (2026-11-27): every Learn course chapter teaches its own exam's
+ *    bank chapter, as bankLinks.generated.ts names it (`npm run learn:links`, from the
+ *    bundle and the live taxonomy). Keyed `exam|subject|chapter`, because two subjects
+ *    of one exam can share a chapter name (CBSE 11 and NEET both have a Physics and a
+ *    Chemistry "Thermodynamics"). Until 2026-11-27 this was a hand table and MHT-CET
+ *    and JEE borrowed the HSC and CBSE Class 12 courses; now they have their own, cut to
+ *    their syllabus. BORROWED keeps the one chapter an exam's own course does not have.
+ *  - LESSON TOPICS: hand-checked. Our topics are usually broader than Learn's lessons
+ *    (CBSE Linear Programming is 1 topic and 13 lessons), so several lessons share a
  *    topic; one lesson that covers two topics lists both. A lesson slug that appears
  *    twice in one course chapter (NDA Matrices & Determinants takes
- *    minors-and-cofactors from two books) has one entry for both.
+ *    minors-and-cofactors from two books) has one entry for both. Courses with no
+ *    topic file (every subject but these three Maths courses, for now) open the
+ *    chapter's lesson list instead.
  *
  * Pure and client-safe. Spec: tests/learn-v-links.test.ts; checked against the live
  * outlines and topic names by tests/learn-v-links-live.test.ts (prod contract).
  */
+import { LEARN_BANK_CHAPTERS } from "./bankLinks.generated";
 
 export type LearnChapterLink = { course: string; chapter: string; parts?: number[] };
 
 const CBSE = "cbse-12-maths";
 const HSC = "mh-hsc-12-maths";
 const NDA = "nda-maths";
-const cbse = (chapter: string, parts?: number[]): LearnChapterLink => (parts ? { course: CBSE, chapter, parts } : { course: CBSE, chapter });
-const hsc = (chapter: string): LearnChapterLink => ({ course: HSC, chapter });
-const nda = (chapter: string): LearnChapterLink => ({ course: NDA, chapter });
 
-/** `${exam name}|${bank chapter name}` (both as the database names them) → the Learn chapter teaching it. */
-export const LEARN_CHAPTER_LINKS: Readonly<Record<string, LearnChapterLink>> = {
-  // CBSE Class 12: its own course.
-  "CBSE Class 12|Relations and Functions": cbse("relations-and-functions-12"),
-  "CBSE Class 12|Inverse Trigonometric Functions": cbse("inverse-trigonometric-functions"),
-  "CBSE Class 12|Matrices": cbse("matrices"),
-  "CBSE Class 12|Determinants": cbse("determinants"),
-  "CBSE Class 12|Continuity and Differentiability": cbse("continuity-and-differentiability"),
-  "CBSE Class 12|Application of Derivatives": cbse("application-of-derivatives"),
-  "CBSE Class 12|Integrals": cbse("integrals"),
-  "CBSE Class 12|Application of Integrals": cbse("application-of-integrals"),
-  "CBSE Class 12|Differential Equations": cbse("differential-equations"),
-  "CBSE Class 12|Vector Algebra": cbse("vector-algebra"),
-  "CBSE Class 12|Three Dimensional Geometry": cbse("three-dimensional-geometry"),
-  "CBSE Class 12|Linear Programming": cbse("linear-programming"),
-  "CBSE Class 12|Probability": cbse("probability-12"),
-  // Maharashtra HSC Class 12: its own course ("Line and Planes" is the bank's name).
-  "Maharashtra HSC Class 12|Mathematical Logic": hsc("mathematical-logic"),
-  "Maharashtra HSC Class 12|Matrices": hsc("matrices"),
-  "Maharashtra HSC Class 12|Trigonometric Functions": hsc("trigonometric-functions-12"),
-  "Maharashtra HSC Class 12|Pair of Straight Lines": hsc("pair-of-straight-lines"),
-  "Maharashtra HSC Class 12|Vectors": hsc("vectors"),
-  "Maharashtra HSC Class 12|Line and Planes": hsc("line-and-plane"),
-  "Maharashtra HSC Class 12|Differentiation": hsc("differentiation-12"),
-  "Maharashtra HSC Class 12|Application of Derivatives": hsc("application-of-derivatives"),
-  "Maharashtra HSC Class 12|Indefinite Integration": hsc("indefinite-integration"),
-  "Maharashtra HSC Class 12|Definite Integration": hsc("definite-integration"),
-  "Maharashtra HSC Class 12|Application of Definite Integration": hsc("application-of-definite-integration"),
-  "Maharashtra HSC Class 12|Differential Equations": hsc("differential-equations"),
-  "Maharashtra HSC Class 12|Probability Distributions": hsc("probability-distributions"),
-  "Maharashtra HSC Class 12|Binomial Distribution": hsc("binomial-distribution"),
-  "Maharashtra HSC Class 12|Linear Programming": hsc("linear-programming"),
-  // MHT-CET: its Class 12 chapters are the HSC syllabus.
-  "MHT-CET|Applications of Definite Integral": hsc("application-of-definite-integration"),
-  "MHT-CET|Applications of Derivative": hsc("application-of-derivatives"),
-  "MHT-CET|Binomial Distribution": hsc("binomial-distribution"),
-  "MHT-CET|Definite Integration": hsc("definite-integration"),
-  "MHT-CET|Determinants and Matrices": hsc("matrices"),
-  "MHT-CET|Differential Equations": hsc("differential-equations"),
-  "MHT-CET|Differentiation": hsc("differentiation-12"),
-  "MHT-CET|Indefinite Integration": hsc("indefinite-integration"),
-  "MHT-CET|Line and Plane": hsc("line-and-plane"),
-  "MHT-CET|Linear Programming": hsc("linear-programming"),
-  "MHT-CET|Mathematical Logic": hsc("mathematical-logic"),
-  "MHT-CET|Pair of Straight Lines": hsc("pair-of-straight-lines"),
-  "MHT-CET|Probability Distribution": hsc("probability-distributions"),
-  "MHT-CET|Trigonometric Functions": hsc("trigonometric-functions-12"),
-  "MHT-CET|Vectors": hsc("vectors"),
-  // JEE Mains: its Class 12 chapters are CBSE's; CBSE Integrals is part 1 indefinite, part 2 definite,
-  // and Continuity and Differentiability part 1 continuity, parts 2-3 differentiation.
-  "JEE Mains|Relations and Functions": cbse("relations-and-functions-12"),
-  "JEE Mains|Inverse Trigonometric Functions": cbse("inverse-trigonometric-functions"),
-  "JEE Mains|Matrices": cbse("matrices"),
-  "JEE Mains|Determinants": cbse("determinants"),
-  "JEE Mains|Differentiation": cbse("continuity-and-differentiability", [2, 3]),
-  "JEE Mains|Application of Derivatives": cbse("application-of-derivatives"),
-  "JEE Mains|Indefinite Integration": cbse("integrals", [1]),
-  "JEE Mains|Definite Integration": cbse("integrals", [2]),
-  "JEE Mains|Application of Integrals": cbse("application-of-integrals"),
-  "JEE Mains|Differential Equations": cbse("differential-equations"),
-  "JEE Mains|Vector Algebra": cbse("vector-algebra"),
-  "JEE Mains|Three Dimensional Geometry": cbse("three-dimensional-geometry"),
-  "JEE Mains|Probability": cbse("probability-12"),
-  "JEE Mains|Mathematical Reasoning": hsc("mathematical-logic"),
-  // NDA: its own course (2026-11-22), Class 11 and 12; Concept Ladder titled each chapter with the bank's name.
-  "NDA|Trigonometric Identities": nda("angle-measurement"),
-  "NDA|Height & Distance": nda("heights-and-distances"),
-  "NDA|Lines": nda("straight-line"),
-  "NDA|Circles": nda("circle"),
-  "NDA|Conics": nda("conic-sections"),
-  "NDA|Statistics": nda("statistics"),
-  "NDA|Probability": nda("probability"),
-  "NDA|Quadratic Equations": nda("quadratic-equations"),
-  "NDA|Complex Numbers": nda("complex-numbers"),
-  "NDA|Sequence & Series": nda("sequences-and-series"),
-  "NDA|Permutation & Combination": nda("permutations-and-combinations"),
-  "NDA|Binomial Theorem": nda("binomial-theorem"),
-  "NDA|Sets & Relations": nda("sets-and-relations"),
-  "NDA|Binary Numbers": nda("binary-numbers"),
-  "NDA|Logarithms": nda("logarithms"),
-  "NDA|Functions": nda("functions"),
-  "NDA|Limits & Continuity": nda("limits"),
-  "NDA|Linear Inequalities": nda("linear-inequalities"),
-  "NDA|Matrices & Determinants": nda("determinants-and-matrices"),
-  "NDA|Trigonometric Equations": nda("trigonometric-equations"),
-  "NDA|Properties of Triangle": nda("properties-of-triangle"),
-  "NDA|Inverse Trigonometry": nda("inverse-trigonometry"),
-  "NDA|Vectors": nda("vectors"),
-  "NDA|3D Geometry": nda("line-and-plane"),
-  "NDA|Differentiation": nda("differentiation"),
-  "NDA|Application of Derivatives": nda("application-of-derivatives"),
-  "NDA|Indefinite Integration": nda("indefinite-integration"),
-  "NDA|Definite Integration": nda("definite-integration"),
-  "NDA|Applications of Integration": nda("application-of-definite-integration"),
-  "NDA|Differential Equations": nda("differential-equations"),
-  "NDA|Binomial Distribution": nda("binomial-distribution"),
+const linkKey = (exam: string, subject: string, chapter: string) => `${exam}|${subject}|${chapter}`;
+
+/** A bank chapter taught by another exam's course, where its own has none. */
+const BORROWED: Readonly<Record<string, LearnChapterLink>> = {
+  // JEE dropped Mathematical Reasoning in 2024 (its course has no such chapter); its old papers still ask it.
+  [linkKey("JEE Mains", "Maths", "Mathematical Reasoning")]: { course: HSC, chapter: "mathematical-logic" },
 };
 
-export function learnChapterFor(examName: string, chapterName: string): LearnChapterLink | null {
-  return LEARN_CHAPTER_LINKS[`${examName}|${chapterName}`] ?? null;
+function deriveLinks(): Record<string, LearnChapterLink> {
+  const out: Record<string, LearnChapterLink> = { ...BORROWED };
+  for (const [key, bank] of Object.entries(LEARN_BANK_CHAPTERS)) {
+    const [course, chapter] = key.split("/");
+    out[linkKey(bank.exam, bank.subject, bank.chapter)] = { course, chapter };
+  }
+  return out;
+}
+
+/** `${exam}|${subject}|${chapter}` (as the database names them) → the Learn chapter teaching it. */
+export const LEARN_CHAPTER_LINKS: Readonly<Record<string, LearnChapterLink>> = deriveLinks();
+
+export function learnChapterFor(examName: string, subjectName: string, chapterName: string): LearnChapterLink | null {
+  return LEARN_CHAPTER_LINKS[linkKey(examName, subjectName, chapterName)] ?? null;
 }
 
 /**

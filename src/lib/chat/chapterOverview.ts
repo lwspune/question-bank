@@ -416,6 +416,7 @@ export function chapterOverviewTool(d: ChapterOverviewDeps): VTool {
           tryQuestionId: null,
           tryOwn: false,
           tryLearn: null,
+          course: learn.course,
         });
         return formatLearnOverview(hit, learn, plan, learnMisses);
       }

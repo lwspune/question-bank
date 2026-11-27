@@ -772,12 +772,25 @@ describe("parseClientEvent - teach a chapter", () => {
     });
   });
 
-  it("refuses an unknown step, an unknown place or a bad chapter id", () => {
+  it("records the Learn course a lesson map belongs to, without changing the one-a-day key (2026-11-27)", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "teach_chapter", action: "shown", from: "lesson_learn", course: "neet-physics" }, "u1", NOW)).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "teach_chapter", action: "shown", from: "lesson_learn", course: "neet-physics" },
+        dedupeKey: "view:teach_chapter:shown:lesson_learn:-:u1:2026-09-27",
+      },
+    });
+  });
+
+  it("refuses an unknown step, an unknown place or a bad chapter id or course", () => {
     const bad = [
       { kind: "surface_viewed", surface: "teach_chapter", action: "open", from: "me_weak" },
       { kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "homepage" },
       { kind: "surface_viewed", surface: "teach_chapter", action: "tap" },
       { kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "me_weak", chapterId: "x" },
+      { kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_learn", course: "Bad Course" },
+      { kind: "surface_viewed", surface: "teach_chapter", action: "tap", from: "lesson_learn", course: 7 },
     ];
     for (const raw of bad) expect(parseClientEvent(raw, "u1", NOW).ok, JSON.stringify(raw)).toBe(false);
   });
