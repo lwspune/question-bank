@@ -14,6 +14,13 @@
  *    each opening its lesson; the question to try is a Learn check question
  *    (lib/chat/learnLesson.ts). The buttons say "lesson".
  *
+ * PICK (2026-11-27, owner, from a screenshot of V choosing part 4 and teaching it):
+ * a notes chapter now works the way a Learn chapter does. The map is the reply and
+ * the STUDENT picks a part; its notes open in a panel over V (the stuck offer's
+ * TeachPanel), and closing the panel shows that part's own question as Your turn.
+ * Such a lesson carries `pick`, each part its question to try, and no buttons. A
+ * chapter with no notes (topics only, nothing to open) keeps V teaching the topic.
+ *
  * ORDER: Go on walks `order`, which starts at the part taught. For notes it is
  * the parts holding mistakes first, most first (a tie to the earlier part),
  * then the rest in book order; for Learn, on from the start, skipping lessons
@@ -22,6 +29,7 @@
  *
  * Pure and client-safe. Spec: tests/chat-lesson.test.ts.
  */
+import { parseNotesHref } from "@/lib/notes/teachPanel";
 
 /** A Learn lesson's state for this student: done, right answers so far, or not started. */
 export type LessonProgress = "done" | "new" | { right: number; of: number };
@@ -36,6 +44,10 @@ export type LessonPart = {
   missed: number;
   /** A Learn lesson's progress; null or absent off Learn, or signed out. */
   progress?: LessonProgress | null;
+  /** A pick lesson's question on this part, shown as Your turn after its notes close; null = none. */
+  tryId?: string | null;
+  /** That question is the student's own mistake in this part. */
+  tryOwn?: boolean;
 };
 
 /** A Learn lesson's check question, picked when the card loads (/api/learn/item). */
@@ -67,6 +79,8 @@ export type VLesson = {
   tryLearn: LearnTry | null;
   /** The Learn course the map comes from (2026-11-27, for the readout); absent off Learn. */
   course?: string;
+  /** A notes lesson the student picks from (see PICK above); absent otherwise. */
+  pick?: true;
 };
 
 export function lessonOrder(parts: readonly LessonPart[]): number[] {
@@ -87,6 +101,22 @@ export function nextPart(parts: readonly LessonPart[], current: number): number 
 
 const partOf = (l: VLesson, n: number | null) => (n === null ? undefined : l.parts.find((p) => p.n === n));
 const word = (l: VLesson) => (l.kind === "learn" ? "lesson" : "part");
+
+/** Go on, Explain more simply and Open the notes belong to a notes lesson V teaches; a Learn map and a pick lesson have none. */
+export function lessonHasButtons(l: VLesson): boolean {
+  return l.kind !== "learn" && !l.pick;
+}
+
+/** The notes page a map row opens in the panel over V: a pick lesson's part page, else null. */
+export function notesPanelHref(l: VLesson, p: LessonPart): string | null {
+  return l.kind === "notes" && l.pick && p.href && parseNotesHref(p.href) ? p.href : null;
+}
+
+/** Your turn after a part's notes close: that part's question, and whether it is their own mistake. */
+export function partTryCard(l: VLesson, n: number): { id: string; again: boolean } | null {
+  const p = l.parts.find((x) => x.n === n);
+  return p?.tryId ? { id: p.tryId, again: p.tryOwn === true } : null;
+}
 
 /** The Go on button's message: a part by number, so V calls chapter_overview with it. */
 export function goOnMessage(l: VLesson): string | null {
@@ -206,7 +236,16 @@ export function parseLesson(raw: unknown): VLesson | null {
     const title = text(p.title);
     const partMissed = count(p.missed);
     if (n === null || !title || partMissed === null) return null;
-    parts.push({ n, title, href: sitePath(p.href), missed: partMissed, ...(p.progress !== undefined ? { progress: parseProgress(p.progress) } : {}) });
+    // A part's question to try (a pick lesson): a question id or null; anything else is dropped.
+    const tryId = typeof p.tryId === "string" && UUID_RE.test(p.tryId) ? p.tryId : p.tryId === null ? null : undefined;
+    parts.push({
+      n,
+      title,
+      href: sitePath(p.href),
+      missed: partMissed,
+      ...(p.progress !== undefined ? { progress: parseProgress(p.progress) } : {}),
+      ...(tryId !== undefined ? { tryId, tryOwn: tryId !== null && p.tryOwn === true } : {}),
+    });
   }
   if (!parts.some((p) => p.n === current)) return null;
   const next = o.next === null ? null : count(o.next);
@@ -231,5 +270,6 @@ export function parseLesson(raw: unknown): VLesson | null {
     tryQuestionId,
     tryOwn: tryQuestionId !== null && o.tryOwn === true,
     tryLearn: kind === "learn" ? parseTryLearn(o.tryLearn) : null,
+    ...(kind === "notes" && o.pick === true ? { pick: true as const } : {}),
   };
 }

@@ -34,6 +34,8 @@ export function buildChapterMissDeps(
   userId: string,
   intl: boolean
 ): Pick<ChapterOverviewDeps, "loadMisses" | "loadOwnTry" | "loadTryId"> {
+  // A notes lesson asks for one question per part at once (2026-11-27): read "opened today" once.
+  let openedToday: Promise<string[]> | null = null;
   return {
     loadMisses: async (hit) => {
       const { drillable } = await loadOwnPool(db, userId, new Date(), intl);
@@ -46,7 +48,8 @@ export function buildChapterMissDeps(
       return ids.find((_, i) => canTryOnCard(qs[i])) ?? null;
     },
     loadTryId: async ({ chapterId, subtopic, near, exclude }) => {
-      const skip = [...exclude, ...(await revealedToday(db, userId, new Date()))];
+      openedToday ??= revealedToday(db, userId, new Date());
+      const skip = [...exclude, ...(await openedToday)];
       // Their latest mistake's own topic when there is one, else the part's topic by name.
       const near_ = near ? await loadVQuestion(anon, near) : null;
       const subtopicId = near_?.subtopicId ?? (chapterId && subtopic ? await loadSubtopicId(anon, chapterId, subtopic) : null);

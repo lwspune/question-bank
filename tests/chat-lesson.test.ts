@@ -9,6 +9,9 @@
 import { describe, it, expect } from "vitest";
 import {
   carriedLesson,
+  lessonHasButtons,
+  notesPanelHref,
+  partTryCard,
   goOnLabel,
   goOnMessage,
   lessonLinkLabels,
@@ -256,5 +259,60 @@ describe("a Learn lesson (2026-11-22: Learn first wherever it teaches the chapte
     const back = parseLesson(old)!;
     expect(back.kind).toBe("notes");
     expect(back.order).toEqual([3, 1, 4, 2, 5]);
+  });
+});
+
+// 2026-11-27 (owner, from a screenshot of V picking part 4 itself): a notes chapter works the way
+// a Learn chapter does. The map is the reply, the STUDENT picks a part, its notes open in a panel
+// over V, and closing the panel shows that part's question as Your turn. No Go on, no Explain more
+// simply, no Open the notes: V does not teach the part in its own words.
+describe("a notes lesson the student picks from (2026-11-27)", () => {
+  const OWN = "22222222-2222-4222-8222-222222222222";
+  const FRESH = "33333333-3333-4333-8333-333333333333";
+  const pickParts: LessonPart[] = [
+    { ...PARTS[0], tryId: OWN, tryOwn: true },
+    { ...PARTS[1], tryId: FRESH, tryOwn: false },
+    { ...PARTS[2], tryId: null, tryOwn: false },
+    PARTS[3],
+    PARTS[4],
+  ];
+  const picked = (over: Partial<VLesson> = {}): VLesson =>
+    lesson({ pick: true, parts: pickParts, next: null, tryQuestionId: null, tryOwn: false, ...over });
+
+  it("has no lesson buttons, like a Learn map; a notes lesson V teaches keeps them", () => {
+    expect(lessonHasButtons(picked())).toBe(false);
+    expect(lessonHasButtons(lesson())).toBe(true);
+    expect(lessonHasButtons(lesson({ kind: "learn" }))).toBe(false);
+  });
+
+  it("a part row opens that part's notes in the panel; nothing else does", () => {
+    expect(notesPanelHref(picked(), pickParts[0])).toBe("/notes/nda-maths/probability/p1");
+    // A notes lesson V teaches, a Learn row, or a topic with no page: not the panel.
+    expect(notesPanelHref(lesson(), PARTS[0])).toBeNull();
+    expect(notesPanelHref(picked({ kind: "learn" }), pickParts[0])).toBeNull();
+    expect(notesPanelHref(picked(), { ...PARTS[0], href: null })).toBeNull();
+    // Only a notes part page the panel can read (a chapter page is not one).
+    expect(notesPanelHref(picked(), { ...PARTS[0], href: "/notes/nda-maths/probability" })).toBeNull();
+  });
+
+  it("after the panel closes, Your turn is that part's question: their own mistake says so", () => {
+    expect(partTryCard(picked(), 1)).toEqual({ id: OWN, again: true });
+    expect(partTryCard(picked(), 2)).toEqual({ id: FRESH, again: false });
+    expect(partTryCard(picked(), 3)).toBeNull();
+    expect(partTryCard(picked(), 5)).toBeNull();
+    expect(partTryCard(picked(), 9)).toBeNull();
+  });
+
+  it("parses back with its pick and each part's question", () => {
+    expect(parseLesson(JSON.parse(JSON.stringify(picked())))).toEqual(picked());
+  });
+
+  it("a part question that is not a question id is dropped; pick means nothing on a Learn lesson", () => {
+    const bad = parseLesson({ ...picked(), parts: [{ ...pickParts[0], tryId: "javascript:x", tryOwn: true }], current: 1, order: [1] })!;
+    expect(bad.parts[0].tryId).toBeUndefined();
+    expect(bad.parts[0].tryOwn).toBeUndefined();
+    expect(partTryCard(bad, 1)).toBeNull();
+    expect(parseLesson({ ...picked(), kind: "learn" })!.pick).toBeUndefined();
+    expect(parseLesson({ ...picked(), pick: "yes" })!.pick).toBeUndefined();
   });
 });
