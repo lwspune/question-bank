@@ -42,6 +42,9 @@ describe("browser cache for icons and the manifest", () => {
     "/favicon.ico",
     "/icon.png",
     "/apple-icon.png",
+    // KaTeX's stylesheet + fonts for V's maths (2026-11-27): loaded on every V reply with maths.
+    "/katex/katex.min.css",
+    "/katex/fonts/KaTeX_Main-Regular.woff2",
   ])("%s is kept for 7 days", async (path) => {
     expect(await cacheControlFor(path)).toEqual([`public, max-age=${WEEK}`]);
   });
