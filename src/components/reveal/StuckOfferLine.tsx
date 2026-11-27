@@ -21,8 +21,8 @@ const LearnLessonOverlay = dynamic(() => import("@/components/learn/LearnLessonO
  * it?" under a bank answer (owner, 2026-11-10). The rule is
  * lib/questions/stuckOffer; it is one of the moments MomentLine draws (the one line under an answer).
  * Teach me the idea opens Learn's lesson for the topic full screen where Learn
- * teaches it (2026-11-22, owner: "open the relevant concept"; for an MHT-CET or
- * JEE topic no lesson is filed under, the Learn chapter in V, where the student
+ * teaches it (2026-11-22, owner: "open the relevant concept"; for a topic
+ * no lesson is filed under, the Learn chapter in V, where the student
  * picks one); elsewhere our notes for the subtopic in a panel on the same
  * page (TeachPanel, 2026-11-15; until then it left for the notes page), then
  * offers "Now try one like it"; with no notes it asks V for the idea; Try an easier one shows an

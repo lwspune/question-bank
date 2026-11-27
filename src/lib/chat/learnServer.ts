@@ -63,7 +63,7 @@ export function learnLoader(user: SupabaseClient | null): (hit: ChapterSearchRow
 /**
  * The stuck offer's "Teach me the idea" (2026-11-22, owner: "open the relevant concept"): the
  * Learn lesson filed under the question's topic, the first the student has not mastered; where
- * no lesson is filed under the topic (every course but the three Maths ones), the Learn chapter, opened in V. Null where
+ * no lesson is filed under the topic (lib/learn/vLinks lessonTopics: every course since 2026-11-27), the Learn chapter, opened in V. Null where
  * Learn does not teach the chapter.
  */
 export async function learnTargetForQuestion(user: SupabaseClient, q: { exam: string; subject: string; chapter: string; subtopic: string }): Promise<StuckLearn | null> {
@@ -75,9 +75,9 @@ export async function learnTargetForQuestion(user: SupabaseClient, q: { exam: st
 }
 
 /**
- * Where to learn the idea behind a missed question: on the boards, the first
- * Learn lesson filed under its topic; elsewhere, the Learn chapter (only the
- * three Maths courses map topics to lessons so far). Null where Learn does not teach it.
+ * Where to learn the idea behind a missed question: the first Learn lesson
+ * filed under its topic, else the Learn chapter (every course maps topics to
+ * lessons since 2026-11-27, lib/learn/vLinks lessonTopics). Null where Learn does not teach it.
  */
 export async function learnLinkForQuestion(q: { exam: string; subject: string; chapter: string; subtopic: string | null }): Promise<{ href: string; title: string } | null> {
   const link = learnChapterFor(q.exam, q.subject, q.chapter);
