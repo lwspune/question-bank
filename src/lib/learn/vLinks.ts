@@ -23,6 +23,7 @@
  * outlines and topic names by tests/learn-v-links-live.test.ts (prod contract).
  */
 import { LEARN_BANK_CHAPTERS } from "./bankLinks.generated";
+import { LESSON_TOPIC_FILES } from "./lessonTopics";
 
 export type LearnChapterLink = { course: string; chapter: string; parts?: number[] };
 
@@ -802,8 +803,9 @@ export const LEARN_LESSON_TOPICS: Readonly<Record<string, Topics>> = {
 };
 
 /** The board topics a lesson's mistakes are filed under; [] when the file has none for it. */
+/** The bank topics a lesson's mistakes are filed under: the hand-checked Maths rows here, else the course's reviewed file (lessonTopics/). */
 export function lessonTopics(course: string, chapter: string, lesson: string): string[] {
-  const t = LEARN_LESSON_TOPICS[`${course}/${chapter}`]?.[lesson];
+  const t = LEARN_LESSON_TOPICS[`${course}/${chapter}`]?.[lesson] ?? LESSON_TOPIC_FILES[course]?.[chapter]?.[lesson];
   return t === undefined ? [] : typeof t === "string" ? [t] : [...t];
 }
 

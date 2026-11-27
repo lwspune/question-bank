@@ -8,20 +8,23 @@
  * stops getting Learn at all. This fails in each direction:
  *   - every chapter link resolves to a live Learn chapter (and its parts exist) and to
  *     a live bank chapter of that exam;
- *   - every lesson of a board course chapter is in the topic file, and every lesson
- *     in the file is still in the outline;
- *   - every topic named exists in that board chapter.
+ *   - every lesson of every course chapter is in its topic rows (vLinks or lessonTopics/),
+ *     and every listed lesson is still in the outline;
+ *   - every topic named exists in that course chapter's bank chapter.
  * Read-only.
  */
 import { beforeAll, describe, expect, it } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { LEARN_BANK_CHAPTERS } from "@/lib/learn/bankLinks.generated";
+import { LESSON_TOPIC_FILES } from "@/lib/learn/lessonTopics";
 import { LEARN_CHAPTER_LINKS, LEARN_LESSON_TOPICS, lessonTopics, topicKey } from "@/lib/learn/vLinks";
 import type { Outline } from "@/lib/learn/lessonState";
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-/** The exam whose topics a course's lessons are filed under, as the database names it (NDA since 2026-11-22). */
-const BOARD_EXAM: Record<string, string> = { "cbse-12-maths": "CBSE Class 12", "mh-hsc-12-maths": "Maharashtra HSC Class 12", "nda-maths": "NDA" };
+/** Every course's lesson rows: the three Maths courses in vLinks, the rest in lessonTopics/ (2026-11-27). */
+const listedLessons = (course: string, chapter: string) =>
+  Object.keys(LEARN_LESSON_TOPICS[`${course}/${chapter}`] ?? LESSON_TOPIC_FILES[course]?.[chapter] ?? {});
 
 /** The pages of a read, 1,000 rows at a time (PostgREST's cap). */
 async function allRows<T>(page: (from: number, to: number) => PromiseLike<{ data: unknown; error: unknown }>): Promise<T[]> {
@@ -61,8 +64,7 @@ describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy",
       client
         .from("subtopics")
         .select("name, chapter:chapters!inner(name, subject:subjects!inner(name, exam:exams!inner(name)))")
-        .in("chapter.subject.exam.name", Object.values(BOARD_EXAM))
-        .in("chapter.subject.name", ["Mathematics", "Maths"])
+        .in("chapter.subject.exam.name", exams)
         .order("id")
         .range(from, to),
     );
@@ -87,15 +89,16 @@ describe.skipIf(!HAS_ENV)("Learn links for V vs the live outlines and taxonomy",
     for (const [course, outline] of outlines) for (const ch of outline.chapters) expect(linked.has(`${course}/${ch.slug}`), `${course}/${ch.slug}`).toBe(true);
   });
 
-  it("every board lesson has topics, every listed lesson is live, and every topic exists", () => {
-    for (const [course, exam] of Object.entries(BOARD_EXAM)) {
-      const outline = outlines.get(course)!;
+  it("every course's lessons are all listed, every listed lesson is live, and every topic exists in its bank chapter", () => {
+    for (const [course, outline] of outlines) {
       for (const ch of outline.chapters) {
-        const link = Object.entries(LEARN_CHAPTER_LINKS).find(([k, l]) => k.startsWith(`${exam}|`) && l.course === course && l.chapter === ch.slug);
-        expect(link, `${course}/${ch.slug}: no chapter link from ${exam}`).toBeDefined();
-        const topics = bank.get(link![0]) ?? new Set<string>();
+        const bankChapter = LEARN_BANK_CHAPTERS[`${course}/${ch.slug}`];
+        expect(bankChapter, `${course}/${ch.slug}: no bank chapter`).toBeDefined();
+        const key = `${bankChapter.exam}|${bankChapter.subject}|${bankChapter.chapter}`;
+        const link = [key];
+        const topics = bank.get(key) ?? new Set<string>();
         const live = ch.parts.flatMap((p) => p.concepts.map((code) => outline.pools[p.chapter].concepts.find((c) => c.code === code)!).filter((c) => c.published).map((c) => c.slug));
-        const listed = Object.keys(LEARN_LESSON_TOPICS[`${course}/${ch.slug}`] ?? {});
+        const listed = listedLessons(course, ch.slug);
         // A slug taken from two books (NDA's minors-and-cofactors) has one entry for both.
         expect(listed.sort(), `${course}/${ch.slug}: lessons differ from the outline`).toEqual([...new Set(live)].sort());
         for (const slug of live) {
