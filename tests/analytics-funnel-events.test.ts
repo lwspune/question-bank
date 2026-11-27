@@ -30,6 +30,7 @@ describe("FUNNEL_EVENTS", () => {
       "checkout_paid",
       "checkout_failed",
       "checkout_dismissed",
+      "checkout_payment_failed",
       "free_download_used",
       "resource_chips_shown",
       "resource_chips_click",
