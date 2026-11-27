@@ -10,7 +10,7 @@ import { describe, it, expect } from "vitest";
 import { roomErrorOf } from "@/lib/rooms/errors";
 import { parseRoomPost, parseRoomReport, parseRoomAnswer, parseRoomAskV } from "@/lib/rooms/validate";
 import { toMessageView, type RoomMessageRow } from "@/lib/rooms/view";
-import { nextPollDelay, badgeCacheFresh } from "@/lib/rooms/poll";
+import { nextPollDelay, badgeCacheFresh, isNearEnd } from "@/lib/rooms/poll";
 
 describe("roomErrorOf", () => {
   it("maps each guard key to a line and a status", () => {
@@ -78,6 +78,8 @@ describe("toMessageView", () => {
     pinned: false,
     created_at: "2026-11-25T13:08:00Z",
     system_event: null,
+    image_path: null,
+    image_alt: null,
   };
 
   it("hides the author's id and marks own messages", () => {
@@ -111,5 +113,25 @@ describe("toMessageView", () => {
     });
     expect(v.replyTo?.name).toBe("Aman");
     expect(v.replyTo?.snippet.length).toBeLessThanOrEqual(61);
+  });
+
+  it("gives a team message its picture's public address and description (0295)", () => {
+    const team = { ...row, id: 20, author_kind: "team" as const, user_id: null, image_path: "circles/cbse-12/abc.png", image_alt: "Chart" };
+    const v = toMessageView(team, { viewerId: "u-2", repliedByV: new Set(), byId: new Map(), supabaseUrl: "https://x.supabase.co/" });
+    expect(v.image).toEqual({ url: "https://x.supabase.co/storage/v1/object/public/question-images/circles/cbse-12/abc.png", alt: "Chart" });
+    expect(toMessageView(row, { viewerId: "u-2", repliedByV: new Set(), byId: new Map(), supabaseUrl: "https://x.supabase.co" }).image).toBeNull();
+  });
+
+  it("never shows a picture on a student message, whatever the row says", () => {
+    const odd = { ...row, image_path: "circles/cbse-12/abc.png", image_alt: "x" };
+    expect(toMessageView(odd, { viewerId: "u-2", repliedByV: new Set(), byId: new Map(), supabaseUrl: "https://x.supabase.co" }).image).toBeNull();
+  });
+});
+
+describe("isNearEnd", () => {
+  it("is true within 80 px of the bottom", () => {
+    expect(isNearEnd({ scrollHeight: 2000, scrollTop: 1500, clientHeight: 450 })).toBe(true);
+    expect(isNearEnd({ scrollHeight: 2000, scrollTop: 1000, clientHeight: 450 })).toBe(false);
+    expect(isNearEnd({ scrollHeight: 300, scrollTop: 0, clientHeight: 450 })).toBe(true);
   });
 });

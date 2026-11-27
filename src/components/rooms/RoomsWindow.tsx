@@ -1343,6 +1343,23 @@ function MessageBubble({
           ) : (
             <p className="whitespace-pre-wrap break-words text-sm">{m.body}</p>
           )}
+          {m.image && (
+            <a
+              href={m.image.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open the picture full size: ${m.image.alt}`}
+              className="mt-2 block overflow-hidden rounded-xl ring-1 ring-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- a public bucket picture; next/image is not used on this site */}
+              <img
+                src={m.image.url}
+                alt={m.image.alt}
+                loading="lazy"
+                className="block h-auto w-full max-w-sm"
+              />
+            </a>
+          )}
           {m.question && (
             <QuestionCard
               slug={slug}

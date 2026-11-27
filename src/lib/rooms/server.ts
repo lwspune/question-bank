@@ -16,7 +16,7 @@ import type { RoomReportReason } from "./validate";
 
 export const ROOM_PAGE = 50;
 
-const MESSAGE_COLUMNS = "id, author_kind, user_id, display_name, body, reply_to, question_id, pinned, created_at, system_event";
+const MESSAGE_COLUMNS = "id, author_kind, user_id, display_name, body, reply_to, question_id, pinned, created_at, system_event, image_path, image_alt";
 
 export class RoomAccessError extends Error {
   constructor(
@@ -275,7 +275,7 @@ async function viewsOf(db: SupabaseClient, userId: string, rows: RoomMessageRow[
   for (const r of rows) byId.set(r.id, r);
   for (const p of (parents.data ?? []) as { id: number; display_name: string; body: string }[]) byId.set(Number(p.id), p);
   const repliedByV = new Set((vReplies.data ?? []).map((v) => Number(v.reply_to)));
-  return rows.map((r) => toMessageView(r, { viewerId: userId, repliedByV, byId, question: questions.get(r.id) ?? null }));
+  return rows.map((r) => toMessageView(r, { viewerId: userId, repliedByV, byId, question: questions.get(r.id) ?? null, supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL }));
 }
 
 function normalise(rows: unknown[] | null): RoomMessageRow[] {

@@ -5,7 +5,22 @@
  * open room, and on a room's own page for that room alone (no room picker).
  */
 import type { FormEvent } from "react";
+import { toast } from "sonner";
 import { BTN, FIELD, useRoomAction } from "./useRoomAction";
+
+/** Upload a picture first (0295); the post then names its path. */
+async function uploadPicture(slug: string, file: File): Promise<string | null> {
+  const data = new FormData();
+  data.set("slug", slug);
+  data.set("file", file);
+  const res = await fetch("/api/admin/rooms/image", { method: "POST", body: data });
+  const json = (await res.json().catch(() => ({}))) as { path?: string; error?: string };
+  if (!res.ok || !json.path) {
+    toast.error(json.error ?? "Could not upload the picture.");
+    return null;
+  }
+  return json.path;
+}
 
 function RoomPicker({ rooms, fixed }: { rooms: { slug: string; name: string }[]; fixed: boolean }) {
   if (fixed) return <input type="hidden" name="slug" value={rooms[0].slug} />;
@@ -31,7 +46,20 @@ export default function TeamForms({ rooms, fixed = false }: { rooms: { slug: str
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const form = e.currentTarget;
-    if (await act({ action: "post", slug: f.get("slug"), body: f.get("body") }, "Posted as PYQ Vault team.")) form.reset();
+    const slug = String(f.get("slug") ?? "");
+    const file = f.get("picture");
+    const imageAlt = String(f.get("imageAlt") ?? "").trim();
+    let imagePath: string | undefined;
+    if (file instanceof File && file.size > 0) {
+      if (!imageAlt) {
+        toast.error("Say in a line what the picture shows.");
+        return;
+      }
+      imagePath = (await uploadPicture(slug, file)) ?? undefined;
+      if (!imagePath) return;
+    }
+    const sent = { action: "post", slug, body: f.get("body"), imagePath, imageAlt: imagePath ? imageAlt : undefined };
+    if (await act(sent, "Posted as PYQ Vault team.")) form.reset();
   }
 
   async function swap(e: FormEvent<HTMLFormElement>) {
@@ -49,6 +77,14 @@ export default function TeamForms({ rooms, fixed = false }: { rooms: { slug: str
         <label className="block text-sm">
           Message
           <textarea name="body" required maxLength={1500} rows={4} className={`${FIELD} mt-1 h-auto w-full py-2`} />
+        </label>
+        <label className="block text-sm">
+          Picture (optional, PNG or JPEG, up to 1 MB)
+          <input name="picture" type="file" accept="image/png,image/jpeg" className="mt-1 block w-full text-sm file:mr-3 file:rounded-md file:border file:border-border file:bg-card file:px-3 file:py-1.5 file:text-sm" />
+        </label>
+        <label className="block text-sm">
+          What the picture shows (read aloud to students who cannot see it)
+          <input name="imageAlt" maxLength={300} className={`${FIELD} mt-1 w-full`} placeholder="Bar chart: share of CBSE Class 12 Maths questions by chapter" />
         </label>
         <button type="submit" disabled={busy} className={BTN}>
           Post
