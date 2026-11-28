@@ -81,6 +81,7 @@ export default async function SchoolExamsClassPage({ params }: { params: Promise
         <p className="mt-3 max-w-2xl font-serif text-base leading-relaxed text-muted-foreground">
           Every admission test, government scholarship and science or maths competition a child
           can sit while in Class {n}, across India and in Maharashtra.
+          {groups.some((g) => g.kind === "other") && " Last come a few well-known exams run by private institutes."}
         </p>
 
         <div className="mt-6">
@@ -102,6 +103,7 @@ export default async function SchoolExamsClassPage({ params }: { params: Promise
               <h2 id={`kind-${g.kind}`} className="text-lg font-semibold tracking-tight sm:text-xl">
                 {g.title}
               </h2>
+              {g.note && <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{g.note}</p>}
               <div className="mt-4 space-y-4">
                 {g.exams.map((e) => (
                   <ExamCard

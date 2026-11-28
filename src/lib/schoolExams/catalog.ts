@@ -1,8 +1,10 @@
 /**
  * The exams a school child can sit, for /school-exams (owner, 2026-11-27):
  * admission tests, government scholarships and science or maths competitions
- * by recognised bodies, all-India plus Maharashtra. No private bodies and no
- * other states (owner's choice).
+ * by recognised bodies, all-India plus Maharashtra. No other states (owner's
+ * choice). Private bodies only in the last group, kind "other" (owner,
+ * 2026-11-28: the Maharashtra Talent Search, which Pune parents ask about),
+ * each still read on its runner's own site.
  *
  * Every fact here was read on the conducting body's own site or notice
  * (`sourceUrl`) on `checkedOn`. Anything that could not be confirmed there was
@@ -21,7 +23,8 @@
  */
 import type { ExamSlug } from "@/lib/exam/examContext";
 
-export type SchoolExamKind = "admission" | "scholarship" | "competition";
+/** "other": a well-known exam run by a private institute (shown last, with a note saying so). */
+export type SchoolExamKind = "admission" | "scholarship" | "competition" | "other";
 
 export type SchoolExam = {
   id: string;
@@ -323,6 +326,22 @@ export const SCHOOL_EXAMS: readonly SchoolExam[] = [
     sourceUrl: "https://msta.in/schedule-2025-2026/",
     checkedOn: CHECKED,
     registrySlug: "homi-bhabha-9",
+  },
+
+  // ---- Other well-known exams (private institutes) ---------------------------
+  {
+    id: "mts",
+    name: "Maharashtra Talent Search Exam (MTS)",
+    kind: "other",
+    body: "Centre for Talent Search and Excellence, Modern Education Society's Nowrosjee Wadia College, Pune (held since 1992)",
+    forWhat: "A talent search on the whole year's school syllabus, with cash prizes for state and district merit lists (separate urban and rural lists).",
+    whoCanSit: "Students in Class 8, 9 or 10 at a government-recognised school, on the syllabus of the class they are in. In English, Marathi, Hindi or Urdu medium. Class 10 also has an interview.",
+    when: "Forms close in February (21 February in 2026) and the test is in April: 25 April 2026 last time. The 2027 dates are not out yet.",
+    region: "maharashtra",
+    sitInClasses: [8, 9, 10],
+    officialUrl: "https://www.mtsexam.org/",
+    sourceUrl: "https://www.mtsexam.org/Eligibility.aspx",
+    checkedOn: "2026-11-28",
   },
 ];
 

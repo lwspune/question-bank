@@ -12,6 +12,7 @@ import {
   SCHOOL_CLASSES,
   classHref,
   examsForClass,
+  KIND_NOTES,
   groupByKind,
   nextTestLine,
   ourExamLink,
@@ -81,7 +82,7 @@ describe("examsForClass: the class the child is in NOW", () => {
 describe("groupByKind", () => {
   it("orders admission, then scholarship, then competition, and drops empty groups", () => {
     const groups = groupByKind(examsForClass(8));
-    expect(groups.map((g) => g.kind)).toEqual(["admission", "scholarship", "competition"]);
+    expect(groups.map((g) => g.kind)).toEqual(["admission", "scholarship", "competition", "other"]);
     const class4 = groupByKind(examsForClass(4));
     expect(class4.map((g) => g.kind)).toEqual(["scholarship"]);
   });
@@ -158,6 +159,28 @@ describe("the catalogue", () => {
       expect(e[f].trim().length, `${e.id}.${f}`).toBeGreaterThan(0);
       // Owner rule (2026-10-05): no em dashes, and no spaced dash that keeps their rhythm.
       expect(e[f], `${e.id}.${f}`).not.toMatch(/—| – | -- /);
+    }
+  });
+});
+
+describe("other well-known exams (private institutes, owner 2026-11-28)", () => {
+  it("lists MTS for Class 8, 9 and 10 only, in the last group", () => {
+    for (const n of SCHOOL_CLASSES) {
+      expect(ids(n).includes("mts")).toBe([8, 9, 10].includes(n));
+    }
+    const groups = groupByKind(examsForClass(9));
+    expect(groups.at(-1)?.kind).toBe("other");
+    expect(groups.at(-1)?.exams.map((e) => e.id)).toContain("mts");
+  });
+
+  it("says plainly that the group is not run by the government", () => {
+    expect(KIND_NOTES.other).toMatch(/private/i);
+    expect(KIND_NOTES.other).toMatch(/not the government/i);
+  });
+
+  it("keeps the government groups free of private exams", () => {
+    for (const e of SCHOOL_EXAMS.filter((x) => x.kind !== "other")) {
+      expect(e.id).not.toBe("mts");
     }
   });
 });
