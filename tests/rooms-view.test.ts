@@ -9,7 +9,7 @@
 import { describe, it, expect } from "vitest";
 import { roomErrorOf } from "@/lib/rooms/errors";
 import { parseRoomPost, parseRoomReport, parseRoomAnswer, parseRoomAskV } from "@/lib/rooms/validate";
-import { toMessageView, type RoomMessageRow } from "@/lib/rooms/view";
+import { toMessageView, questionLabel, embeddedName, type RoomMessageRow } from "@/lib/rooms/view";
 import { nextPollDelay, badgeCacheFresh, isNearEnd } from "@/lib/rooms/poll";
 
 describe("roomErrorOf", () => {
@@ -133,5 +133,25 @@ describe("isNearEnd", () => {
     expect(isNearEnd({ scrollHeight: 2000, scrollTop: 1500, clientHeight: 450 })).toBe(true);
     expect(isNearEnd({ scrollHeight: 2000, scrollTop: 1000, clientHeight: 450 })).toBe(false);
     expect(isNearEnd({ scrollHeight: 300, scrollTop: 0, clientHeight: 450 })).toBe(true);
+  });
+});
+
+describe("questionLabel", () => {
+  it("names a daily question's subject, chapter and year (owner, 2026-11-28)", () => {
+    expect(questionLabel({ subject: "Chemistry", chapter: "Chemical Kinetics", year: 2026 })).toBe("Chemistry · Chemical Kinetics · 2026");
+  });
+  it("leaves out whatever is missing", () => {
+    expect(questionLabel({ subject: "Chemistry", chapter: null, year: 2026 })).toBe("Chemistry · 2026");
+    expect(questionLabel({ subject: "History", chapter: "Modern India", year: null })).toBe("History · Modern India");
+    expect(questionLabel({ subject: null, chapter: null, year: null })).toBeNull();
+  });
+});
+
+describe("embeddedName", () => {
+  it("reads a joined name whether PostgREST gives an object or an array", () => {
+    expect(embeddedName({ name: "Chemistry" })).toBe("Chemistry");
+    expect(embeddedName([{ name: "Chemical Kinetics" }])).toBe("Chemical Kinetics");
+    expect(embeddedName(null)).toBeNull();
+    expect(embeddedName([])).toBeNull();
   });
 });

@@ -61,6 +61,7 @@ export default async function AdminRoomPage({
               <p className="text-xs text-muted-foreground">
                 Pinned {WHEN.format(new Date(daily.at))} · {daily.tally.answered} answered, {daily.tally.right} right
               </p>
+              {daily.label && <p className="text-xs font-medium text-muted-foreground">{daily.label}</p>}
               {daily.context && <BlockText text={daily.context} className="font-serif text-sm" />}
               <BlockText text={daily.text} className="font-serif text-sm" />
               <ul className="space-y-1.5 text-sm">
