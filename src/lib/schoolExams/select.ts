@@ -9,12 +9,18 @@ import { SCHOOL_EXAMS, type SchoolExam, type SchoolExamKind } from "./catalog";
 /** The classes a parent can pick: Class 1 to Class 10 (owner, 2026-11-27). */
 export const SCHOOL_CLASSES: readonly number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-export const KIND_ORDER: readonly SchoolExamKind[] = ["admission", "scholarship", "competition"];
+export const KIND_ORDER: readonly SchoolExamKind[] = ["admission", "scholarship", "competition", "other"];
 
 export const KIND_TITLES: Record<SchoolExamKind, string> = {
   admission: "Admission tests",
   scholarship: "Scholarships",
   competition: "Competitions and olympiads",
+  other: "Other well-known exams",
+};
+
+/** A line under a group's heading, where the group needs one. */
+export const KIND_NOTES: Partial<Record<SchoolExamKind, string>> = {
+  other: "Run by private institutes, not the government or a national body.",
 };
 
 export function classHref(n: number): string {
@@ -33,14 +39,16 @@ export function examsForClass(n: number, exams: readonly SchoolExam[] = SCHOOL_E
   return [...fits.filter((e) => e.region === "india"), ...fits.filter((e) => e.region !== "india")];
 }
 
-export type KindGroup = { kind: SchoolExamKind; title: string; exams: SchoolExam[] };
+export type KindGroup = { kind: SchoolExamKind; title: string; note?: string; exams: SchoolExam[] };
 
-/** Admission, then scholarships, then competitions; empty groups left out. */
+/** Admission, then scholarships, then competitions, then other well-known exams; empty groups left out. */
 export function groupByKind(exams: readonly SchoolExam[]): KindGroup[] {
   return KIND_ORDER.flatMap((kind) => {
     const inKind = exams.filter((e) => e.kind === kind);
     const ordered = [...inKind.filter((e) => e.region === "india"), ...inKind.filter((e) => e.region !== "india")];
-    return ordered.length ? [{ kind, title: KIND_TITLES[kind], exams: ordered }] : [];
+    if (!ordered.length) return [];
+    const note = KIND_NOTES[kind];
+    return [note ? { kind, title: KIND_TITLES[kind], note, exams: ordered } : { kind, title: KIND_TITLES[kind], exams: ordered }];
   });
 }
 
