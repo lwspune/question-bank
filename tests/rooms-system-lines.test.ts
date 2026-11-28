@@ -22,6 +22,7 @@ function msg(over: Partial<RoomMessageView>): RoomMessageView {
     replyTo: null,
     canAskV: true,
     question: null,
+    image: null,
     ...over,
   };
 }

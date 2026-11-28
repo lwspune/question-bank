@@ -1662,6 +1662,8 @@ export type Database = {
           hidden_at: string | null
           hidden_reason: string | null
           id: number
+          image_alt: string | null
+          image_path: string | null
           pinned: boolean
           question_id: string | null
           reply_to: number | null
@@ -1678,6 +1680,8 @@ export type Database = {
           hidden_at?: string | null
           hidden_reason?: string | null
           id?: never
+          image_alt?: string | null
+          image_path?: string | null
           pinned?: boolean
           question_id?: string | null
           reply_to?: number | null
@@ -1694,6 +1698,8 @@ export type Database = {
           hidden_at?: string | null
           hidden_reason?: string | null
           id?: never
+          image_alt?: string | null
+          image_path?: string | null
           pinned?: boolean
           question_id?: string | null
           reply_to?: number | null

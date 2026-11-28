@@ -49,7 +49,8 @@ import {
   sendMessage,
   type RoomsListResponse,
 } from "@/lib/rooms/client";
-import { nextPollDelay } from "@/lib/rooms/poll";
+import { isNearEnd, nextPollDelay } from "@/lib/rooms/poll";
+import { linkOpensHere, splitLinks } from "@/lib/rooms/links";
 import { plainPreview, roomBadge } from "@/lib/rooms/list";
 import { ROOM_TEXT_MAX } from "@/lib/rooms/text";
 import { NICK_MAX, suggestNickname } from "@/lib/rooms/nickname";
@@ -695,7 +696,23 @@ function RoomChat({
   const [error, setError] = useState<string | null>(null);
   const lastIdRef = useRef(0);
   const listRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const atBottomRef = useRef(true);
+
+  // Open at the newest message and stay there while the chat grows: the first
+  // page drawing in, question cards, maths and pictures finishing a moment
+  // later. A jump timed to one frame landed before all of that (students had
+  // to scroll down on every open). Scrolling up to read stops the pinning.
+  useEffect(() => {
+    const list = listRef.current;
+    const content = contentRef.current;
+    if (!list || !content || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => {
+      if (atBottomRef.current) list.scrollTop = list.scrollHeight;
+    });
+    ro.observe(content);
+    return () => ro.disconnect();
+  }, []);
 
   const scrollToEnd = useCallback(() => {
     requestAnimationFrame(() => {
@@ -1061,13 +1078,12 @@ function RoomChat({
       <div
         ref={listRef}
         onScroll={(e) => {
-          const el = e.currentTarget;
-          atBottomRef.current =
-            el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+          atBottomRef.current = isNearEnd(e.currentTarget);
         }}
-        className="flex-1 space-y-2.5 overflow-y-auto bg-muted/60 px-3 py-3"
+        className="flex-1 overflow-y-auto bg-muted/60 px-3 py-3"
         aria-live="polite"
       >
+        <div ref={contentRef} className="space-y-2.5">
         {error && (
           <p className="py-6 text-center text-sm text-muted-foreground">
             {error}
@@ -1142,6 +1158,7 @@ function RoomChat({
             </div>
           );
         })}
+        </div>
       </div>
 
       <form
@@ -1202,6 +1219,34 @@ function RoomChat({
           </p>
         )}
       </form>
+    </>
+  );
+}
+
+/**
+ * A team message's text with its web links tappable (students cannot post
+ * links). Pieces become React nodes, never HTML. Our own pages open here,
+ * any other site in a new tab.
+ */
+function LinkedText({ body }: { body: string }) {
+  return (
+    <>
+      {splitLinks(body).map((p, i) =>
+        p.kind === "text" ? (
+          <span key={i}>{p.text}</span>
+        ) : (
+          <a
+            key={i}
+            href={p.href}
+            {...(linkOpensHere(p.href)
+              ? {}
+              : { target: "_blank", rel: "noopener noreferrer" })}
+            className="break-all font-medium text-brand-accent underline underline-offset-2 focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {p.text}
+          </a>
+        ),
+      )}
     </>
   );
 }
@@ -1291,8 +1336,29 @@ function MessageBubble({
               text={m.body}
               className="block whitespace-pre-wrap break-words text-sm"
             />
+          ) : m.kind === "team" ? (
+            <p className="whitespace-pre-wrap break-words text-sm">
+              <LinkedText body={m.body} />
+            </p>
           ) : (
             <p className="whitespace-pre-wrap break-words text-sm">{m.body}</p>
+          )}
+          {m.image && (
+            <a
+              href={m.image.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open the picture full size: ${m.image.alt}`}
+              className="mt-2 block overflow-hidden rounded-xl ring-1 ring-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- a public bucket picture; next/image is not used on this site */}
+              <img
+                src={m.image.url}
+                alt={m.image.alt}
+                loading="lazy"
+                className="block h-auto w-full max-w-sm"
+              />
+            </a>
           )}
           {m.question && (
             <QuestionCard

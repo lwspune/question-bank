@@ -4,6 +4,7 @@
  * answered (lib/rooms/server attaches it). Pure. Spec: tests/rooms-view.test.ts.
  */
 import { plainPreview } from "./list";
+import { publicImageUrl } from "@/lib/storage/imageUrl";
 
 /** A system line's kind (migration 0291): a first join, or a daily-question answer. */
 export type RoomSystemEvent = "joined" | "answered";
@@ -19,6 +20,9 @@ export type RoomMessageRow = {
   pinned: boolean;
   created_at: string;
   system_event: RoomSystemEvent | null;
+  /** Team posts only (migration 0295). */
+  image_path: string | null;
+  image_alt: string | null;
 };
 
 export type RoomQuestionView = {
@@ -43,6 +47,8 @@ export type RoomMessageView = {
   replyTo: { id: number; name: string; snippet: string } | null;
   canAskV: boolean;
   question: RoomQuestionView | null;
+  /** A team post's picture (0295). Never on a student, V or system message. */
+  image: { url: string; alt: string } | null;
 };
 
 const SNIPPET = 60;
@@ -61,6 +67,8 @@ export function toMessageView(
     /** Messages a reply may quote, by id. */
     byId: ReadonlyMap<number, Pick<RoomMessageRow, "id" | "display_name" | "body">>;
     question?: RoomQuestionView | null;
+    /** For a picture's public address. */
+    supabaseUrl?: string;
   }
 ): RoomMessageView {
   const parent = row.reply_to != null ? ctx.byId.get(row.reply_to) : undefined;
@@ -76,5 +84,9 @@ export function toMessageView(
     replyTo: parent ? { id: parent.id, name: parent.display_name, snippet: snippetOf(parent.body) } : null,
     canAskV: row.author_kind === "student" && !ctx.repliedByV.has(row.id),
     question: ctx.question ?? null,
+    image:
+      row.author_kind === "team" && row.image_path && row.image_alt
+        ? { url: publicImageUrl(ctx.supabaseUrl ?? "", row.image_path), alt: row.image_alt }
+        : null,
   };
 }

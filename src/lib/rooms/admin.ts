@@ -9,6 +9,7 @@ import { checkRoomText } from "./text";
 import { postDaily } from "./dailyServer";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { tallyDailyAnswers, type DailyTally } from "./adminRoom";
+import { publicImageUrl } from "@/lib/storage/imageUrl";
 
 function one<T>(x: T | T[]): T {
   return Array.isArray(x) ? x[0] : x;
@@ -130,14 +131,30 @@ export async function setRoomOpen(db: SupabaseClient, slug: string, open: boolea
   if (error) throw new Error(`rooms admin open: ${error.message}`);
 }
 
-export async function teamPost(db: SupabaseClient, slug: string, staffUserId: string, raw: string): Promise<{ error: string } | { ok: true }> {
+export async function teamPost(
+  db: SupabaseClient,
+  slug: string,
+  staffUserId: string,
+  raw: string,
+  image: { path: string; alt: string } | null = null,
+): Promise<{ error: string } | { ok: true }> {
   // Staff may share a link (an official notice); phone numbers and emails still never go in a room.
   const text = checkRoomText(raw);
   if (!text.ok && !/Links can't/.test(text.error)) return { error: text.error };
+  // 0295: a picture is filed under its own circle; the CHECK holds the shape.
+  if (image && !image.path.startsWith(`circles/${slug}/`)) return { error: "That picture belongs to another circle." };
   const body = raw.replace(/\r\n?/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
   const { error } = await db
     .from("exam_room_messages")
-    .insert({ exam_slug: slug, author_kind: "team", user_id: staffUserId, display_name: "PYQ Vault team", body });
+    .insert({
+      exam_slug: slug,
+      author_kind: "team",
+      user_id: staffUserId,
+      display_name: "PYQ Vault team",
+      body,
+      image_path: image?.path ?? null,
+      image_alt: image?.alt ?? null,
+    });
   if (error) return { error: error.message };
   return { ok: true };
 }
@@ -181,6 +198,8 @@ export type AdminRoomMessage = {
   hiddenReason: string | null;
   pinned: boolean;
   replyTo: { name: string; body: string } | null;
+  /** A team post's picture (0295). */
+  image: { url: string; alt: string } | null;
 };
 
 export type AdminRoomDetail = {
@@ -215,7 +234,7 @@ export async function loadAdminRoom(db: SupabaseClient, slug: string, before: nu
 
   let q = db
     .from("exam_room_messages")
-    .select("id, author_kind, system_event, user_id, display_name, body, created_at, hidden_at, hidden_reason, pinned, reply_to")
+    .select("id, author_kind, system_event, user_id, display_name, body, created_at, hidden_at, hidden_reason, pinned, reply_to, image_path, image_alt")
     .eq("exam_slug", slug);
   if (before) q = q.lt("id", before);
   const [msgs, members, pin] = await Promise.all([
@@ -236,6 +255,8 @@ export async function loadAdminRoom(db: SupabaseClient, slug: string, before: nu
     hidden_reason: string | null;
     pinned: boolean;
     reply_to: number | null;
+    image_path: string | null;
+    image_alt: string | null;
   };
   const all = (msgs.data ?? []) as Row[];
   const rows = all.slice(0, ADMIN_ROOM_PAGE);
@@ -267,6 +288,7 @@ export async function loadAdminRoom(db: SupabaseClient, slug: string, before: nu
     at: r.created_at,
     hidden: !!r.hidden_at,
     hiddenReason: r.hidden_reason,
+    image: r.image_path && r.image_alt ? { url: publicImageUrl(process.env.NEXT_PUBLIC_SUPABASE_URL ?? "", r.image_path), alt: r.image_alt } : null,
     pinned: r.pinned,
     replyTo: r.reply_to != null ? byId.get(Number(r.reply_to)) ?? null : null,
   }));
