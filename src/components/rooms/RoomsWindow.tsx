@@ -1517,7 +1517,7 @@ function QuestionCard({
       </div>
       {!answered && (
         <p className="text-xs text-muted-foreground">
-          Answer first, then discuss. The answer shows once you pick.
+          The answer shows once you pick.
         </p>
       )}
       {answered?.solution && (
