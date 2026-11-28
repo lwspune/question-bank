@@ -80,7 +80,7 @@ export default function TeamForms({ rooms, fixed = false }: { rooms: { slug: str
         </label>
         <label className="block text-sm">
           Picture (optional, PNG or JPEG, up to 1 MB)
-          <input name="picture" type="file" accept="image/png,image/jpeg" className="mt-1 block w-full text-sm file:mr-3 file:rounded-md file:border file:border-border file:bg-card file:px-3 file:py-1.5 file:text-sm" />
+          <input name="picture" type="file" accept="image/png,image/jpeg" className="mt-1 block w-full text-sm file:mr-3 file:rounded-md file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-sm file:font-medium" />
         </label>
         <label className="block text-sm">
           What the picture shows (read aloud to students who cannot see it)
