@@ -27,6 +27,8 @@ export type RoomMessageRow = {
 
 export type RoomQuestionView = {
   id: string;
+  /** "Chemistry · Chemical Kinetics · 2026": where the question comes from (owner, 2026-11-28). */
+  label: string | null;
   text: string;
   context: string | null;
   options: { id: string; label: string; text: string }[];
@@ -52,6 +54,18 @@ export type RoomMessageView = {
 };
 
 const SNIPPET = 60;
+
+/** An embedded `name` from a PostgREST join: one object, or an array for some joins. */
+export function embeddedName(v: unknown): string | null {
+  const one = Array.isArray(v) ? v[0] : v;
+  return one && typeof one === "object" && "name" in one ? String((one as { name: unknown }).name) : null;
+}
+
+/** A daily question's subject, chapter and year, joined; whatever is missing is left out. */
+export function questionLabel(q: { subject: string | null; chapter: string | null; year: number | null }): string | null {
+  const parts = [q.subject, q.chapter, q.year != null ? String(q.year) : null].filter((p): p is string => !!p && p.trim() !== "");
+  return parts.length ? parts.join(" · ") : null;
+}
 
 function snippetOf(body: string): string {
   const flat = plainPreview(body);

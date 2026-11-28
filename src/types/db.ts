@@ -6313,6 +6313,12 @@ export type Database = {
           stage: string
         }[]
       }
+      exam_room_audience: {
+        Args: never
+        Returns: {
+          exam_slug: string
+        }[]
+      }
       exam_room_summaries: {
         Args: { p_user_id: string }
         Returns: {

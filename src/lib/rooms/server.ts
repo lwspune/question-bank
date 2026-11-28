@@ -11,7 +11,7 @@ import { buildRoomList, type RoomListItem } from "./list";
 import { joinDecision, waitingCount } from "./alert";
 import { loadStoredGuess } from "@/lib/profile/examGuessServer";
 import { checkNickname } from "./nickname";
-import { toMessageView, type RoomMessageRow, type RoomMessageView, type RoomQuestionView } from "./view";
+import { embeddedName, questionLabel, toMessageView, type RoomMessageRow, type RoomMessageView, type RoomQuestionView } from "./view";
 import type { RoomReportReason } from "./validate";
 
 export const ROOM_PAGE = 50;
@@ -221,7 +221,7 @@ async function loadQuestions(
   if (withQ.length === 0) return out;
   const qIds = [...new Set(withQ.map((r) => r.question_id as string))];
   const [qs, opts, answers] = await Promise.all([
-    db.from("questions").select("id, text, context, solution").in("id", qIds),
+    db.from("questions").select("id, text, context, solution, pyq_year, subject:subjects(name), chapter:chapters(name)").in("id", qIds),
     db.from("options").select("id, question_id, label, text, is_correct").in("question_id", qIds).order("label"),
     db.from("exam_room_answers").select("message_id, option_id, correct").eq("user_id", userId).in("message_id", withQ.map((r) => r.id)),
   ]);
@@ -241,6 +241,7 @@ async function loadQuestions(
     const a = answerByMsg.get(r.id);
     out.set(r.id, {
       id: q.id as string,
+      label: questionLabel({ subject: embeddedName(q.subject), chapter: embeddedName(q.chapter), year: (q.pyq_year as number | null) ?? null }),
       text: q.text as string,
       context: (q.context as string | null) ?? null,
       options: options.map((o) => ({ id: o.id, label: o.label, text: o.text })),
