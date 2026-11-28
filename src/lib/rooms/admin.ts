@@ -10,6 +10,7 @@ import { postDaily } from "./dailyServer";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { tallyDailyAnswers, type DailyTally } from "./adminRoom";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
+import { embeddedName, questionLabel } from "./view";
 
 function one<T>(x: T | T[]): T {
   return Array.isArray(x) ? x[0] : x;
@@ -215,6 +216,8 @@ export type AdminRoomDetail = {
     messageId: number;
     questionId: string;
     at: string;
+    /** "Chemistry · Chemical Kinetics · 2026" */
+    label: string | null;
     text: string;
     context: string | null;
     options: { label: string; text: string }[];
@@ -298,7 +301,7 @@ export async function loadAdminRoom(db: SupabaseClient, slug: string, before: nu
     const questionId = pin.data.question_id as string;
     const messageId = Number(pin.data.id);
     const [question, opts] = await Promise.all([
-      db.from("questions").select("text, context").eq("id", questionId).maybeSingle(),
+      db.from("questions").select("text, context, pyq_year, subject:subjects(name), chapter:chapters(name)").eq("id", questionId).maybeSingle(),
       db.from("options").select("id, label, text, is_correct").eq("question_id", questionId).order("label"),
     ]);
     if (question.error || opts.error) throw new Error(`rooms admin daily: ${(question.error ?? opts.error)!.message}`);
@@ -320,6 +323,11 @@ export async function loadAdminRoom(db: SupabaseClient, slug: string, before: nu
         messageId,
         questionId,
         at: pin.data.created_at as string,
+        label: questionLabel({
+          subject: embeddedName(question.data.subject),
+          chapter: embeddedName(question.data.chapter),
+          year: (question.data.pyq_year as number | null) ?? null,
+        }),
         text: question.data.text as string,
         context: (question.data.context as string | null) ?? null,
         options: options.map((o) => ({ label: o.label, text: o.text })),

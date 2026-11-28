@@ -1459,6 +1459,11 @@ function QuestionCard({
 
   return (
     <div className="mt-2 space-y-2 rounded-xl border border-border bg-background p-3">
+      {question.label && (
+        <p className="text-xs font-medium text-muted-foreground">
+          {question.label}
+        </p>
+      )}
       {question.context && (
         <BlockText text={question.context} className="font-serif text-sm" />
       )}
@@ -1512,7 +1517,7 @@ function QuestionCard({
       </div>
       {!answered && (
         <p className="text-xs text-muted-foreground">
-          Answer first, then discuss. The answer shows once you pick.
+          The answer shows once you pick.
         </p>
       )}
       {answered?.solution && (
