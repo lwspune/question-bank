@@ -11,7 +11,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { readInChunks } from "@/lib/supabase/readInChunks";
-import { pickDailyQuestion } from "./daily";
+import { pickDailyQuestion, standsAlone } from "./daily";
 import { dailyRooms } from "./alert";
 import { roomName } from "./server";
 
@@ -32,8 +32,8 @@ async function examIdOf(db: SupabaseClient, slug: string): Promise<string | null
 
 async function usable(db: SupabaseClient, ids: string[]): Promise<Set<string>> {
   const [qs, opts] = await Promise.all([
-    readInChunks<{ id: string; text: string | null; image_url: string | null; visibility: string; question_format: string }>(ids, (part, from, to) =>
-      db.from("questions").select("id, text, image_url, visibility, question_format").in("id", part).order("id").range(from, to)
+    readInChunks<{ id: string; text: string | null; context: string | null; image_url: string | null; visibility: string; question_format: string }>(ids, (part, from, to) =>
+      db.from("questions").select("id, text, context, image_url, visibility, question_format").in("id", part).order("id").range(from, to)
     ),
     readInChunks<{ id: string; question_id: string; image_url: string | null }>(ids, (part, from, to) =>
       db.from("options").select("id, question_id, image_url").in("question_id", part).order("id").range(from, to)
@@ -49,6 +49,7 @@ async function usable(db: SupabaseClient, ids: string[]): Promise<Set<string>> {
   for (const q of qs) {
     if (q.visibility !== "PUBLIC" || q.question_format !== "mcq" || q.image_url || optImage.has(q.id)) continue;
     if ((optCount.get(q.id) ?? 0) < 2 || String(q.text ?? "").length > MAX_STEM) continue;
+    if (!standsAlone(q)) continue;
     ok.add(q.id);
   }
   return ok;
